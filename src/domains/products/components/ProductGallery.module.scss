@@ -1,0 +1,14 @@
+.gallery{width:100%;min-width:0;padding-bottom:28px;background:#fff}
+.stage{height:clamp(340px,65vh,850px);width:100%;overflow:hidden;touch-action:pan-y}
+.mainImage{width:100%;height:100%;object-fit:contain;display:block;user-select:none}
+.controls{display:flex;align-items:center;justify-content:center;gap:30px;margin:8px 20px 14px;font-size:11px}
+.controls button{width:44px;height:40px;font-size:22px;cursor:pointer;transition:opacity .15s}
+.controls button:disabled{opacity:.2;cursor:default}.controls button:hover:not(:disabled){opacity:.55}
+.controls p{min-width:38px;text-align:center;font-variant-numeric:tabular-nums}.controls span{color:#999;margin-left:4px}
+.rail{position:relative;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:0 2px 9px;margin:0 24px;scrollbar-width:thin;scrollbar-color:#aaa #eee}
+.thumbnail{flex:0 0 72px;height:88px;overflow:hidden;border-bottom:1px solid transparent;opacity:.45;cursor:pointer;scroll-snap-align:center;padding:0 0 6px}
+.thumbnail img{height:100%;width:100%;object-fit:contain;display:block}
+.thumbnail[aria-pressed=true]{opacity:1;border-bottom-color:#111}.thumbnail:hover{opacity:1}
+.controls button:focus-visible,.thumbnail:focus-visible{outline:1px solid #111;outline-offset:-2px}
+.empty{padding:80px 20px;text-align:center;color:#777;font-size:12px}
+@media(max-width:767px){.stage{height:auto;aspect-ratio:4/5;max-height:72svh}.controls{margin-top:0;margin-bottom:8px}.rail{margin:0 16px;gap:10px}.thumbnail{flex-basis:58px;height:70px}.gallery{padding-bottom:10px}}

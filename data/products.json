@@ -1,0 +1,3695 @@
+{
+  "snapshot_id": "onepiece-original-demo-20261020-v1",
+  "products": [
+    {
+      "id": "demo-color-001",
+      "handle": "demo-01-ink",
+      "title": "DEMO STUDIO JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "jackets"
+      ],
+      "source_url": "/demo/demo-01-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-01-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-01-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-01-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-001-0",
+          "sku": "DEMO-001-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-001-1",
+          "sku": "DEMO-001-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-001-2",
+          "sku": "DEMO-001-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-001-3",
+          "sku": "DEMO-001-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "128000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-002",
+      "handle": "demo-01-stone",
+      "title": "DEMO STUDIO JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "jackets"
+      ],
+      "source_url": "/demo/demo-01-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-01-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-01-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-01-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-002-0",
+          "sku": "DEMO-002-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-002-1",
+          "sku": "DEMO-002-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-002-2",
+          "sku": "DEMO-002-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-002-3",
+          "sku": "DEMO-002-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "128000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-003",
+      "handle": "demo-01-moss",
+      "title": "DEMO STUDIO JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "jackets"
+      ],
+      "source_url": "/demo/demo-01-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-01-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-01-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-01-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-003-0",
+          "sku": "DEMO-003-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-003-1",
+          "sku": "DEMO-003-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-003-2",
+          "sku": "DEMO-003-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "128000",
+          "available": true
+        },
+        {
+          "id": "demo-option-003-3",
+          "sku": "DEMO-003-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "128000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-004",
+      "handle": "demo-02-ink",
+      "title": "DEMO VOLUME JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "puffers"
+      ],
+      "source_url": "/demo/demo-02-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-02-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-02-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-02-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-004-0",
+          "sku": "DEMO-004-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-004-1",
+          "sku": "DEMO-004-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-004-2",
+          "sku": "DEMO-004-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-004-3",
+          "sku": "DEMO-004-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "198000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-005",
+      "handle": "demo-02-stone",
+      "title": "DEMO VOLUME JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "puffers"
+      ],
+      "source_url": "/demo/demo-02-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-02-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-02-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-02-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-005-0",
+          "sku": "DEMO-005-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-005-1",
+          "sku": "DEMO-005-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-005-2",
+          "sku": "DEMO-005-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-005-3",
+          "sku": "DEMO-005-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "198000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-006",
+      "handle": "demo-02-moss",
+      "title": "DEMO VOLUME JACKET",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "puffers"
+      ],
+      "source_url": "/demo/demo-02-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-02-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-02-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-02-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-006-0",
+          "sku": "DEMO-006-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-006-1",
+          "sku": "DEMO-006-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-006-2",
+          "sku": "DEMO-006-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "198000",
+          "available": true
+        },
+        {
+          "id": "demo-option-006-3",
+          "sku": "DEMO-006-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "198000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-007",
+      "handle": "demo-03-ink",
+      "title": "DEMO EVERYDAY TEE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "t-shirts"
+      ],
+      "source_url": "/demo/demo-03-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-03-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-03-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-03-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-007-0",
+          "sku": "DEMO-007-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "48000",
+          "available": false
+        },
+        {
+          "id": "demo-option-007-1",
+          "sku": "DEMO-007-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-007-2",
+          "sku": "DEMO-007-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-007-3",
+          "sku": "DEMO-007-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "48000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-008",
+      "handle": "demo-03-stone",
+      "title": "DEMO EVERYDAY TEE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "t-shirts"
+      ],
+      "source_url": "/demo/demo-03-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-03-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-03-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-03-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-008-0",
+          "sku": "DEMO-008-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-008-1",
+          "sku": "DEMO-008-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-008-2",
+          "sku": "DEMO-008-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-008-3",
+          "sku": "DEMO-008-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "48000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-009",
+      "handle": "demo-03-moss",
+      "title": "DEMO EVERYDAY TEE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "t-shirts"
+      ],
+      "source_url": "/demo/demo-03-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-03-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-03-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-03-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-009-0",
+          "sku": "DEMO-009-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-009-1",
+          "sku": "DEMO-009-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-009-2",
+          "sku": "DEMO-009-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "48000",
+          "available": true
+        },
+        {
+          "id": "demo-option-009-3",
+          "sku": "DEMO-009-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "48000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-010",
+      "handle": "demo-04-ink",
+      "title": "DEMO QUIET HOODIE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "hoodies"
+      ],
+      "source_url": "/demo/demo-04-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-04-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-04-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-04-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-010-0",
+          "sku": "DEMO-010-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-010-1",
+          "sku": "DEMO-010-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-010-2",
+          "sku": "DEMO-010-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-010-3",
+          "sku": "DEMO-010-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "98000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-011",
+      "handle": "demo-04-stone",
+      "title": "DEMO QUIET HOODIE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "hoodies"
+      ],
+      "source_url": "/demo/demo-04-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-04-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-04-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-04-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-011-0",
+          "sku": "DEMO-011-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "98000",
+          "available": false
+        },
+        {
+          "id": "demo-option-011-1",
+          "sku": "DEMO-011-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "98000",
+          "available": false
+        },
+        {
+          "id": "demo-option-011-2",
+          "sku": "DEMO-011-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "98000",
+          "available": false
+        },
+        {
+          "id": "demo-option-011-3",
+          "sku": "DEMO-011-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "98000",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "demo-color-012",
+      "handle": "demo-04-moss",
+      "title": "DEMO QUIET HOODIE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "hoodies"
+      ],
+      "source_url": "/demo/demo-04-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-04-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-04-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-04-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-012-0",
+          "sku": "DEMO-012-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-012-1",
+          "sku": "DEMO-012-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-012-2",
+          "sku": "DEMO-012-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "98000",
+          "available": true
+        },
+        {
+          "id": "demo-option-012-3",
+          "sku": "DEMO-012-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "98000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-013",
+      "handle": "demo-05-ink",
+      "title": "DEMO OPEN COLLAR SHIRT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shirts"
+      ],
+      "source_url": "/demo/demo-05-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-05-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-05-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-05-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-013-0",
+          "sku": "DEMO-013-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-013-1",
+          "sku": "DEMO-013-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-013-2",
+          "sku": "DEMO-013-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-013-3",
+          "sku": "DEMO-013-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "108000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-014",
+      "handle": "demo-05-stone",
+      "title": "DEMO OPEN COLLAR SHIRT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shirts"
+      ],
+      "source_url": "/demo/demo-05-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-05-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-05-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-05-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-014-0",
+          "sku": "DEMO-014-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "108000",
+          "available": false
+        },
+        {
+          "id": "demo-option-014-1",
+          "sku": "DEMO-014-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-014-2",
+          "sku": "DEMO-014-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-014-3",
+          "sku": "DEMO-014-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "108000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-015",
+      "handle": "demo-05-moss",
+      "title": "DEMO OPEN COLLAR SHIRT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shirts"
+      ],
+      "source_url": "/demo/demo-05-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-05-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-05-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-05-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-015-0",
+          "sku": "DEMO-015-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-015-1",
+          "sku": "DEMO-015-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-015-2",
+          "sku": "DEMO-015-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "108000",
+          "available": true
+        },
+        {
+          "id": "demo-option-015-3",
+          "sku": "DEMO-015-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "108000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-016",
+      "handle": "demo-06-ink",
+      "title": "DEMO SOFT KNIT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "knitwear"
+      ],
+      "source_url": "/demo/demo-06-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-06-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-06-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-06-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-016-0",
+          "sku": "DEMO-016-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-016-1",
+          "sku": "DEMO-016-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-016-2",
+          "sku": "DEMO-016-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-016-3",
+          "sku": "DEMO-016-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "88000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-017",
+      "handle": "demo-06-stone",
+      "title": "DEMO SOFT KNIT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "knitwear"
+      ],
+      "source_url": "/demo/demo-06-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-06-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-06-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-06-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-017-0",
+          "sku": "DEMO-017-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-017-1",
+          "sku": "DEMO-017-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-017-2",
+          "sku": "DEMO-017-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-017-3",
+          "sku": "DEMO-017-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "88000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-018",
+      "handle": "demo-06-moss",
+      "title": "DEMO SOFT KNIT",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "knitwear"
+      ],
+      "source_url": "/demo/demo-06-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-06-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-06-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-06-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-018-0",
+          "sku": "DEMO-018-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-018-1",
+          "sku": "DEMO-018-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-018-2",
+          "sku": "DEMO-018-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "88000",
+          "available": true
+        },
+        {
+          "id": "demo-option-018-3",
+          "sku": "DEMO-018-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "88000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-019",
+      "handle": "demo-07-ink",
+      "title": "DEMO LAYER LONG SLEEVE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "long sleeves"
+      ],
+      "source_url": "/demo/demo-07-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-07-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-07-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-07-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-019-0",
+          "sku": "DEMO-019-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-019-1",
+          "sku": "DEMO-019-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-019-2",
+          "sku": "DEMO-019-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-019-3",
+          "sku": "DEMO-019-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "58000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-020",
+      "handle": "demo-07-stone",
+      "title": "DEMO LAYER LONG SLEEVE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "long sleeves"
+      ],
+      "source_url": "/demo/demo-07-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-07-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-07-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-07-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-020-0",
+          "sku": "DEMO-020-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-020-1",
+          "sku": "DEMO-020-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-020-2",
+          "sku": "DEMO-020-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-020-3",
+          "sku": "DEMO-020-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "58000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-021",
+      "handle": "demo-07-moss",
+      "title": "DEMO LAYER LONG SLEEVE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "long sleeves"
+      ],
+      "source_url": "/demo/demo-07-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-07-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-07-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-07-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-021-0",
+          "sku": "DEMO-021-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "58000",
+          "available": false
+        },
+        {
+          "id": "demo-option-021-1",
+          "sku": "DEMO-021-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-021-2",
+          "sku": "DEMO-021-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "58000",
+          "available": true
+        },
+        {
+          "id": "demo-option-021-3",
+          "sku": "DEMO-021-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "58000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-022",
+      "handle": "demo-08-ink",
+      "title": "DEMO LINE TANK",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "sleeveless"
+      ],
+      "source_url": "/demo/demo-08-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-08-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-08-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-08-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-022-0",
+          "sku": "DEMO-022-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "38000",
+          "available": false
+        },
+        {
+          "id": "demo-option-022-1",
+          "sku": "DEMO-022-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "38000",
+          "available": false
+        },
+        {
+          "id": "demo-option-022-2",
+          "sku": "DEMO-022-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "38000",
+          "available": false
+        },
+        {
+          "id": "demo-option-022-3",
+          "sku": "DEMO-022-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "38000",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "demo-color-023",
+      "handle": "demo-08-stone",
+      "title": "DEMO LINE TANK",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "sleeveless"
+      ],
+      "source_url": "/demo/demo-08-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-08-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-08-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-08-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-023-0",
+          "sku": "DEMO-023-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-023-1",
+          "sku": "DEMO-023-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-023-2",
+          "sku": "DEMO-023-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-023-3",
+          "sku": "DEMO-023-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "38000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-024",
+      "handle": "demo-08-moss",
+      "title": "DEMO LINE TANK",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "sleeveless"
+      ],
+      "source_url": "/demo/demo-08-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-08-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-08-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-08-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-024-0",
+          "sku": "DEMO-024-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-024-1",
+          "sku": "DEMO-024-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-024-2",
+          "sku": "DEMO-024-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "38000",
+          "available": true
+        },
+        {
+          "id": "demo-option-024-3",
+          "sku": "DEMO-024-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "38000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-025",
+      "handle": "demo-09-ink",
+      "title": "DEMO WIDE TROUSERS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "pants"
+      ],
+      "source_url": "/demo/demo-09-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-09-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-09-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-09-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-025-0",
+          "sku": "DEMO-025-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-025-1",
+          "sku": "DEMO-025-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-025-2",
+          "sku": "DEMO-025-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-025-3",
+          "sku": "DEMO-025-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "118000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-026",
+      "handle": "demo-09-stone",
+      "title": "DEMO WIDE TROUSERS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "pants"
+      ],
+      "source_url": "/demo/demo-09-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-09-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-09-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-09-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-026-0",
+          "sku": "DEMO-026-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-026-1",
+          "sku": "DEMO-026-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-026-2",
+          "sku": "DEMO-026-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-026-3",
+          "sku": "DEMO-026-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "118000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-027",
+      "handle": "demo-09-moss",
+      "title": "DEMO WIDE TROUSERS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "pants"
+      ],
+      "source_url": "/demo/demo-09-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-09-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-09-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-09-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-027-0",
+          "sku": "DEMO-027-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-027-1",
+          "sku": "DEMO-027-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-027-2",
+          "sku": "DEMO-027-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "118000",
+          "available": true
+        },
+        {
+          "id": "demo-option-027-3",
+          "sku": "DEMO-027-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "118000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-028",
+      "handle": "demo-10-ink",
+      "title": "DEMO EASY SHORTS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shorts"
+      ],
+      "source_url": "/demo/demo-10-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-10-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-10-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-10-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-028-0",
+          "sku": "DEMO-028-S",
+          "option1": "Ink",
+          "option2": "S",
+          "option3": null,
+          "title": "Ink / S",
+          "price": "68000",
+          "available": false
+        },
+        {
+          "id": "demo-option-028-1",
+          "sku": "DEMO-028-M",
+          "option1": "Ink",
+          "option2": "M",
+          "option3": null,
+          "title": "Ink / M",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-028-2",
+          "sku": "DEMO-028-L",
+          "option1": "Ink",
+          "option2": "L",
+          "option3": null,
+          "title": "Ink / L",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-028-3",
+          "sku": "DEMO-028-XL",
+          "option1": "Ink",
+          "option2": "XL",
+          "option3": null,
+          "title": "Ink / XL",
+          "price": "68000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-029",
+      "handle": "demo-10-stone",
+      "title": "DEMO EASY SHORTS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shorts"
+      ],
+      "source_url": "/demo/demo-10-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-10-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-10-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-10-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-029-0",
+          "sku": "DEMO-029-S",
+          "option1": "Stone",
+          "option2": "S",
+          "option3": null,
+          "title": "Stone / S",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-029-1",
+          "sku": "DEMO-029-M",
+          "option1": "Stone",
+          "option2": "M",
+          "option3": null,
+          "title": "Stone / M",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-029-2",
+          "sku": "DEMO-029-L",
+          "option1": "Stone",
+          "option2": "L",
+          "option3": null,
+          "title": "Stone / L",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-029-3",
+          "sku": "DEMO-029-XL",
+          "option1": "Stone",
+          "option2": "XL",
+          "option3": null,
+          "title": "Stone / XL",
+          "price": "68000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-030",
+      "handle": "demo-10-moss",
+      "title": "DEMO EASY SHORTS",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "shorts"
+      ],
+      "source_url": "/demo/demo-10-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "S",
+            "50",
+            "66"
+          ],
+          [
+            "M",
+            "52",
+            "68"
+          ],
+          [
+            "L",
+            "54",
+            "70"
+          ],
+          [
+            "XL",
+            "56",
+            "72"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-10-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-10-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-10-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-030-0",
+          "sku": "DEMO-030-S",
+          "option1": "Moss",
+          "option2": "S",
+          "option3": null,
+          "title": "Moss / S",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-030-1",
+          "sku": "DEMO-030-M",
+          "option1": "Moss",
+          "option2": "M",
+          "option3": null,
+          "title": "Moss / M",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-030-2",
+          "sku": "DEMO-030-L",
+          "option1": "Moss",
+          "option2": "L",
+          "option3": null,
+          "title": "Moss / L",
+          "price": "68000",
+          "available": true
+        },
+        {
+          "id": "demo-option-030-3",
+          "sku": "DEMO-030-XL",
+          "option1": "Moss",
+          "option2": "XL",
+          "option3": null,
+          "title": "Moss / XL",
+          "price": "68000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-031",
+      "handle": "demo-11-ink",
+      "title": "DEMO CARRY TOTE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "bags"
+      ],
+      "source_url": "/demo/demo-11-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-11-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-11-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-11-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-031-0",
+          "sku": "DEMO-031-OS",
+          "option1": "Ink",
+          "option2": "OS",
+          "option3": null,
+          "title": "Ink / OS",
+          "price": "58000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-032",
+      "handle": "demo-11-stone",
+      "title": "DEMO CARRY TOTE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "bags"
+      ],
+      "source_url": "/demo/demo-11-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-11-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-11-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-11-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-032-0",
+          "sku": "DEMO-032-OS",
+          "option1": "Stone",
+          "option2": "OS",
+          "option3": null,
+          "title": "Stone / OS",
+          "price": "58000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-033",
+      "handle": "demo-11-moss",
+      "title": "DEMO CARRY TOTE",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "bags"
+      ],
+      "source_url": "/demo/demo-11-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-11-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-11-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-11-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-033-0",
+          "sku": "DEMO-033-OS",
+          "option1": "Moss",
+          "option2": "OS",
+          "option3": null,
+          "title": "Moss / OS",
+          "price": "58000",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "demo-color-034",
+      "handle": "demo-12-ink",
+      "title": "DEMO PANEL CAP",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "headwear"
+      ],
+      "source_url": "/demo/demo-12-ink",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-12-ink-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-12-ink-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-12-ink-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-034-0",
+          "sku": "DEMO-034-OS",
+          "option1": "Ink",
+          "option2": "OS",
+          "option3": null,
+          "title": "Ink / OS",
+          "price": "38000",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "demo-color-035",
+      "handle": "demo-12-stone",
+      "title": "DEMO PANEL CAP",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "headwear"
+      ],
+      "source_url": "/demo/demo-12-stone",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-12-stone-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-12-stone-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-12-stone-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-035-0",
+          "sku": "DEMO-035-OS",
+          "option1": "Stone",
+          "option2": "OS",
+          "option3": null,
+          "title": "Stone / OS",
+          "price": "38000",
+          "available": false
+        }
+      ]
+    },
+    {
+      "id": "demo-color-036",
+      "handle": "demo-12-moss",
+      "title": "DEMO PANEL CAP",
+      "vendor": "ONEPIECE DEMO",
+      "tags": [
+        "headwear"
+      ],
+      "source_url": "/demo/demo-12-moss",
+      "material_origin_facts": [
+        "Synthetic demo product for UI and analytics testing.",
+        "The illustration, specification, price and availability do not represent a real item.",
+        "No manufacture, sale or delivery is offered."
+      ],
+      "size_guide": {
+        "columns": [
+          "Size",
+          "Sample width (cm)",
+          "Sample length (cm)"
+        ],
+        "rows": [
+          [
+            "OS",
+            "50",
+            "66"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "name": "Color",
+          "position": 1
+        },
+        {
+          "name": "Size",
+          "position": 2
+        }
+      ],
+      "image_references": [
+        {
+          "url": "/demo/products/demo-12-moss-front.svg",
+          "position": 1
+        },
+        {
+          "url": "/demo/products/demo-12-moss-back.svg",
+          "position": 2
+        },
+        {
+          "url": "/demo/products/demo-12-moss-detail.svg",
+          "position": 3
+        }
+      ],
+      "variants": [
+        {
+          "id": "demo-option-036-0",
+          "sku": "DEMO-036-OS",
+          "option1": "Moss",
+          "option2": "OS",
+          "option3": null,
+          "title": "Moss / OS",
+          "price": "38000",
+          "available": true
+        }
+      ]
+    }
+  ]
+}

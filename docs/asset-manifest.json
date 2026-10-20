@@ -1,0 +1,565 @@
+{
+  "fixture": "onepiece-original-demo-20261020-v1",
+  "assets": [
+    {
+      "path": "data/products.json",
+      "sha256": "5cb452a2931523d525a6ca5e76e18b3044334193e938669ff8cf59b16ff54147",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/brand/wordmark.svg",
+      "sha256": "99396d26e6a409f67048f8156bb42c598b68856dad868079408f711d0ad477c3",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/campaign.svg",
+      "sha256": "b03e1d4b7e38422d5aa62df4aabd9fefd1eb840f4e8dadeeba6d7002d43f290c",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-ink-back.svg",
+      "sha256": "3a59cf5394b91139f196b47ab99509e00dacb689768b65da6f8c66c118c8d8d1",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-ink-detail.svg",
+      "sha256": "974b74be86d829340e75bf8960c28c4bf53af4881b31ecfe790c69ab93e2524b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-ink-front.svg",
+      "sha256": "f9e4b747358dc2bce7025a3f7758d5f6afc14792bfcd3c4d60610d66b31feda5",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-moss-back.svg",
+      "sha256": "983fa799a6d2d9e872d96fdab30c13e102ec82f3eaf15e2bd5032db09260db54",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-moss-detail.svg",
+      "sha256": "06fbfba19883ae4de2a483e0450cb38c5e71385fbb4cf7c080b50c80c0fca009",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-moss-front.svg",
+      "sha256": "ee7b8c4a4373641411ef8a435bd1a44ffb17bdda6ae333483f88c6ad7e9d970d",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-stone-back.svg",
+      "sha256": "b5104a553f6108c6ba9392c7bf61aad54dbdd37ee86d0b96fa2e2be4c5926780",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-stone-detail.svg",
+      "sha256": "2b2ff1ffe52420ca0ec1c35c85c6bd4c0b6dc1f1247ed38ba7f8947ef7821192",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-01-stone-front.svg",
+      "sha256": "8f3d31347a09292e4aeb77ff98a9ac7e15c224f121d246c7380ddf9d226c14a1",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-ink-back.svg",
+      "sha256": "70b16c1e903a9f21cee3bed57a18d939585b00a6ff17e0e85d76c5d740bbaaa0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-ink-detail.svg",
+      "sha256": "e8dc9ddf36e1fede69b1e9859cd3220f819aa885611e7b4b7a37aacb76916163",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-ink-front.svg",
+      "sha256": "b778ce61d9393462886c35bc74e52d5730d7dcd5fa635c0b42d8fbd26423a9bd",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-moss-back.svg",
+      "sha256": "6d8a0bd122edf4f630a3009f3b344cb8352868c29a1375659be329af88039675",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-moss-detail.svg",
+      "sha256": "e54acf612c24f9b4cc8bc4adb836292115647a319eb0f1790eb8776bc35e6df2",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-moss-front.svg",
+      "sha256": "8ac8c0484f34cbd56240d303820c6135f30570a3d3b40fceacabe5f334b5f38b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-stone-back.svg",
+      "sha256": "431b54ca2a0d3c6032707e7b0baad3e6ab3bd5202842030f7a153c402fcff4a8",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-stone-detail.svg",
+      "sha256": "4974087d1b04bb4f4d4cd3ab08f3e6366571c2952a2ab1a00ae7af4c991edde0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-02-stone-front.svg",
+      "sha256": "4b971dad6135ebb70c751c15631d697affe9d6f00d79cb186cdc504b4d509cdd",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-ink-back.svg",
+      "sha256": "78b14f319b5a7d71e852c149c89d9b940cb7bc023c35cb4573d53684aee20b7e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-ink-detail.svg",
+      "sha256": "594736746871025505ae6ed6f5061cff4883f727e128a3411d3be4baf9f6fa48",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-ink-front.svg",
+      "sha256": "3fb0d0d52d75baaaef2a2fbab8d1b64ea621a7996656bd5f6e61d003ccd8c8cf",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-moss-back.svg",
+      "sha256": "908a19ae17ef3b6f1ea8fe6eb4cbd2f9ff5f33e99d83f42d5c4879ae73a82a0b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-moss-detail.svg",
+      "sha256": "7848844e318b4c7a34c74341ba25e1e922efc2fa635575ae06b475aef124c3ae",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-moss-front.svg",
+      "sha256": "a2ec428ee41d5aa3065d7fc2b66ac0603bb4744ca2a10d0092c3d33d57fa513e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-stone-back.svg",
+      "sha256": "6f2d315cb462272450324c5e1174b2e4c076ddbc35c73125ac43e1cfe97fc387",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-stone-detail.svg",
+      "sha256": "54c4df2ebd771b4f9ecd56ed578166b5accad0171deb314e7b622fbc6f226fb6",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-03-stone-front.svg",
+      "sha256": "26ac379ddf20da7c89cdedd3ea37fa29f2d43895f054667f2f31ea77ca5922e7",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-ink-back.svg",
+      "sha256": "5a49424ae6454179a0588ab02eaa3412ca3ce99de9ae79f3d7e5d837050b50ec",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-ink-detail.svg",
+      "sha256": "71c86de52e870c284d9e8c69d0f2c9958d5dfb57379e29291de44af4b4343abc",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-ink-front.svg",
+      "sha256": "607345089e9f3af54c3026577d0b07146e731d467632fd72a09f921efc575989",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-moss-back.svg",
+      "sha256": "4d355e720b98c500dbd1ef1226d80c44e27909317c22c4a586e8687554252453",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-moss-detail.svg",
+      "sha256": "4eb648ce04850ede645fd03c7f284d743b9e95ec0f9589caa698413f2101139a",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-moss-front.svg",
+      "sha256": "b6efb972bc072e6a2e17b4d442cd91ec1a973fb580da8eeab8b1b6b117f4702e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-stone-back.svg",
+      "sha256": "ed1da6f33bde7fe444bbcedd98d68ab2d6fec01ce44cfb8290ab10da588372e3",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-stone-detail.svg",
+      "sha256": "50f8a6e4ffaae7749b66799b509ba7312785f5922ce82d975ce8ebc0ffa04007",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-04-stone-front.svg",
+      "sha256": "d25b3534c586ccc19d40343e0277cb7f505bb0eee0dae4db041e5a65fb3cf7c6",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-ink-back.svg",
+      "sha256": "e2032730d1104edae7b3277281169d4f28d968071c069582eb40783b561026ce",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-ink-detail.svg",
+      "sha256": "31c7dfab1855f66c49b76331ec289110a5f280f28b7d4b3e93739c50c3ee2d66",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-ink-front.svg",
+      "sha256": "4bb6f81033db6e604d94d8d59786b9be6a1c26d22046e07e61ad11e928a580b5",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-moss-back.svg",
+      "sha256": "fec0608ff184b09df011b71df1d4da32a012abb7d65151ebf1e1c84877ec6692",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-moss-detail.svg",
+      "sha256": "55eff4bd581788f250bca7dd4dc89f868c055b3325e6e38936a17eaea5129475",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-moss-front.svg",
+      "sha256": "4b7b0624e71054a4a0dfb7ef93981beafcd56be70004c205bbe953f6ac07de4e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-stone-back.svg",
+      "sha256": "797807bc4ecb3c8173de7bfa1d3baa876faff85879854b437c72c0313341bf75",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-stone-detail.svg",
+      "sha256": "c31ef4c536426ffe236bb3c5e69b42248d3167d40801e7db8a055b61f846303b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-05-stone-front.svg",
+      "sha256": "05406e8c0f76e697a28d7298d34119d62686c9855b14e1e674ca62fd7384b8c4",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-ink-back.svg",
+      "sha256": "bbb6b07e58be09bdef6d80727e807cafa8fc130937b46f917899add612e6d16e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-ink-detail.svg",
+      "sha256": "45c7d903fde743313a7c0774990ff3cdad719e9f2e705add8d757e2411568cb0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-ink-front.svg",
+      "sha256": "aa93eb9d4d72903a3ab3250158cc4b7de36cb29b9c7bb06f003892ff48c36c11",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-moss-back.svg",
+      "sha256": "d32089bd1ea19889ed75e039803ef1b4191a8d80f1c8522205917332ffe9a661",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-moss-detail.svg",
+      "sha256": "cc5fb8d69194e52630d67fd4fbf49434ea62dd88e32d36606fef91f98165ef7e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-moss-front.svg",
+      "sha256": "490282d038c2c5cbb8dbbf460ef2d7cefdac202eb9ad6d2ab45ca559f5124fee",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-stone-back.svg",
+      "sha256": "cd8042f60ac58df5cff364823c1d6a7c5ddd3052bf79495349b17751dbd2e00a",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-stone-detail.svg",
+      "sha256": "bd4ec4553eb37fbe86b58e1ac4ec1f0e02f6ec986417b762c8f1706101498870",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-06-stone-front.svg",
+      "sha256": "514b6d11cc98c625f54cbb451f51da52874b52acfc2982e1130a1e4d461505f0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-ink-back.svg",
+      "sha256": "e8f68cbcd4879d3ebe7efce2231ba35b0906b571c0b5e6b3848fa3db33c52b7b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-ink-detail.svg",
+      "sha256": "196fe20a890a64262db0770c968e93379c833b00c9201e64e14174757eeabc8d",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-ink-front.svg",
+      "sha256": "ecda6446cd0297603bae4a7dc89c4fa73c5cc1b5285bb6153482db0b2a82973c",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-moss-back.svg",
+      "sha256": "246d1290a8c0a824426b6254b696643cb00bab8af862468018462c2e6dda7848",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-moss-detail.svg",
+      "sha256": "50561f781477450101e9cab939d20a136c98ddadc9b117805cd088c38e02c817",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-moss-front.svg",
+      "sha256": "fe821b37404a78fb850a31d27c483a8fd53e2b5292fbed8bb260035de92d924b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-stone-back.svg",
+      "sha256": "c417482164b185ca45b11089268087b8ca5e1c6de343a5f05b9423849e5d29f8",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-stone-detail.svg",
+      "sha256": "5697389885b2e5b010b1dd953403b6acf511ca74421129daeabea0c4c52e4055",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-07-stone-front.svg",
+      "sha256": "d55c378d8d104e8e074a4b6a458540b7d5794ad539ce79d0377ca59499318900",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-ink-back.svg",
+      "sha256": "9a1b38079d55e6854bcaedc5d8bf8ce50120aa4d3906af8e7c567a3d830eec6b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-ink-detail.svg",
+      "sha256": "8be31a73be18e8355d911fb63876a45e5924d8c1a3b2ebb474e9237eb22608d2",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-ink-front.svg",
+      "sha256": "38d4040197cd877f6acd65d5cc9932c8805bda1f10d94abf65de1211041149f5",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-moss-back.svg",
+      "sha256": "cdf22ad1be192ffe3c20d7cd3de3b77e1cf376f57c79ad230f28a9e91a0d0c3f",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-moss-detail.svg",
+      "sha256": "af53f8f25b2aca96d9c99d1c519c55849efe983c94a7d3ab586ecb08fdd223c8",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-moss-front.svg",
+      "sha256": "3e1c3c47a9bc12cd6ad3d3d05169ae361a7969aa6b396b7bb17d9bb22637a989",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-stone-back.svg",
+      "sha256": "fff26ad7515e7e413733f99fca063970eaaa9e4001c34393b5c3a9f728f14c58",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-stone-detail.svg",
+      "sha256": "c82db0a91725a6668d42a3a88b06db8ab23aba111873a1dec950a5cdba1b5302",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-08-stone-front.svg",
+      "sha256": "9590a14fd5d90e7c6fcb678c6d2030d0fc839f969b998679a05ac4503dc996e0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-ink-back.svg",
+      "sha256": "2026957956c74ab6fcd7aa0567f7d2ea870c47cf8ee30cd777219ef2c98f10f0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-ink-detail.svg",
+      "sha256": "6de70bf5b05f59fecb7ce6c6802a38bdc571360ef423ebef4f754a9ef707f08f",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-ink-front.svg",
+      "sha256": "9ef52e5fdefa199cae3f4989fccd254dddd909449a6e75bed0ab9e2f1fbedb28",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-moss-back.svg",
+      "sha256": "3880e46bef1947aa5e2babefe440a92b321c40b703fc059c29fda44af85010fa",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-moss-detail.svg",
+      "sha256": "d091beead74a05a3fa6baead916de413ea325652c453cf7e12e4cfa6249fb7d7",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-moss-front.svg",
+      "sha256": "a784e9f562d9edf551d4a576349c69212fbe7e2b34ec9f07746a0bb12693be24",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-stone-back.svg",
+      "sha256": "2bde4418c93eccfda7643b8a3ef55efe186d6cefdd9fa55f9ebf54f032aae380",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-stone-detail.svg",
+      "sha256": "e1920615974087c3f32fee61d8fbdca620edb61cab6699df6c568980a88b22ca",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-09-stone-front.svg",
+      "sha256": "1926b7b14fe0065ce9a7d2b7675e8394ac243d5d4de5ca29c09a4d90ea2dccd0",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-ink-back.svg",
+      "sha256": "b5635fbfd2e6dd59d5091854fa8f71cc740030895bb8ccffa0898d0611ca003b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-ink-detail.svg",
+      "sha256": "7668c7928aca4440b65b39753cfeec9bb7cdc8c5d57708ada8ec7991db6e0085",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-ink-front.svg",
+      "sha256": "2f8c63e5427aa11d0d315b30d1531213633649f9d46119e8ebcbc3e595673236",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-moss-back.svg",
+      "sha256": "9bf975885d53a71baca6318a9747eb0a99d154cef60800c7508a72f67c163f6a",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-moss-detail.svg",
+      "sha256": "7aa73b97d0fda87f9611e7b345d532e5e4207740592eb9dacb798ed0bd2ac577",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-moss-front.svg",
+      "sha256": "015ce18ae4aafd66fb5efcfbfb1dd413e25b131513d9b4dd769360c55d36906a",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-stone-back.svg",
+      "sha256": "2bb17db25c7bcf3e667277d8e4205a3b6fd0453a9a247407cfc5ae7b23b2e436",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-stone-detail.svg",
+      "sha256": "61d8f53edf839180785389d7bc4b85534b309fc39361127ed149c2c3ea0edef9",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-10-stone-front.svg",
+      "sha256": "0989b42f3e30c13472f94817bdd1f7f40e23de4e0095c73fd1b9a1b170dda531",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-ink-back.svg",
+      "sha256": "58035755de1bd6a713adde595e22c7cbe0243521035d94fd02cc6b35be25955f",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-ink-detail.svg",
+      "sha256": "7fa9f6fc5aae70d941b9a28de0c5bb4cbfa8a5b5aa219262cfbdb3fc1b25a2c7",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-ink-front.svg",
+      "sha256": "55f26a92cc59efdb223f2303f2cd57f3f9e1211fb01106ce8248f0f1963573cf",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-moss-back.svg",
+      "sha256": "40dcc22cbfcd3726a26a6037f5bd59b79b3dbc995302c3fecef6961289c7be95",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-moss-detail.svg",
+      "sha256": "a8486095abd3f9a5757aa98acb8b6fd55f1aa89ccd6a6a9dd348d1f1f33e2945",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-moss-front.svg",
+      "sha256": "46ee6f30d2cc5e8cfc00045b1f23307bb0a1f201aeac5b9c432377471a7995ce",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-stone-back.svg",
+      "sha256": "79ffda2069cdad8dac35835f16ff30a1f6beaaa6ce9fa44c109cf20954f80d6e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-stone-detail.svg",
+      "sha256": "f7fa99d892d5204cb43cd34beda3f70226d8a6d4b159f8d5ed81a518c3334fad",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-11-stone-front.svg",
+      "sha256": "f4929f5ce76d7f36f3a0bebaa22b3b7ac0952840f6eed7d71e7cddcc562c3e6d",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-ink-back.svg",
+      "sha256": "a2b790c5f5b770a57a847e4c9019ea0449fc1498b75d241a85fee61efc8c358a",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-ink-detail.svg",
+      "sha256": "7c012390f9d3743b3df0a388e84a6071afa23b0974f680464f74479a8804a998",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-ink-front.svg",
+      "sha256": "220c247cb7556750cd8685f76fa5db50dc0a3a19c7b4ec3304e412729ba5f31c",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-moss-back.svg",
+      "sha256": "33e6c362f9d92fd282db3c1ac3d4c24db58dd70d4cccceb980b18b82a1f4773e",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-moss-detail.svg",
+      "sha256": "36d065ad7bddb770820b3a9beb489411daa011b29ecfefae93e7e2da7069ba21",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-moss-front.svg",
+      "sha256": "cbbe5e2898c8ce7e60d524c3e867681a5cf9e3b3314e7e98f1134989fd03ee42",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-stone-back.svg",
+      "sha256": "6343e9665644ed4bc1542f13087554ad31aeb086cb14a7e7df729ab32962712b",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-stone-detail.svg",
+      "sha256": "73c500fe69e9110ad0326c5a5ff5ceb9f85d1ad1c80c69a1b28be59a0480bfa8",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/demo/products/demo-12-stone-front.svg",
+      "sha256": "ad250359fb2712c3a74a518f060264a71722488ec574f3c4c78bf4948e07573f",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "src/app/icon.svg",
+      "sha256": "75c4eb6ec7e6bc7b5df7466c4a3fbba9435b45c3114722ce6728a20f5dadf1bf",
+      "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    }
+  ]
+}

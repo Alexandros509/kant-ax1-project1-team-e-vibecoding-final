@@ -1,0 +1,54 @@
+{
+  "name": "onepiece-vibecoding-final",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "prebuild": "npm run test",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:export": "node --import tsx scripts/export-supabase.ts",
+    "db:erd": "node --import tsx scripts/export-erd.ts",
+    "db:reset": "node --import tsx scripts/reset-local-db.ts",
+    "release:check": "node scripts/check-release.mjs",
+    "db:audit": "node --import tsx scripts/audit-db.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@electric-sql/pglite": "^0.5.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cn": "^0.4.0",
+    "lucide-react": "^1.55.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-icons": "^5.7.0",
+    "sass": "^1.105.1",
+    "tailwind-merge": "^3.7.0",
+    "tw-animate-css": "^1.4.0",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  },
+  "license": "UNLICENSED",
+  "description": "ONEPIECE team learning project: final source snapshot with synthetic catalog and local ERD database",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
