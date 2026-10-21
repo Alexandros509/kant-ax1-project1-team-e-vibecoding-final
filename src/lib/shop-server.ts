@@ -1,5 +1,6 @@
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import { getDb } from './db';
+import { publishedCatalog } from './published-catalog';
 import {isReportEvent} from './analytics-contract';
 import { catalogSource, sourceCategory, sourceOption } from './catalog-source';
 import { imagePublicUrl } from './catalog-media';
@@ -39,6 +40,7 @@ export async function savedCart(s: Session): Promise<BasketItem[]> {
     return (await (await getDb()).query<{variantId: number; quantity: number}>('SELECT i.product_variant_id AS "variantId",i.quantity FROM cart_items i JOIN carts c ON c.id=i.cart_id WHERE c.user_id=$1 ORDER BY i.id', [s.user_id])).rows;
 }
 export async function catalog(): Promise<CatalogProduct[]> {
+    if (process.env.VERCEL === '1') return publishedCatalog();
     const db = await getDb(), source = await catalogSource();
     const products = (await db.query<{id: number; name: string; category_id: string; detail: string; product_care: string; shipping: string; sale_price: number; list_price: number; is_new: boolean}>("SELECT p.* FROM products p JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE p.status='active' AND c.is_active AND (c.parent_id IS NULL OR parent.is_active) ORDER BY p.sort_order,p.id")).rows;
     const variants = (await db.query<{id: number; product_id: number; sku: string; size_label: string; stock_quantity: number; is_active: boolean}>('SELECT * FROM product_variants ORDER BY sort_order,id')).rows;

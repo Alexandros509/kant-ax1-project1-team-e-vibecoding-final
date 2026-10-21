@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 process.env.LOCAL_DB_PATH='memory://';
+process.env.VERCEL='0'; // These tests intentionally exercise local ERD persistence.
 import {getDb} from './db';
 import {createSession,syncCart,updateCollection,catalog} from './shop-server';
 import {linkKakao} from './providers';

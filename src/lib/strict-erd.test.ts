@@ -3,8 +3,10 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
 process.env.LOCAL_DB_PATH='memory://';
+process.env.VERCEL='0'; // These tests intentionally exercise local ERD persistence.
 import {getDb,verifySchema,schemaColumns} from './db';
 import {catalogSource} from './catalog-source';
+import {publishedCatalog} from './published-catalog';
 import {catalog,createSession,findSession,syncCart,savedCart,collections,updateCollection,checkout,receipt,changeConsent,recordEvent} from './shop-server';
 import {linkKakao,startKakao,finishKakao,prepareToss,confirmToss,refreshToss,providerConfig} from './providers';
 
@@ -18,6 +20,7 @@ test('current shared ERD has 13 public tables, 125 columns and 17 relationships;
   assert.equal((await db.query<{n:number}>('SELECT count(*)::int AS n FROM auth.users')).rows[0].n,0);
   for(const table of ['customers','brands','product_colors','inventories','refunds','experiments','user_events','local_sessions','auth_users'])assert.equal((await db.query<{t:string|null}>('SELECT to_regclass($1)::text AS t',[table])).rows[0].t,null);
   const source=await catalogSource(),products=await catalog();assert.equal(products.length,366);assert.equal(source.products.length,366);
+  assert.deepEqual(await publishedCatalog(),products); // Serverless cards preserve every local seeded value and option ID.
   assert.equal(products.reduce((n,p)=>n+p.variants.length,0),1280);assert.equal(products.reduce((n,p)=>n+p.images.length,0),1478);
   assert.equal(new Set(products.flatMap(p=>p.images)).size,59);assert.ok(products.every(p=>p.images.every(url=>url.startsWith('/images/products/'))));
   const paths=(await db.query<{storage_path:string;file_size:string}>('SELECT storage_path,file_size FROM product_images')).rows;

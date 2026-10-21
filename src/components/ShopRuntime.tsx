@@ -120,17 +120,20 @@ export default function ShopRuntime({
     useEffect(() => {
         let live = true;
         Promise.all([
-            bootstrap(),
+            bootstrap().then(s => {
+                if (live) setSession(s); // Login does not depend on a successful product request.
+                return s;
+            }),
             fetch('/api/shop?action=catalog').then(async (r) => {
                 const d = await r.json();
                 if (!r.ok) throw new Error(d.error);
-                return d.products as CatalogProduct[];
+                const products = d.products as CatalogProduct[];
+                if (live) setRaw(products);
+                return products;
             }),
         ])
             .then(([s, p]) => {
                 if (!live) return;
-                setSession(s);
-                setRaw(p);
                 try {
                     const browserSaved = JSON.parse(
                         localStorage.getItem('erd13-media-v3-onepiece-original-cart') || '[]',

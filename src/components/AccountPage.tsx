@@ -12,7 +12,7 @@ export default function AccountPage({ join = false }: { join?: boolean }) {
     const params = useSearchParams(),
         router = useRouter(),
         surface = useAppFlow();
-    const { session, refresh, loading } = useShop();
+    const { session, refresh } = useShop();
     const [name, setName] = useState<string | null>(null),
         [message, setMessage] = useState(''),
         [busy, setBusy] = useState(false);
@@ -78,7 +78,7 @@ export default function AccountPage({ join = false }: { join?: boolean }) {
                         ? `Welcome, ${member.name}.`
                         : 'Your next piece starts here.'}
                 </p>
-                {loading ? (
+                {!session ? (
                     <p role="status">Loading…</p>
                 ) : member ? (
                     <form onSubmit={save}>
