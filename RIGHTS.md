@@ -17,6 +17,8 @@ No third-party photo, campaign frame, video, product description, brand logo, fo
 This provenance statement does not assert exclusive rights over generic shapes, fonts or names and does not grant a blanket license.
 The word ONEPIECE identifies a fictional classroom project, not a claim to an existing trademark or entertainment franchise.
 
+The official Kakao Login button is a separately identified provider asset, not part of this original-artwork claim. See THIRD_PARTY_NOTICES.md and its manifest entry.
+
 ## Excluded materials
 Reference-store product photos, campaign images/video, reference logos, collected product copy, source HTML/JSON,
 original screenshots containing those materials, AI campaign media with unverified distribution terms,

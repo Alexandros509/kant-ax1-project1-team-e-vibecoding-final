@@ -57,7 +57,7 @@ function ProductRow({ title, products, empty, saved, onToggle, action }: {
         {products.length ? <div className={styles.rail} ref={rail}>
             {products.map(product => <article className={styles.card} key={product.id}>
                 <ProductCard product={product} showInfo />
-                <button type="button" className={styles.heart} aria-pressed={saved.includes(product.id)} aria-label={`${saved.includes(product.id) ? 'Remove' : 'Save'} ${product.name} ${saved.includes(product.id) ? 'from' : 'to'} wishlist`} onClick={() => onToggle(product.id)}>
+                <button type="button" data-track-action="wishlist_toggle" data-track-item-id={product.id} className={styles.heart} aria-pressed={saved.includes(product.id)} aria-label={`${saved.includes(product.id) ? 'Remove' : 'Save'} ${product.name} ${saved.includes(product.id) ? 'from' : 'to'} wishlist`} onClick={() => onToggle(product.id)}>
                     <Heart size={17} strokeWidth={1.4} fill={saved.includes(product.id) ? 'currentColor' : 'none'} />
                 </button>
             </article>)}
@@ -87,7 +87,7 @@ export default function ProductCollections({ currentId }: { currentId: number })
     const isSaved=saved.includes(currentId);
     return <div className={styles.collections}>
         <ProductRow title="You may also like" products={findProducts(saved)} empty={ready?'Save your favorites to see them here.':'Loading your favorites…'} saved={saved} onToggle={toggleFavorite}
-            action={<button type="button" className={styles.saveCurrent} disabled={!ready} aria-pressed={isSaved} onClick={()=>toggleFavorite(currentId)}><Heart size={14} strokeWidth={1.5} fill={isSaved?'currentColor':'none'}/>{isSaved?'Remove from wishlist':'Add to wishlist'}</button>}/>
+            action={<button type="button" data-track-action="wishlist_toggle" data-track-item-id={currentId} className={styles.saveCurrent} disabled={!ready} aria-pressed={isSaved} onClick={()=>toggleFavorite(currentId)}><Heart size={14} strokeWidth={1.5} fill={isSaved?'currentColor':'none'}/>{isSaved?'Remove from wishlist':'Add to wishlist'}</button>}/>
         <p className={styles.feedback} role="status">{message}{storageError&&' Browser storage is unavailable. Selections will not persist after closing this page.'}</p>
         <ProductRow title="Recently viewed" products={findProducts(recent.filter(id=>id!==currentId))} empty="Products you view will appear here." saved={saved} onToggle={toggleFavorite}/>
     </div>;

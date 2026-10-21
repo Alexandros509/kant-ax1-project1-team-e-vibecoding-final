@@ -1,4 +1,5 @@
 import {PGlite} from '@electric-sql/pglite';
+import {migrateTossPaymentKey} from './db-migrations';
 import {readFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {catalogSource,stableId,categoryGroups,sourceCategory,sourceOption} from './catalog-source';
@@ -19,7 +20,7 @@ async function initialize(){
  try{
   const count=(await db.query<{n:number}>("SELECT count(*)::int AS n FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema') AND table_type='BASE TABLE'")).rows[0].n;
   if(count===0)await db.transaction(async tx=>{await tx.exec(await schemaDefinition());await seed(tx);});
-  await verifySchema(db);return db;
+  await verifySchema(db);await migrateTossPaymentKey(db);return db;
  }catch(error){await db.close();globalThis.onepieceDb=undefined;throw error;}
 }
 export async function seed(db:Pick<PGlite,'query'>){

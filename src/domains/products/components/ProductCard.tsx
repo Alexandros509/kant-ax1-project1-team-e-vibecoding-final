@@ -45,7 +45,7 @@ export default function ProductCard({ product, showInfo }: ProductCardProps) {
     // block은 링크를 박스로 만들고 focus-visible:ring-*는 키보드 초점의 테두리를 표시합니다.
     return (
         <Link
-            href={`/products/${product.id}`}
+            href={`/products/${product.id}`} data-track-action="open_product" data-track-item-id={product.id}
             onClick={()=>void track('select_item',product.id)}
             prefetch={false}
             className="group block rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-4"
@@ -117,7 +117,7 @@ export default function ProductCard({ product, showInfo }: ProductCardProps) {
              * 키보드 초점에 따른 정보 노출 조건은 현재 구현 범위에 포함하지 않았습니다.
              */}
             <div
-                className={`mt-4 space-y-2 transition-opacity duration-300 ${showInfo ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'}`}
+                className={`mt-4 space-y-2 transition-opacity duration-300 ${showInfo ? 'opacity-100' : 'opacity-0 max-md:opacity-100 pointer-coarse:opacity-100 group-hover:opacity-100 group-focus-visible:opacity-100'}`}
             >
                 {/* 분류명: 작은 회색 글자와 넓은 글자 간격으로 표시합니다. */}
                 <p className="text-[11px] tracking-wider text-neutral-500">

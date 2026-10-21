@@ -1,5 +1,6 @@
 -- Strict source: https://www.erdcloud.com/d/hE52as4HR9aAepZTt
--- Only dialect fixes: DATETIME -> TIMESTAMPTZ, DEFAULT BOOLEAN -> DEFAULT false.
+-- Dialect fixes: DATETIME -> TIMESTAMPTZ, DEFAULT BOOLEAN -> DEFAULT false.
+-- 2026-10-21 local Toss compatibility: payments.provider_payment_id VARCHAR(200).
 CREATE TABLE "product_relations" (
 	"relation_type"	VARCHAR(100)		NOT NULL,
 	"source_color_id"	CHAR(36)		NOT NULL,
@@ -161,7 +162,7 @@ CREATE TABLE "payments" (
 	"id"	CHAR(36)		NOT NULL,
 	"order_id"	CHAR(36)		NOT NULL,
 	"provider"	VARCHAR(100)		NOT NULL,
-	"provider_payment_id"	VARCHAR(100)		NULL,
+	"provider_payment_id"	VARCHAR(200)		NULL,
 	"idempotency_key"	VARCHAR(100)		NOT NULL,
 	"amount"	BIGINT		NOT NULL,
 	"status"	VARCHAR(100)		NOT NULL,

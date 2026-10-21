@@ -560,6 +560,12 @@
       "path": "src/app/icon.svg",
       "sha256": "75c4eb6ec7e6bc7b5df7466c4a3fbba9435b45c3114722ce6728a20f5dadf1bf",
       "provenance": "New synthetic fixture or original geometric SVG created for this publication snapshot; no reference media input."
+    },
+    {
+      "path": "public/auth/kakao/kakao_login_en_large.svg",
+      "sha256": "2f28da559ee3f0f29d52db5b7c036ef9c051eecd75a5a7a4649db6b8b5871b55",
+      "provenance": "Official Kakao Login English SVG supplied by the project maintainer from the Kakao Login design resource ZIP; unchanged. Kakao retains its rights; included solely as the Kakao sign-in button under the provider design guide.",
+      "source": "https://developers.kakao.com/docs/ko/kakaologin/design-guide"
     }
   ]
 }

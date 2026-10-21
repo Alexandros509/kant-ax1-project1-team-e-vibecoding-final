@@ -1,3 +1,12 @@
 import { Suspense } from 'react';
 import CheckoutPage from '@/components/CheckoutPage';
-export default function Page(){return <Suspense><CheckoutPage/></Suspense>;}
+import CheckoutEntry from '@/components/CheckoutEntry';
+export default function Page() {
+    return (
+        <Suspense>
+            <CheckoutEntry>
+                <CheckoutPage />
+            </CheckoutEntry>
+        </Suspense>
+    );
+}

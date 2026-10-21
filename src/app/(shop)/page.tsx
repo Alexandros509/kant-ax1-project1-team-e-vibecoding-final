@@ -1,2 +1,2 @@
-import { CampaignHero } from '@/domains/home/components/CampaignHero';
-export default function Page(){return <CampaignHero/>;}
+import HomeEntry from '@/components/HomeEntry';
+export default function Page(){return <HomeEntry/>;}

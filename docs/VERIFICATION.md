@@ -33,3 +33,13 @@ The production server was started in a fresh publication folder. Initial parent-
 External provider calls are mocked in automated tests. Keys and real Kakao/Toss test transactions were not available.
 GA4 data reception and a real randomly assigned A/B experiment have not been verified. No cloud deployment was performed.
 The file checks and asset provenance manifest are publication safeguards, not a comprehensive security or legal audit.
+
+## Update verification — 2026-10-21
+
+- Production build, TypeScript checking and all 14 automated tests passed. The added tests cover app execution-surface labels, controlled click fields, test-only provider configuration, checkout handoff/expiry, and the row-preserving 100→200 payment-key migration. Existing ERD/cart/order/OAuth/payment tests still pass with the public synthetic fixture.
+- ESLint reported 0 errors and 1 image-optimization warning in ProductDetail.tsx. No unrelated dependency upgrade was made.
+- A separate production instance with no provider/GA keys and its own ignored local DB was checked in the browser: unauthenticated root redirected to /login; the official Kakao button showed the unavailable state; /app-preview displayed the fictional lookbook and direct product marker links; a size could be added to the bag; checkout exited the iframe to the top-level route, retained app navigation and showed the missing-login/key/notice requirements.
+- The private source site's server, DB, credentials and media were not used for this browser run. The existing public synthetic fixture/artwork and relative-image handling remain intact.
+- Real Kakao consent/callback completion and a complete Toss test approval were not executed from this public folder. Mocked success is not provider certification. No APK build, Vercel deployment or GA4 administration was performed.
+- The Vercel guide explicitly records the unresolved local-file DB / process-memory session limitations; publishing the source is not a claim that a full serverless purchase flow is ready.
+- Publication checks passed for 244 staged files and 113 manifest-listed assets, including the documented official Kakao button. The exact private provider-key comparison also passed without printing key values. DB files, actual credentials, backups and reference-store media are excluded.

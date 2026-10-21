@@ -36,7 +36,7 @@ export default function CartSummary({ items }: CartSummaryProps) {
                 TAXES, DISCOUNTS & SHIPPING CALCULATED AT CHECKOUT.
             </p>
 
-            <Link href="/checkout" className="mt-6 block w-full bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800">CHECKOUT</Link>
+            <Link data-track-action="checkout_open" href="/checkout" className="mt-6 block w-full bg-black px-4 py-3 text-center text-sm font-medium text-white hover:bg-gray-800">CHECKOUT</Link>
         </section>
     );
 }

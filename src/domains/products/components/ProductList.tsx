@@ -37,7 +37,7 @@ export default function ProductList({products}:{products:Product[]}){
  },[category?.id]);
  useEffect(()=>{if(pendingSort.current===sort){setAnnouncement(`${visible.length} products sorted by ${sortLabels[sort]}.`);pendingSort.current=null;}},[sort,visible.length]);
  function changeSort(value:string){const next=normalizeProductSort(value);pendingSort.current=next;router.push(productListUrl(query,{sort:next}),{scroll:false});}
- function categoryLink(id:string|null,label:string,selected:boolean,current:boolean){return <Link href={productListUrl(query,{category:id})} scroll={false} className={selected?styles.selected:undefined} data-selected={selected} aria-current={current?'page':undefined}>{label}</Link>;}
+ function categoryLink(id:string|null,label:string,selected:boolean,current:boolean){return <Link data-track-action="select_category" href={productListUrl(query,{category:id})} scroll={false} className={selected?styles.selected:undefined} data-selected={selected} aria-current={current?'page':undefined}>{label}</Link>;}
 
  return <section aria-label="Products">
   <div id="top" className={styles.toolbar}>
@@ -48,11 +48,11 @@ export default function ProductList({products}:{products:Product[]}){
    </div>
    <div className={styles.sort}>
     <Menu.Root>
-     <Menu.Trigger className={styles.sortTrigger} aria-label={`Sort products: ${sortLabels[sort]}`}><span>{sortLabels[sort]}</span><ChevronDown size={14} strokeWidth={1.5} aria-hidden="true"/></Menu.Trigger>
+     <Menu.Trigger data-track-action="sort_menu" className={styles.sortTrigger} aria-label={`Sort products: ${sortLabels[sort]}`}><span>{sortLabels[sort]}</span><ChevronDown size={14} strokeWidth={1.5} aria-hidden="true"/></Menu.Trigger>
      <Menu.Portal><Menu.Positioner align="end" side="bottom" sideOffset={6} className={styles.sortPositioner}>
       <Menu.Popup className={styles.sortPopup} aria-label="Sort products">
        <Menu.RadioGroup value={sort} onValueChange={value=>changeSort(String(value))}>
-        {Object.entries(sortLabels).map(([value,label])=><Menu.RadioItem key={value} value={value} closeOnClick className={styles.sortOption}>{label}</Menu.RadioItem>)}
+        {Object.entries(sortLabels).map(([value,label])=><Menu.RadioItem data-track-action={value==='default'?'sort_default':value==='price-asc'?'sort_price_asc':'sort_price_desc'} key={value} value={value} closeOnClick className={styles.sortOption}>{label}</Menu.RadioItem>)}
        </Menu.RadioGroup>
       </Menu.Popup>
      </Menu.Positioner></Menu.Portal>

@@ -30,7 +30,7 @@ for(const name of files){
    const match=line.match(/^([A-Z_]+)=(.*)$/);if(match&&!['LOCAL_DB_PATH','APP_ORIGIN'].includes(match[1])&&match[2].trim())fail(name,'environment template has populated key');
  }
  if(name.startsWith('public/')||name==='src/app/icon.svg'){
-   if(!name.endsWith('.svg'))fail(name,'only manifest-listed original SVG artwork is allowed');
+   if(!name.endsWith('.svg'))fail(name,'only manifest-listed SVG artwork is allowed');
    if(/<(?:script|foreignObject|image)\b|(?:href|src)=['"](?:https?:|data:)|@import|url\(https?:/i.test(content))fail(name,'SVG has executable/embedded/external content');
  }
 }
@@ -55,4 +55,4 @@ if(files.includes('supabase/seed.sql')){
  if(/https?:\/\//i.test(sql))fail('supabase/seed.sql','external content URL');
 }
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
-console.log(`Publication checks passed for ${files.length} tracked files and ${manifest.assets.length} original demo assets. This is not a legal or exhaustive secret audit.`);
+console.log(`Publication checks passed for ${files.length} tracked files and ${manifest.assets.length} manifest-listed assets. This is not a legal or exhaustive secret audit.`);

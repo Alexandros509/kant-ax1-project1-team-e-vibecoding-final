@@ -198,12 +198,12 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                                           onClick={setSelectedSize('1')}로 쓰면 클릭 전, 그리는 순간 바로 실행되어 버림
                         */}
                         <div className="flex flex-wrap gap-4">
-                            {source?.variants.map(v=><button key={v.id} disabled={!v.available} aria-pressed={selectedSize===String(v.id)} onClick={()=>setSelectedSize(String(v.id))} className={`min-h-6 min-w-6 cursor-pointer rounded-sm px-1 text-[10px] font-semibold disabled:cursor-not-allowed disabled:opacity-30 ${selectedSize===String(v.id)?'bg-neutral-900 text-white':'bg-neutral-100 hover:bg-neutral-200'}`}>{v.size}{!v.available?' ×':''}</button>)}
-                            <details className="w-full text-[10px]"><summary className="cursor-pointer text-neutral-500">size guide</summary>{source?.sizeGuide.rows?.length?<div className="mt-3 overflow-auto"><table className="w-full text-center"><thead><tr>{source.sizeGuide.columns.map((c,i)=><th className="border p-1" key={i}>{c||'Size'}</th>)}</tr></thead><tbody>{source.sizeGuide.rows.map((row,i)=><tr key={i}>{row.map((c,j)=><td className="border p-1" key={j}>{c}</td>)}</tr>)}</tbody></table></div>:<p>Size measurements are unavailable.</p>}</details>
+                            {source?.variants.map(v=><button data-track-action="select_size" data-track-item-id={id} data-track-option-id={v.id} key={v.id} disabled={!v.available} aria-pressed={selectedSize===String(v.id)} onClick={()=>setSelectedSize(String(v.id))} className={`min-h-10 min-w-10 md:min-h-6 md:min-w-6 cursor-pointer rounded-sm px-1 text-[10px] font-semibold disabled:cursor-not-allowed disabled:opacity-30 ${selectedSize===String(v.id)?'bg-neutral-900 text-white':'bg-neutral-100 hover:bg-neutral-200'}`}>{v.size}{!v.available?' ×':''}</button>)}
+                            <details className="w-full text-[10px]"><summary data-track-action="size_guide" className="cursor-pointer text-neutral-500">size guide</summary>{source?.sizeGuide.rows?.length?<div className="mt-3 overflow-auto"><table className="w-full text-center"><thead><tr>{source.sizeGuide.columns.map((c,i)=><th className="border p-1" key={i}>{c||'Size'}</th>)}</tr></thead><tbody>{source.sizeGuide.rows.map((row,i)=><tr key={i}>{row.map((c,j)=><td className="border p-1" key={j}>{c}</td>)}</tr>)}</tbody></table></div>:<p>Size measurements are unavailable.</p>}</details>
                         </div>
                         {/*
                         disabled={!source?.available}
-                                onClick={handleAddToCart}	위에서 만든 함수의 "이름"만 넘김 → 클릭할 때 리액트가 대신 실행
+                                data-track-action="add_to_cart" data-track-item-id={id} onClick={handleAddToCart}	위에서 만든 함수의 "이름"만 넘김 → 클릭할 때 리액트가 대신 실행
                                                   넘길 값이 없어서 () => 없이 이름만 씀
                                                   (handleAddToCart()처럼 괄호를 붙이면 그리는 순간 바로 실행됨)
                         {message}	message 상태 값을 표시. setMessage로 바뀌면 이 글자도 자동으로 바뀜
@@ -211,7 +211,7 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                         <div className="col-start-2 flex flex-col gap-2">
                             <button
                                 disabled={!source?.available}
-                                onClick={handleAddToCart}
+                                data-track-action="add_to_cart" data-track-item-id={id} onClick={handleAddToCart}
                                 className="h-10 w-full cursor-pointer rounded-sm bg-neutral-900 text-[10px] font-semibold text-white uppercase hover:bg-neutral-700"
                             >
                                 {source?.available ? 'Add to cart' : 'Sold out'}
@@ -233,7 +233,7 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                                 : '...'	아니면 연한 회색 글자
                                 */}
                                 <button
-                                    onClick={() => setActiveTab('detail')}
+                                    data-track-action="tab_details" onClick={() => setActiveTab('detail')}
                                     className={
                                         activeTab === 'detail'
                                             ? 'cursor-pointer border-b-2 border-neutral-900 py-3 text-neutral-900 uppercase'
@@ -243,7 +243,7 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                                     Details
                                 </button>
                                 <button
-                                    onClick={() => setActiveTab('productCare')}
+                                    data-track-action="tab_care" onClick={() => setActiveTab('productCare')}
                                     className={
                                         activeTab === 'productCare'
                                             ? 'cursor-pointer border-b-2 border-neutral-900 py-3 text-neutral-900 uppercase'
@@ -253,7 +253,7 @@ export default function ProductDetail({ id }: ProductDetailProps) {
                                     Product Care
                                 </button>
                                 <button
-                                    onClick={() => setActiveTab('shipping')}
+                                    data-track-action="tab_shipping" onClick={() => setActiveTab('shipping')}
                                     className={
                                         activeTab === 'shipping'
                                             ? 'cursor-pointer border-b-2 border-neutral-900 py-3 text-neutral-900 uppercase'

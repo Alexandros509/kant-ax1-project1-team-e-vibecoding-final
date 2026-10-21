@@ -43,12 +43,12 @@ export default function ProductGallery({ images, name }: { images: GalleryImage[
             <img key={images[index].url} className={styles.mainImage} src={images[index].url} alt={`${name} — image ${index + 1}`} fetchPriority="high" draggable={false} />
         </div>
         <div className={styles.controls}>
-            <button type="button" onClick={() => move(-1)} disabled={images.length < 2} aria-label="Previous image">←</button>
+            <button type="button" onClick={() => move(-1)} disabled={images.length < 2} data-track-action="gallery_previous" aria-label="Previous image">←</button>
             <p role="status" aria-live="polite">{index + 1} <span>/ {images.length}</span></p>
-            <button type="button" onClick={() => move(1)} disabled={images.length < 2} aria-label="Next image">→</button>
+            <button type="button" onClick={() => move(1)} disabled={images.length < 2} data-track-action="gallery_next" aria-label="Next image">→</button>
         </div>
         {images.length > 1 && <div ref={rail} className={styles.rail} role="group" aria-label="Choose a product image">
-            {images.map((image, i) => <button type="button" key={image.id} className={styles.thumbnail} aria-label={`View image ${i + 1}`} aria-pressed={i === index} onClick={() => setSelected(i)}>
+            {images.map((image, i) => <button type="button" key={image.id} className={styles.thumbnail} data-track-action="gallery_thumbnail" aria-label={`View image ${i + 1}`} aria-pressed={i === index} onClick={() => setSelected(i)}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={image.url} alt="" loading="lazy" draggable={false} />
             </button>)}

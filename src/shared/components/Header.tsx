@@ -6,6 +6,8 @@ import { usePathname,useSearchParams } from 'next/navigation';
 import {productListUrl} from '@/lib/product-list-utils';
 import {useShop} from '@/components/ShopRuntime';
 import { Search } from 'lucide-react';
+import useAppFlow from '@/shared/hooks/useAppFlow';
+import AppNavigation from './AppNavigation';
 
 import CartDrawer from '@/domains/cart/components/CartDrawer';
 import useCounterStore from '@/shared/store/useCounterStore';
@@ -35,6 +37,7 @@ function getServerIsOverHero() {
 
 export default function Header() {
     const {session}=useShop();
+    const surface=useAppFlow();
     const totalQuantity = useCounterStore((state) =>
         state.cartItems.reduce((total, item) => total + item.quantity, 0),
     );
@@ -49,6 +52,7 @@ export default function Header() {
     );
     // 인덱스에서 헤더가 영상 위에 있을 때만 배경을 투명하게 해서 영상 전체가 보이게 함
     const isTransparent = isHome && isOverHero;
+    if(surface!=='web')return <AppNavigation quantity={totalQuantity}/>;
 
     return (
         /*
@@ -222,7 +226,7 @@ export default function Header() {
                      */}
 
                     <Image
-                        src="/brand/wordmark.svg" // Original demo wordmark; no external brand artwork.
+                        src="/brand/wordmark.svg" // public/brand/wordmark.svg 파일을 불러옴
                         alt="ONEPIECE" // 이미지를 대신해 읽을 수 있는 로고 이름을 제공함
                         fill // 부모 링크 영역을 채우도록 이미지를 배치함
                         sizes="160px" // 이미지 선택용 너비 힌트를 160px로 전달하며 실제 표시 너비를 변경하지 않음

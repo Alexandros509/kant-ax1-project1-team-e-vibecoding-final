@@ -15,7 +15,9 @@
     "db:erd": "node --import tsx scripts/export-erd.ts",
     "db:reset": "node --import tsx scripts/reset-local-db.ts",
     "release:check": "node scripts/check-release.mjs",
-    "db:audit": "node --import tsx scripts/audit-db.ts"
+    "db:audit": "node --import tsx scripts/audit-db.ts",
+    "kakao:check": "node --import tsx scripts/check-kakao-config.ts",
+    "toss:check": "node --import tsx scripts/check-toss-config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

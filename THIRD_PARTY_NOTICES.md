@@ -47,4 +47,9 @@ This inventory reports package metadata, not a legal conclusion about every file
 - `zustand` 5.0.15: MIT.
 
 Kakao and Toss Payments are optional external integrations, not code or assets relicensed by this project.
-Their SDK/API terms and trademarks remain applicable. No vendor logo image is included.
+Their SDK/API terms and trademarks remain applicable.
+
+## Official Kakao Login button
+
+`public/auth/kakao/kakao_login_en_large.svg` is the unchanged official English Kakao Login button, supplied by the maintainer from the provider design resources. It is used only to identify the Kakao sign-in action, including its unavailable state.
+Kakao retains the artwork and trademark rights; it is not original ONEPIECE artwork and is not relicensed with this project. Follow the [Kakao Login design guide](https://developers.kakao.com/docs/ko/kakaologin/design-guide) for any later use, scaling or modification. Its checksum and provenance are recorded in `docs/asset-manifest.json`. This integration does not imply endorsement.

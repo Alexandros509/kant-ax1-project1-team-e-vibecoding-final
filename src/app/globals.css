@@ -128,3 +128,13 @@
     @apply font-sans;
   }
 }
+/* App-flow preview is an explicit simulation; desktop storefront styling is preserved. */
+html[data-app-surface] footer{display:none}
+html[data-app-surface] .onepiece-app-nav a:focus-visible{outline:2px solid #777;outline-offset:-3px}
+html[data-native-keyboard="open"] .onepiece-app-nav{display:none}
+
+/* Standalone payment pages retain the app preview width after leaving the iframe. */
+html[data-app-checkout] body{max-width:430px;margin-inline:auto}
+html[data-app-checkout] .onepiece-app-nav{left:50%;right:auto;transform:translateX(-50%);width:100%;max-width:430px}
+
+html[data-app-checkout] .onepiece-consent-banner{left:50%;right:auto;transform:translateX(-50%);width:100%;max-width:430px}

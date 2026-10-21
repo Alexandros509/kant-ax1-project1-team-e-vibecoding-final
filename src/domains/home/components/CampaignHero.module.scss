@@ -28,3 +28,43 @@
 .hotspot:focus-visible{outline:1px solid white}.lookNote{position:absolute;right:20px;top:16px;z-index:3;font-size:9px;letter-spacing:1px;color:#fffd;pointer-events:none}
 .playVideo{position:absolute;left:20px;top:16px;z-index:6;font-size:11px;text-decoration:underline;text-underline-offset:4px;cursor:pointer;color:white;background:#1116;padding:7px 10px}
 @media(max-width:600px){.caption{font-size:10px;padding:7px}.lookNote{top:8px;right:10px;font-size:7px}.playVideo{top:8px;left:10px;font-size:10px}}
+
+/* A nonmodal outfit sheet shares the viewport with the original campaign illustration. */
+.mediaFrame{position:absolute;inset:0;overflow:hidden}
+.mobileLook,.outfitSheet{display:none}
+
+@media(max-width:767px){
+  .campaign{display:flex;flex-direction:column;aspect-ratio:auto;height:calc(100svh - 60px);min-height:560px;overflow:hidden}
+  :global(html[data-app-surface]) .campaign{height:calc(100svh - 108px)}
+  .mediaFrame{position:relative;inset:auto;flex:1;min-height:290px;width:100%}
+  .media{object-position:84% center}
+  .shade{background:linear-gradient(0deg,rgba(4,18,20,.2),transparent 45%)}
+  .discovery,.hotspot,.lookNote,.crosslines{display:none}
+  .mobileLook{display:block;position:absolute;inset:0;z-index:4}
+  .pieceMarker{text-decoration:none;position:absolute;display:flex;align-items:center;gap:9px;min-height:44px;padding:7px 9px;color:#fff;background:#14232730;text-shadow:0 1px 5px #142327;font-size:10px;font-weight:500;letter-spacing:1.5px;cursor:pointer}
+  .pieceMarker>span{font-size:26px;line-height:1;font-weight:300}
+  .jacketMarker{left:63%;top:29%}
+  .pantsMarker{left:63%;top:63%}
+  .outfitTrigger{position:absolute;left:22px;bottom:17px;display:flex;align-items:center;gap:16px;min-height:44px;padding:7px 0;font-size:11px;font-weight:500;letter-spacing:2px;color:#fff;text-shadow:0 1px 6px #152b2b;cursor:pointer}
+  .outfitTrigger>span{font-size:20px;line-height:1}
+  .pieceMarker:focus-visible,.outfitTrigger:focus-visible{outline:2px solid white;outline-offset:3px}
+  .outfitSheet{display:block;flex:none;position:relative;z-index:6;padding:10px 20px 12px;border-radius:18px 18px 0 0;background:#fff;color:#111;margin-top:-14px;box-shadow:0 -5px 20px #00000008}
+  .sheetHandle{height:3px;width:34px;border-radius:3px;background:#d8d8d8;margin:0 auto 12px}
+  .sheetHeading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .sheetHeading h2{margin:0;font-family:Georgia,'Times New Roman',serif;font-size:29px;font-weight:400;letter-spacing:-1px;line-height:1.2}
+  .sheetHeading p{font-size:9px;letter-spacing:2px;color:#777;margin:7px 0 8px}
+  .closeSheet{display:grid;place-items:center;width:44px;height:44px;margin:-6px -10px 0 0;font-size:30px;line-height:1;font-weight:300;cursor:pointer}
+  .outfitProducts{display:flex;flex-direction:column}
+  .outfitProduct{display:grid;grid-template-columns:64px minmax(0,1fr) 20px;align-items:center;gap:15px;min-height:78px;padding:5px 0;text-decoration:none;color:inherit;border-top:1px solid #eee}
+  .outfitProduct:first-child{border-top:0}
+  .productThumb{display:grid;place-items:center;height:70px;background:white}
+  .productThumb img{display:block;width:60px;height:70px;object-fit:contain}
+  .productCopy{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .productCopy strong{font-size:11px;line-height:1.5;font-weight:500;overflow-wrap:anywhere}
+  .productCopy>span{font-size:10px;color:#777;letter-spacing:.5px;line-height:1.4}
+  .productArrow{font-size:26px;font-weight:300;justify-self:end}
+
+  .outfitProduct:focus-visible,.closeSheet:focus-visible{outline:2px solid #777;outline-offset:2px}
+  .emptyOutfit{padding:22px 0;color:#777;font-size:12px}
+  .playVideo{z-index:7;top:12px;left:15px;font-size:10px}
+}
