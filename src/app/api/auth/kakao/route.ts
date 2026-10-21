@@ -4,7 +4,7 @@ import { appOrigin, startKakao } from '@/lib/providers';
 export const runtime = 'nodejs';
 export async function GET(req: NextRequest) {
     try {
-        let s = await findSession(req.cookies.get('onepiece-session')?.value);
+        let s = await findSession(req.cookies.get('onepiece-public-erd13-session')?.value);
         let token: string | undefined;
         if (!s) {
             const fresh = await createSession();
@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
             await startKakao(s, req.nextUrl.searchParams.get('returnTo')),
         );
         if (token)
-            response.cookies.set('onepiece-session', token, {
+            response.cookies.set('onepiece-public-erd13-session', token, {
                 httpOnly: true,
                 sameSite: 'lax',
                 secure: appOrigin().startsWith('https:'),

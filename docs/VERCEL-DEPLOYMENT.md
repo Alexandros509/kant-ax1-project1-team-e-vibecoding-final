@@ -4,7 +4,7 @@
 
 GitHub publication is a source update, not a running Vercel deployment. This repository is verified as a local Node.js/PGlite demo. It is not yet a reliable full-flow Vercel application: catalog/session APIs initialize a local file DB, and sessions, OAuth state, consent/rate-limit state and event deduplication use process memory. File state and memory are not durable shared storage across Vercel function instances or restarts. Even catalog loading depends on this DB layer, so a successful build alone does not establish that deployed shopping routes work.
 
-The UI and Next.js server route approach can be used on Vercel, and Kakao/Toss accept a correctly configured HTTPS app domain. To support the entire member/cart/order flow there, first replace local-file persistence with external PostgreSQL (for example a separately configured Supabase project), use a shared session/OAuth-state store, and review connections, transactions, authorization and concurrency. Pointing a path at /tmp or memory:// is not a persistent DB solution. The current SQL export does not perform that migration or configure Supabase Auth/RLS. No cloud schema changes were made.
+The UI and Next.js server route approach can be used on Vercel, and Kakao/Toss accept a correctly configured HTTPS app domain. To support the entire member/cart/order flow there, first replace local-file persistence with external PostgreSQL (for example a separately configured Supabase project), use a shared session/OAuth-state store, and review connections, transactions, authorization and concurrency. Pointing a path at /tmp or memory:// is not a persistent DB solution. The current ERD13 SQL supplies a fresh schema, public catalog and optional owner-access policies; it does not configure a live Supabase Auth/Postgres/session adapter or deploy Storage. No cloud schema changes were made.
 
 ## Environment variables are separate from GitHub
 
@@ -21,7 +21,7 @@ Register https://your-project.vercel.app/api/auth/kakao/callback exactly in the 
 
 ## Which source folder to deploy
 
-Use this sanitized public repository for any public preview. It contains fictional product data and original geometric SVGs, plus the documented official Kakao button. The private local working site contains reference content that is deliberately absent here. Do not copy its environment file, scraped product JSON, photos, external product-media URLs, video, DB or backups into Vercel.
+Use this sanitized public repository for any public preview. It contains 366 fictional-named test cards, 59 maintainer-supplied local PNGs, the restored maintainer-created AI campaign and the documented official Kakao button. The private local working site contains reference content that is deliberately absent here. Do not copy its environment file, original scraped product JSON/descriptions, reference-store photos or external product-media URLs, real DB or backups into Vercel. The main AI campaign is a separately authorized project asset and is included here.
 
 Educational, noncommercial or clone labels do not grant content rights. For A/B comparisons, give both versions the same authorized fixture and image conditions. If reference-brand media must be used, establish the relevant permission before external testing. See RIGHTS.md; exclusion and attribution reduce risk but are not a guarantee of legal clearance.
 

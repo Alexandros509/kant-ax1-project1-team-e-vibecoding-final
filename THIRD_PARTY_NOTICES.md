@@ -4,7 +4,7 @@
 
 This work derives from [Alexandros509/kant-ax1-project1-team-e](https://github.com/Alexandros509/kant-ax1-project1-team-e), including the original team UI and subsequent local implementation.
 The upstream commit history remains the attribution record for contributors. This fresh publication history does not imply sole authorship by the snapshot committer.
-The database follows the team-selected [ERD](https://www.erdcloud.com/d/hE52as4HR9aAepZTt); this is an attribution, not an assertion that the schema has an independent open-source license.
+The database follows the team-selected [ERD](https://www.erdcloud.com/d/xsTNMswWjSpfBkN5L); this is an attribution, not an assertion that the schema has an independent open-source license.
 
 ## Vendored shadcn CSS and generated component patterns
 
@@ -53,3 +53,7 @@ Their SDK/API terms and trademarks remain applicable.
 
 `public/auth/kakao/kakao_login_en_large.svg` is the unchanged official English Kakao Login button, supplied by the maintainer from the provider design resources. It is used only to identify the Kakao sign-in action, including its unavailable state.
 Kakao retains the artwork and trademark rights; it is not original ONEPIECE artwork and is not relicensed with this project. Follow the [Kakao Login design guide](https://developers.kakao.com/docs/ko/kakaologin/design-guide) for any later use, scaling or modification. Its checksum and provenance are recorded in `docs/asset-manifest.json`. This integration does not imply endorsement.
+
+## Maintainer-supplied media
+
+The 59 product PNGs were supplied for this update and are copied unchanged. The original campaign video was explicitly identified by the maintainer as their own AI production and restored at their request. These assets are not covered by the upstream dependency licenses or an invented blanket project license. File provenance and checksums are in docs/asset-manifest.json.

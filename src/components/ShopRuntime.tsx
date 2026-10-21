@@ -19,6 +19,7 @@ import {
 } from '@/lib/app-flow';
 import { reportFlowPreview } from '@/lib/flow-preview-events';
 import { standaloneAppCheckout } from '@/lib/checkout-context';
+import {isReportEvent,reportEventsForTarget,analyticsPageLocation,manualPageViews,analyticsDebug} from '@/lib/analytics-contract';
 import useAppFlow from '@/shared/hooks/useAppFlow';
 import type { Product } from '@/domains/products/types/product.types';
 import useCounterStore from '@/shared/store/useCounterStore';
@@ -131,9 +132,13 @@ export default function ShopRuntime({
                 setSession(s);
                 setRaw(p);
                 try {
-                    const saved = JSON.parse(
-                        localStorage.getItem('demo-v1-onepiece-original-cart') || '[]',
+                    const browserSaved = JSON.parse(
+                        localStorage.getItem('erd13-media-v3-onepiece-original-cart') || '[]',
                     );
+                    const saved = s.registered ? (s.cart || []).map(i => ({productVariantId:i.variantId,quantity:i.quantity})) : browserSaved;
+                    if(!s.registered && Array.isArray(saved) && !previewRef.current) {
+                        void shopPost('cart',{items:saved.filter(i=>Number.isSafeInteger(i?.productVariantId)&&Number.isInteger(i?.quantity)&&i.quantity>0&&i.quantity<=10).slice(0,50).map(i=>({variantId:i.productVariantId,quantity:i.quantity}))}).catch(()=>{});
+                    }
                     if (Array.isArray(saved))
                         useCounterStore.getState().setCartItems(() =>
                             saved
@@ -186,7 +191,7 @@ export default function ShopRuntime({
         return useCounterStore.subscribe((state) => {
             try {
                 localStorage.setItem(
-                    'demo-v1-onepiece-original-cart',
+                    'erd13-media-v3-onepiece-original-cart',
                     JSON.stringify(state.cartItems),
                 );
             } catch {
@@ -217,6 +222,7 @@ export default function ShopRuntime({
                 window.dataLayer.push(arguments);
             };
         window.gtag('consent', 'update', { analytics_storage: 'granted' });
+        window.gtag('set', {...flowParameters(browserExecutionSurface()), ...(analyticsDebug()?{debug_mode:true}:{})});
         if (!document.getElementById('onepiece-ga')) {
             const script = document.createElement('script');
             script.id = 'onepiece-ga';
@@ -224,7 +230,11 @@ export default function ShopRuntime({
             script.src = `https://www.googletagmanager.com/gtag/js?id=${session.gaId}`;
             document.head.appendChild(script);
             window.gtag('js', new Date());
-            window.gtag('config', session.gaId, { send_page_view: false });
+            window.gtag('config', session.gaId, {
+                send_page_view: !manualPageViews(),
+                // Initial provider return URLs can contain payment keys; only send their path.
+                page_location: analyticsPageLocation(location.origin, location.pathname),
+            });
         }
     }, [session, preview]);
     const track = useCallback(
@@ -233,16 +243,19 @@ export default function ShopRuntime({
             productId?: number,
             extra: Record<string, unknown> = {},
         ) => {
-            if (!sessionRef.current?.consent || previewRef.current) return;
+            if (!sessionRef.current?.consent || previewRef.current || (name !== 'ui_click' && !isReportEvent(name))) return;
             const s = sessionRef.current,
-                p = raw.find((product) => product.id === productId);
+                p = raw.find((product) => product.id === productId) || raw.find(product => product.variants.some(v => String(v.id) === extra.option_id));
             const surface = browserExecutionSurface();
             const queued =
                 /^G-[A-Z0-9]+$/.test(s.gaId) &&
                 typeof window.gtag === 'function';
             const payload = {
                 ...flowParameters(surface),
-                ...(surface === 'app_preview' ? { debug_mode: true } : {}),
+                ...(analyticsDebug() ? { debug_mode: true } : {}),
+                page_location: analyticsPageLocation(location.origin,location.pathname),
+                page_title: document.title,
+                screen_path: location.pathname,
                 currency: 'KRW',
                 ...(p
                     ? {
@@ -270,6 +283,7 @@ export default function ShopRuntime({
                         ...click,
                         transport_type: 'beacon',
                     });
+                if(queued)for(const eventName of reportEventsForTarget(click.ui_target))window.gtag?.('event',eventName,{...payload,...click,transport_type:'beacon'});
                 reportFlowPreview(
                     'ui_click',
                     queued,
@@ -316,6 +330,8 @@ export default function ShopRuntime({
                         element.getAttribute('aria-disabled') === 'true'
                             ? 'unavailable'
                             : 'available',
+                    ...(['3','4','6'].includes(element.dataset.trackValue||'')?{grid_columns:Number(element.dataset.trackValue)}:{}),
+                    ...(Number.isSafeInteger(Number(element.dataset.trackQuantity)) && Number(element.dataset.trackQuantity)>0?{quantity:Number(element.dataset.trackQuantity)}:{}),
                     ...(Number.isSafeInteger(option) && option > 0
                         ? { option_id: String(option) }
                         : {}),
@@ -338,21 +354,13 @@ export default function ShopRuntime({
             return;
         if (sent.current === pathname) return;
         sent.current = pathname;
-        const name =
-            pathname === '/products'
-                ? 'view_item_list'
-                : /^\/products\/\d+$/.test(pathname)
-                  ? 'view_item'
-                  : pathname === '/checkout' && basketPayload().length
-                    ? 'begin_checkout'
-                    : null;
-        if (!name) return;
-        void track(
-            name,
-            name === 'view_item'
-                ? Number(pathname.split('/').pop())
-                : undefined,
-        );
+        if(manualPageViews())void track('page_view');
+        const items=basketPayload().flatMap(item=>{const p=raw.find(p=>p.variants.some(v=>v.id===item.variantId));const v=p?.variants.find(v=>v.id===item.variantId);return p&&v?[{item_id:String(p.id),item_name:p.name,item_variant:v.color+' / '+v.size,price:v.price,quantity:item.quantity}]:[];});
+        const basket={items,value:items.reduce((n,item)=>n+item.price*item.quantity,0)};
+        if(pathname==='/cart')void track('view_cart',undefined,basket);
+        else if(pathname==='/products')void track('view_item_list',undefined,{item_list_id:'products',items:raw.slice(0,200).map(p=>({item_id:String(p.id),item_name:p.name,price:p.price}))});
+        else if(/^\/products\/\d+$/.test(pathname))void track('view_item',Number(pathname.split('/').pop()));
+        else if(pathname==='/checkout'&&items.length)void track('begin_checkout',undefined,basket);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname, session?.consent, raw.length, preview]);
     return (

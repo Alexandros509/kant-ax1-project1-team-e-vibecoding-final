@@ -36,3 +36,11 @@ next-env.d.ts
 /backups/*
 !/backups/README.md
 DS_Store
+
+# Explicitly requested local product set and original ONEPIECE AI campaign.
+!/public/images/
+!/public/images/products/
+!/public/images/products/*.png
+!/public/campaign/
+!/public/campaign/campaign-video.mp4
+!/public/campaign/campaign-poster.jpg

@@ -1,3 +1,20 @@
+# Current verification — 2026-10-21 (ERD13 and local media)
+
+This section supersedes the earlier catalog/schema/media counts below. Earlier records are retained as history.
+
+- The 59 supplied PNG files were copied unchanged and their SHA-256 hashes compared with the supplied originals. All 59 are used across 366 fictional-named product cards, 1,280 variants and 1,478 gallery references. Product media no longer depends on external product-image URLs. Reused images are test illustrations and do not certify each card's exact color or style.
+- The maintainer-created AI campaign video, poster and wordmark were restored unchanged. Browser observations showed the campaign moving between frames; the jacket marker opened its matching local-image detail page. A nine-image gallery advanced from image 1 to 2, size selection added an available option to the bag, and the bag retained its expected amount. Mobile checkout left the iframe and preserved the app navigation context. With provider keys absent, the login/payment requirements remained visible and payment stayed unavailable.
+- The read-only ERD Cloud PostgreSQL export was implemented as 13 public business tables, 125 columns and 17 foreign keys. The export's auth_users placeholder maps to managed auth.users; a separate local-only Auth identity stub supports PGlite tests. Existing 26-table DB directories were not dropped or migrated. The default DB uses a fresh, versioned ignored directory.
+- A fresh in-memory audit found 21 categories, 366 products, 1,280 variants and 1,478 image rows. Member/cart/favorite/recent/order/payment/transaction tables were empty. The Supabase seed contains catalog rows only and was generated in memory. Optional access policies were tested locally; no Supabase project was changed.
+- All 17 automated tests passed, including schema/source alignment, catalog/media paths, member ownership, guest-cart merge, order snapshots/idempotency, mocked Kakao state, mocked Toss approval/cancellation reconciliation and GA event-contract checks. Production build and TypeScript checks passed. ESLint reported 0 errors and 1 existing image-optimization warning.
+- The team's GA report was inspected using an already authenticated browser session. Report settings, saved comparisons, filters and administration were not changed. Site event names were aligned with the observed report contract. The B comparison still depends on the team's configured hostname; the site does not spoof it. Debug mode is opt-in, and manual page-view mode requires matching GA history-measurement settings to avoid duplicate events.
+- Browser QA ran on an isolated local instance with blank Kakao/Toss/GA keys and a separate ignored DB. No real provider login/payment or GA data reception was tested. Mocked results are not provider certification. No Android build, Vercel deployment or cloud DB/Auth/session configuration was performed.
+- The source still uses local-file PGlite and process-memory sessions/OAuth state. Vercel environment variables keep credentials out of GitHub, but a reliable Vercel purchase flow additionally requires an external DB and shared session/Auth adapter. See VERCEL-DEPLOYMENT.md.
+
+- Final publication checks passed for 207 indexed files and 66 manifest-listed assets. The exact private provider-key comparison also passed without printing or copying the values. Credentials, DB files, backups and reference-store media are excluded.
+
+---
+
 # Publication verification — 2026-10-20
 
 - Clean `npm ci` from the lockfile completed. Generated DB files and dependencies are ignored.

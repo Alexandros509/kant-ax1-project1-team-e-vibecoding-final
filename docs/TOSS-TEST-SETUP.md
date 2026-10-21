@@ -24,8 +24,8 @@ Prices are loaded from the DB and checked again on the server. The redirect call
 
 Checkout leaves /app-preview's iframe before mounting the form or loading the payment SDK. It continues at top-level /checkout, retains the 430px app layout and provides return links to the preview. A same-origin sessionStorage marker expires after one hour; it stores no account, address or payment fields. A real installed Android shell requires separate end-to-end verification.
 
-## Schema compatibility
+## ERD compatibility
 
-payments.provider_payment_id now accepts up to 200 characters. db/migrations/202610210001_toss_payment_key.sql widens the previous 100-character column without deleting rows. It is applied locally after the ERD shape is verified; no migration-tracking table is added. The corresponding Supabase migration is supplied but has not been applied to a cloud database.
+The current ERD stores payment_key VARCHAR(200) on payments, alongside toss_order_id, confirm_idempotency_key, amounts, provider status and timestamps. payment_transactions stores approval/cancellation transaction keys and verified amounts. Cancellations are reconciled as observed history, not initiated by a cancellation API in this demo. The 13-table baseline replaces the previous 26-table model for fresh local DBs; it does not delete or migrate existing DB files.
 
-Never use real delivery details or claim production payment readiness. See [Toss payment-window integration](https://docs.tosspayments.com/guides/v2/payment-window) and [API reference](https://docs.tosspayments.com/reference).
+Never use real delivery details or claim production payment readiness. Sources: [Toss payment window](https://docs.tosspayments.com/guides/v2/payment-window), [API reference](https://docs.tosspayments.com/reference).

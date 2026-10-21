@@ -1,4 +1,4 @@
-export const APP_CHECKOUT_KEY = 'demo-v1-onepiece-app-checkout-v1';
+export const APP_CHECKOUT_KEY = 'erd13-media-v3-onepiece-app-checkout-v1';
 const LIFETIME = 60 * 60 * 1000;
 export function validAppCheckoutContext(
     raw: string | null,

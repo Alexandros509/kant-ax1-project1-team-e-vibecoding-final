@@ -1,6 +1,7 @@
-import { randomBytes, randomUUID } from 'node:crypto';
+import { randomBytes } from 'node:crypto';
 import { getDb } from './db';
-import { tokenHash, rotateSession, type Session } from './shop-server';
+import { tokenHash, rotateSession, guestCart, type Session } from './shop-server';
+import { stableId } from './catalog-source';
 import {
     createPaymentAttempt,
     approvePayment,
@@ -33,18 +34,9 @@ const states = () =>
         { session: string; expires: number; returnTo: '/join' | '/app-preview' }
     >());
 export async function member(s: Session) {
-    if (!s.user_id) return null;
-    const row = (
-        await (
-            await getDb()
-        ).query<{ name: string; auth_subject: string }>(
-            'SELECT name,auth_subject FROM customers WHERE id=$1',
-            [s.user_id],
-        )
-    ).rows[0];
-    return row
-        ? { name: row.name, provider: row.auth_subject.split(':')[0] }
-        : null;
+ if(!s.user_id)return null;
+ const row=(await(await getDb()).query<{display_name:string|null}>('SELECT display_name FROM profiles WHERE id=$1',[s.user_id])).rows[0];
+ return row?{name:row.display_name||'ONEPIECE member',provider:'kakao'}:null;
 }
 export async function startKakao(s: Session, destination?: unknown) {
     if (!providerConfig().kakaoConfigured)
@@ -108,14 +100,25 @@ export async function finishKakao(s: Session, state: string, code: string) {
     };
 }
 
-// Server-only identity linking after provider verification. Never accepts a browser-supplied subject.
-export async function linkKakao(s:Session,subject:string){
- const db=await getDb();const userId=await db.transaction(async tx=>{
-  const customer=(await tx.query<{id:string}>("INSERT INTO customers(id,auth_subject,email,name,phone,created_at) VALUES($1,$2,'','ONEPIECE member','',now()) ON CONFLICT(auth_subject) DO UPDATE SET auth_subject=excluded.auth_subject RETURNING id",[randomUUID(),'kakao:'+subject])).rows[0];
-  const guest=(await tx.query<{id:string}>("SELECT id FROM carts WHERE guest_token_hash=$1 AND status='active' FOR UPDATE",[tokenHash(s.anonymous_id)])).rows[0];
-  if(guest){const existing=(await tx.query<{id:string}>("SELECT id FROM carts WHERE customer_id=$1 AND status='active' FOR UPDATE",[customer.id])).rows[0];if(existing){await tx.query('INSERT INTO cart_items(cart_id,variant_id,quantity) SELECT $1,variant_id,quantity FROM cart_items WHERE cart_id=$2 ON CONFLICT(cart_id,variant_id) DO UPDATE SET quantity=least(10,cart_items.quantity+excluded.quantity)',[existing.id,guest.id]);await tx.query("UPDATE carts SET status='merged' WHERE id=$1",[guest.id]);}else await tx.query('UPDATE carts SET customer_id=$1,guest_token_hash=NULL WHERE id=$2',[customer.id,guest.id]);}
-  return customer.id;
- });return rotateSession(s,userId);
+// Local identity adapter: only a server-verified Kakao subject reaches this function.
+// Supabase deployment must instead map the managed Auth user's UUID; no client-supplied UUID is trusted.
+export async function linkKakao(s: Session, subject: string) {
+ if(!subject||subject.length>255)throw new Error('Invalid verified identity.');
+ const id=stableId('local-verified-kakao',subject),incoming=guestCart(s),db=await getDb();
+ await db.transaction(async tx=>{
+  await tx.query('INSERT INTO auth.users(id) VALUES($1) ON CONFLICT DO NOTHING',[id]);
+  await tx.query("INSERT INTO profiles(id,display_name) VALUES($1,'ONEPIECE member') ON CONFLICT(id) DO NOTHING",[id]);
+  await tx.query('SELECT id FROM profiles WHERE id=$1 FOR UPDATE',[id]);
+  if(incoming.length){
+   const cart=(await tx.query<{id:number}>('INSERT INTO carts(user_id) VALUES($1) ON CONFLICT(user_id) DO UPDATE SET updated_at=now() RETURNING id',[id])).rows[0];
+   for(const item of incoming){
+    const variant=(await tx.query<{stock_quantity:number}>("SELECT v.stock_quantity FROM product_variants v JOIN products p ON p.id=v.product_id JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE v.id=$1 AND v.is_active AND p.status='active' AND c.is_active AND (c.parent_id IS NULL OR parent.is_active)",[item.variantId])).rows[0];
+    if(!variant||variant.stock_quantity<1)continue;
+    const quantity=Math.min(10,variant.stock_quantity,item.quantity);
+    await tx.query('INSERT INTO cart_items(cart_id,product_variant_id,quantity) VALUES($1,$2,$3) ON CONFLICT(cart_id,product_variant_id) DO UPDATE SET quantity=least(10,$4,cart_items.quantity+excluded.quantity),updated_at=now()',[cart.id,item.variantId,quantity,variant.stock_quantity]);
+   }
+  }
+ });return rotateSession(s,id);
 }
 export async function updateMember(s: Session, body: Record<string, unknown>) {
     if (!(await member(s))) throw new Error('Please log in.');
@@ -123,7 +126,7 @@ export async function updateMember(s: Session, body: Record<string, unknown>) {
     if (!name || name.length > 50) throw new Error('Please check your name.');
     await (
         await getDb()
-    ).query('UPDATE customers SET name=$1 WHERE id=$2', [name, s.user_id]);
+    ).query('UPDATE profiles SET display_name=$1,updated_at=now() WHERE id=$2', [name, s.user_id]);
     return { saved: true };
 }
 export async function prepareToss(s: Session, body: Record<string, unknown>) {

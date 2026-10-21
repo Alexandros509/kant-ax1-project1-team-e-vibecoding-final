@@ -1,11 +1,11 @@
-# Mobile app-flow simulation
+# 모바일 접속 주소와 실행 구분
 
-Open /app-preview on the same host/port as the site (for example http://localhost:3000/app-preview if that is the configured origin). It shows only the responsive app screen in a maximum 430px frame, without the surrounding phone/debug panel. This is a browser simulation, not an APK, emulator or deployed native app.
+동일 도메인의 /app-preview가 모바일 앱 흐름입니다. 3019번 로컬 실행은 http://127.0.0.1:3019/app-preview, 3000번 실행은 http://localhost:3000/app-preview입니다. 실제 배포 도메인은 별도로 확인해야 하며 GitHub 업로드가 배포 완료를 뜻하지 않습니다.
 
-The mobile main page uses the selected lookbook layout: JACKET and PANTS + markers open their respective product detail pages; VIEW OUTFIT opens the product sheet. The public release links to the same fictional catalog used by its list/detail pages and uses an original illustration instead of the private campaign video. Bottom navigation connects Home, Shop, Bag and Account. Size selection, gallery, wishlist, cart and checkout remain part of the flow.
+초기 화면 쿼리 예: /app-preview?screen=%2Fproducts (목록), /app-preview?screen=%2Fproducts%2F366 (366번 상세), /app-preview?screen=%2Fcart (장바구니), /app-preview?screen=%2Flogin (로그인). 일반 웹과 같은 도메인을 사용하며 임의 외부 URL을 screen으로 허용하지 않습니다.
 
-Kakao login opens at top level and returns to the preview. Checkout also moves to top level before payment, preserving a narrow app layout and return navigation. Screen parameters are allowlisted; arbitrary external destinations are not accepted.
+원래 자체 AI 제작 캠페인 영상, JACKET·PANTS 상세 바로가기, VIEW OUTFIT 시트와 Home·Shop·Bag·My 내비게이션을 사용합니다. 화면은 최대 430px 프레임이며 APK·에뮬레이터가 아닌 웹 시뮬레이션입니다. 로그인과 결제는 iframe 밖에서 진행하고 앱으로 돌아오는 링크를 제공합니다.
 
-UI actions have controlled data-track-action identifiers. With valid test-property configuration and consent, they can queue ui_click events with execution_surface=app_preview and flow_id=onepiece_app_flow_v1. Native user-agent detection labels android_webview separately; it does not prove an APK was built. Review query mode ?preview=A/B is different from /app-preview and suppresses measurement/payment.
+GA의 앱 구분값은 execution_surface=app_preview와 flow_id=onepiece_app_flow_v1입니다. 일반 웹은 web, 실제 Android 식별자가 있는 쉘은 android_webview입니다. 디버그는 이제 NEXT_PUBLIC_GA_DEBUG_MODE=true일 때만 사용합니다. ?preview=A/B는 이 앱 경로와 다른 UI 검토 기능이며 측정과 결제를 제외합니다.
 
-No GA4 account, property, audience, conversion or experiment setting was changed as part of this source update. The team must validate actual reception, event definitions, exposure/assignment and test conditions. Simulated clicks are not evidence of usability outcomes from real participants. The public fixture differs from the private reference catalog, so do not compare them as UI-only experimental conditions.
+앱 안의 실제 상품 경로와 최상위 /checkout까지 이어지므로 /app-preview 경로 필터만으로 전체 여정을 묶지 마세요. [GA 보고서와 코드 대응](GA4-REPORT-COMPATIBILITY.md)에 실제 호스트 비교 조건, 이벤트 이름, 페이지 조회 모드와 검증 제한을 정리했습니다. GA 관리 설정은 변경하지 않았습니다.

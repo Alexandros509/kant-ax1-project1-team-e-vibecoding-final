@@ -1,68 +1,132 @@
-import {createHash,randomBytes,randomUUID} from 'node:crypto';
-import {getDb} from './db';
-import {catalogSource,stableId,variantDbId} from './catalog-source';
-import {validateBasket,type CatalogProduct} from './shop-model';
-export type Session={token_hash:string;anonymous_id:string;session_id:string;assignment_id:string;user_id:string|null;consent:boolean;variant:'A'|'B';snapshot_id:string};
-type RuntimeSession={session:Session;expires:number;events:Set<string>};
-declare global {var onepieceSessions:Map<string,RuntimeSession>|undefined;}
-const sessions=()=>globalThis.onepieceSessions??=new Map<string,RuntimeSession>();
-export const tokenHash=(token:string)=>createHash('sha256').update(token).digest('hex');
-export async function findSession(token?:string){if(!token||!/^[a-f0-9]{64}$/.test(token))return null;const row=sessions().get(tokenHash(token));if(!row||row.expires<Date.now()){if(row)sessions().delete(row.session.token_hash);return null;}return row.session;}
-export async function createSession(){
- for(const [key,row] of sessions())if(row.expires<Date.now())sessions().delete(key);
- const token=randomBytes(32).toString('hex');const session:Session={token_hash:tokenHash(token),anonymous_id:randomUUID(),session_id:randomUUID(),assignment_id:'',user_id:null,consent:false,variant:'B',snapshot_id:(await catalogSource()).snapshot_id};
- sessions().set(session.token_hash,{session,expires:Date.now()+30*86400000,events:new Set()});return {token,session};
+import { createHash, randomBytes, randomUUID } from 'node:crypto';
+import { getDb } from './db';
+import {isReportEvent} from './analytics-contract';
+import { catalogSource, sourceCategory, sourceOption } from './catalog-source';
+import { imagePublicUrl } from './catalog-media';
+import { validateBasket, type BasketItem, type CatalogProduct } from './shop-model';
+
+export type Session = {token_hash: string; anonymous_id: string; session_id: string; assignment_id: string; user_id: string | null; consent: boolean; variant: 'A' | 'B'; snapshot_id: string};
+type RuntimeSession = {session: Session; expires: number; events: Set<string>; guestCart: BasketItem[]};
+declare global { var onepieceSessions: Map<string, RuntimeSession> | undefined; }
+const sessions = () => globalThis.onepieceSessions ??= new Map<string, RuntimeSession>();
+export const tokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
+export async function findSession(token?: string) {
+    if (!token || !/^[a-f0-9]{64}$/.test(token)) return null;
+    const row = sessions().get(tokenHash(token));
+    if (!row || row.expires < Date.now()) { if (row) sessions().delete(row.session.token_hash); return null; }
+    return row.session;
 }
-export function changeConsent(s:Session,consent:boolean){const row=sessions().get(s.token_hash);if(!row)throw new Error('Session expired.');row.session.consent=consent;return {saved:true};}
-export function removeSession(s:Session){sessions().delete(s.token_hash);}
-export function rotateSession(s:Session,userId:string){
- const row=sessions().get(s.token_hash);if(!row)throw new Error('Session expired.');removeSession(s);const token=randomBytes(32).toString('hex');const session={...s,token_hash:tokenHash(token),user_id:userId};sessions().set(session.token_hash,{...row,session});return {token,session};
+export async function createSession() {
+    for (const [key, row] of sessions()) if (row.expires < Date.now()) sessions().delete(key);
+    const token = randomBytes(32).toString('hex');
+    const session: Session = {token_hash: tokenHash(token), anonymous_id: randomUUID(), session_id: randomUUID(), assignment_id: '', user_id: null, consent: false, variant: 'B', snapshot_id: (await catalogSource()).snapshot_id};
+    sessions().set(session.token_hash, {session, expires: Date.now() + 30 * 86400000, events: new Set(), guestCart: []});
+    return {token, session};
 }
-const numberId=(id:string)=>1000000+parseInt(createHash('sha256').update(id).digest('hex').slice(0,10),16);
-export async function catalog():Promise<CatalogProduct[]>{
- const db=await getDb(),source=await catalogSource();
- const colors=(await db.query<{id:string;product_id:string;handle:string;color_name:string;technical:string;size_guide:string;name:string;description:string;care:string;brand:string}>("SELECT c.*,p.name,p.description,p.care,b.name AS brand FROM product_colors c JOIN products p ON p.id=c.product_id JOIN brands b ON b.id=p.brand_id WHERE p.status='active' ORDER BY c.sort_order,c.id")).rows;
- const variants=(await db.query<{id:string;product_color_id:string;sku:string;size:string;price:string;is_active:boolean;on_hand:number;reserved:number}>("SELECT v.*,i.on_hand,i.reserved FROM product_variants v JOIN inventories i ON i.variant_id=v.id WHERE v.currency='KRW' ORDER BY v.id")).rows;
- const images=(await db.query<{product_color_id:string;url:string}>('SELECT * FROM product_images ORDER BY sort_order,id')).rows;
- const categories=(await db.query<{product_id:string;name:string}>('SELECT pc.product_id,c.name FROM product_categories pc JOIN categories c ON c.id=pc.category_id ORDER BY c.sort_order,c.id')).rows;
- const sourceIds=new Map(source.products.map((p,i)=>[stableId('color',p.id),{p,id:i+1}]));const variantIds=new Map(source.products.flatMap(p=>p.variants).map((v,i)=>[stableId('variant',v.id),i+1]));
- return colors.map(c=>{
-  const original=sourceIds.get(c.id);const id=original?.id??numberId(c.id);let sizeGuide={columns:[] as string[],rows:[] as string[][]};try{const guide=JSON.parse(c.size_guide||'{}');if(Array.isArray(guide.columns)&&Array.isArray(guide.rows))sizeGuide=guide;}catch{}
-  const options=variants.filter(v=>v.product_color_id===c.id).map(v=>({id:variantIds.get(v.id)??numberId(v.id),productId:id,sku:v.sku,color:c.color_name,size:v.size,price:Number(v.price),available:v.is_active&&v.on_hand-v.reserved>0})).sort((a,b)=>a.id-b.id);const price=Math.min(...options.map(v=>v.price));
-  return {id,name:c.name,brand:c.brand,category:categories.find(v=>v.product_id===c.product_id)?.name||'etc',categoryId:0,color:c.color_name,price:Number.isFinite(price)?price:0,listPrice:Number.isFinite(price)?price:0,available:options.some(v=>v.available),images:images.filter(i=>i.product_color_id===c.id).map(i=>i.url),description:c.technical||c.description||'',careInfo:c.care||'',shippingInfo:'This is a demo store. Payments use test mode, and no items are shipped. Demo delivery is free. Returns do not apply to test orders.',isNew:false,sizeGuide,variants:options,sourceUrl:original?.p.source_url||''};
- });
+export function changeConsent(s: Session, consent: boolean) {
+    const row = sessions().get(s.token_hash); if (!row) throw new Error('Session expired.');
+    row.session.consent = consent; return {saved: true};
 }
-export async function recordEvent(s:Session,body:Record<string,unknown>){
- if(!s.consent)return {stored:false,forward:false};if(!['view_item_list','select_item','view_item','add_to_cart','begin_checkout'].includes(String(body.name)))throw new Error('Unsupported event.');
- const key=String(body.key||'');if(!/^[a-f0-9-]{36}$/.test(key))throw new Error('Invalid event ID.');const row=sessions().get(s.token_hash);if(!row||row.events.has(key))return {stored:false,forward:false};if(row.events.size>10000)row.events.clear();row.events.add(key);
- return {stored:false,forward:true}; // GA4 only; no events/experiments table outside the ERD.
+export function removeSession(s: Session) { sessions().delete(s.token_hash); }
+export function rotateSession(s: Session, userId: string) {
+    const row = sessions().get(s.token_hash); if (!row) throw new Error('Session expired.');
+    removeSession(s); const token = randomBytes(32).toString('hex'), session = {...s, token_hash: tokenHash(token), user_id: userId};
+    sessions().set(session.token_hash, {...row, session, guestCart: []}); return {token, session};
 }
-export async function syncCart(s:Session,value:unknown){
- const items=Array.isArray(value)&&value.length===0?[]:validateBasket(value),db=await getDb();const mapped=await Promise.all(items.map(async i=>({...i,id:await variantDbId(i.variantId)})));
- return db.transaction(async tx=>{
-  const owner=s.user_id;const guest=owner?null:tokenHash(s.anonymous_id);
-  const old=(await tx.query<{id:string}>("SELECT id FROM carts WHERE status='active' AND ((customer_id=$1 AND $1 IS NOT NULL) OR (guest_token_hash=$2 AND $2 IS NOT NULL)) FOR UPDATE",[owner,guest])).rows[0];
-  const id=old?.id||randomUUID();if(!old)await tx.query("INSERT INTO carts(id,customer_id,guest_token_hash,status,expires_at) VALUES($1,$2,$3,'active',now()+interval '30 days')",[id,owner,guest]);
-  await tx.query('DELETE FROM cart_items WHERE cart_id=$1',[id]);
-  for(const i of mapped){const v=(await tx.query<{is_active:boolean;on_hand:number;reserved:number;status:string}>('SELECT v.is_active,i.on_hand,i.reserved,p.status FROM product_variants v JOIN inventories i ON i.variant_id=v.id JOIN product_colors c ON c.id=v.product_color_id JOIN products p ON p.id=c.product_id WHERE v.id=$1 FOR UPDATE OF i',[i.id])).rows[0];if(!v||!v.is_active||v.status!=='active'||v.on_hand-v.reserved<i.quantity)throw new Error('This option is unavailable.');await tx.query('INSERT INTO cart_items(cart_id,variant_id,quantity) VALUES($1,$2,$3)',[id,i.id,i.quantity]);}
-  return {saved:true};
- });
+export function guestCart(s: Session) { return sessions().get(s.token_hash)?.guestCart || []; }
+export async function savedCart(s: Session): Promise<BasketItem[]> {
+    if (!s.user_id) return guestCart(s);
+    return (await (await getDb()).query<{variantId: number; quantity: number}>('SELECT i.product_variant_id AS "variantId",i.quantity FROM cart_items i JOIN carts c ON c.id=i.cart_id WHERE c.user_id=$1 ORDER BY i.id', [s.user_id])).rows;
 }
-export async function checkout(s:Session,body:Record<string,unknown>){
- if(!s.user_id)throw new Error('Please log in before continuing.');const items=validateBasket(body.items),key=String(body.key||'');if(!/^[a-f0-9-]{36}$/.test(key))throw new Error('Invalid checkout key.');
- const input=body.delivery as Record<string,unknown>|undefined;
- const delivery={name:String(input?.name||'Test recipient').trim(),phone:String(input?.phone||'000-0000-0000').trim(),zipcode:String(input?.zipcode||'00000').trim(),address:String(input?.address||'Demo address (no shipping)').trim(),address2:String(input?.address2||'').trim(),memo:String(input?.memo||'').trim()};
- if(!delivery.name||delivery.name.length>50||!/^[0-9+() -]{7,20}$/.test(delivery.phone)||!/^\d{5}$/.test(delivery.zipcode)||!delivery.address||delivery.address.length>255||delivery.address2.length>255||delivery.memo.length>255)throw new Error('Please check your delivery details.');
- const mapped=await Promise.all(items.map(async i=>({...i,id:await variantDbId(i.variantId)}))),db=await getDb();
- return db.transaction(async tx=>{
-  const customer=(await tx.query<{email:string}>('SELECT * FROM customers WHERE id=$1 FOR UPDATE',[s.user_id])).rows[0];if(!customer)throw new Error('Account not found.');
-  const old=(await tx.query<{id:string;order_number:string;total_amount:string;shipping_snapshot:typeof delivery}>('SELECT * FROM orders WHERE customer_id=$1 AND checkout_key=$2',[s.user_id,key])).rows[0];
-  if(old){const oldItems=(await tx.query<{variant_id:string;quantity:number}>('SELECT variant_id,quantity FROM order_items WHERE order_id=$1',[old.id])).rows.map(i=>({id:i.variant_id,quantity:i.quantity})).sort((a,b)=>a.id.localeCompare(b.id));const requested=mapped.map(i=>({id:i.id,quantity:i.quantity})).sort((a,b)=>a.id.localeCompare(b.id));if(JSON.stringify(oldItems)!==JSON.stringify(requested)||JSON.stringify(old.shipping_snapshot)!==JSON.stringify(delivery))throw new Error('This checkout key was used for different contents.');return {orderNumber:old.order_number,total:Number(old.total_amount),replayed:true};}
-  let total=0;const lines=[];
-  for(const i of mapped){const v=(await tx.query<{id:string;price:string;sku:string;size:string;is_active:boolean;on_hand:number;reserved:number;name:string;color_name:string;status:string;image:string}>("SELECT v.*,iv.on_hand,iv.reserved,p.name,p.status,c.color_name,(SELECT url FROM product_images WHERE product_color_id=c.id ORDER BY sort_order LIMIT 1) AS image FROM product_variants v JOIN inventories iv ON iv.variant_id=v.id JOIN product_colors c ON c.id=v.product_color_id JOIN products p ON p.id=c.product_id WHERE v.id=$1 AND v.currency='KRW' FOR UPDATE OF iv",[i.id])).rows[0];if(!v||!v.is_active||v.status!=='active'||v.on_hand-v.reserved<i.quantity)throw new Error('This item is sold out or unavailable.');const price=Number(v.price);total+=price*i.quantity;if(!Number.isSafeInteger(total)||total<0)throw new Error('Invalid order amount.');lines.push({...v,price,quantity:i.quantity});}
-  const id=randomUUID(),orderNumber='TEST-'+randomUUID();
-  await tx.query("INSERT INTO orders(id,customer_id,order_number,status,currency,total_amount,shipping_snapshot,placed_at,email,phone,subtotal_amount,discount_amount,shipping_amount,tax_amount,checkout_key) VALUES($1,$2,$3,'pending','KRW',$4,$5,now(),$6,$7,$4,0,0,0,$8)",[id,s.user_id,orderNumber,total,JSON.stringify(delivery),customer.email,delivery.phone,key]);
-  for(const v of lines)await tx.query('INSERT INTO order_items(id,order_id,variant_id,product_snapshot,unit_price,quantity,discount_amount) VALUES($1,$2,$3,$4,$5,$6,0)',[randomUUID(),id,v.id,JSON.stringify({name:v.name,sku:v.sku,option:`${v.color_name} / ${v.size}`,image:v.image}),v.price,v.quantity]);
-  return {orderNumber,total,replayed:false};
- });
+export async function catalog(): Promise<CatalogProduct[]> {
+    const db = await getDb(), source = await catalogSource();
+    const products = (await db.query<{id: number; name: string; category_id: string; detail: string; product_care: string; shipping: string; sale_price: number; list_price: number; is_new: boolean}>("SELECT p.* FROM products p JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE p.status='active' AND c.is_active AND (c.parent_id IS NULL OR parent.is_active) ORDER BY p.sort_order,p.id")).rows;
+    const variants = (await db.query<{id: number; product_id: number; sku: string; size_label: string; stock_quantity: number; is_active: boolean}>('SELECT * FROM product_variants ORDER BY sort_order,id')).rows;
+    const images = (await db.query<{product_id: number; storage_path: string}>('SELECT * FROM product_images ORDER BY sort_order,id')).rows;
+    return Promise.all(products.map(async p => {
+        const raw = source.products[p.id - 1], color = raw ? sourceOption(raw, raw.variants[0]).color : '';
+        const options = variants.filter(v => v.product_id === p.id).map(v => ({id: v.id, productId: p.id, sku: v.sku, color, size: v.size_label, price: p.sale_price, available: v.is_active && v.stock_quantity > 0}));
+        return {id: p.id, name: p.name, brand: 'ONEPIECE', category: raw ? sourceCategory(raw) : 'etc', categoryId: Number(p.category_id), color, price: p.sale_price, listPrice: p.list_price, available: options.some(v => v.available), images: await Promise.all(images.filter(i => i.product_id === p.id).map(i => imagePublicUrl(i.storage_path))), description: p.detail, careInfo: p.product_care, shippingInfo: p.shipping, isNew: p.is_new, sizeGuide: raw?.size_guide || {columns: [], rows: []}, variants: options, sourceUrl: raw?.source_url || ''};
+    }));
+}
+export async function recordEvent(s: Session, body: Record<string, unknown>) {
+    if (!s.consent) return {stored: false, forward: false};
+    if (!isReportEvent(String(body.name))) throw new Error('Unsupported event.');
+    const key = String(body.key || ''); if (!/^[a-f0-9-]{36}$/.test(key)) throw new Error('Invalid event ID.');
+    const row = sessions().get(s.token_hash); if (!row || row.events.has(key)) return {stored: false, forward: false};
+    if (row.events.size > 10000) row.events.clear(); row.events.add(key);
+    return {stored: false, forward: true};
+}
+export async function syncCart(s: Session, value: unknown) {
+    const items = Array.isArray(value) && value.length === 0 ? [] : validateBasket(value);
+    if (!s.user_id) {
+        const row = sessions().get(s.token_hash); if (!row) throw new Error('Session expired.');
+        row.guestCart = items; return {saved: true, localOnly: true};
+    }
+    const db = await getDb();
+    return db.transaction(async tx => {
+        await tx.query('SELECT id FROM profiles WHERE id=$1 FOR UPDATE', [s.user_id]);
+        const cart = (await tx.query<{id: number}>('INSERT INTO carts(user_id) VALUES($1) ON CONFLICT(user_id) DO UPDATE SET updated_at=now() RETURNING id', [s.user_id])).rows[0];
+        for (const i of items) {
+            const row = (await tx.query<{stock_quantity: number; is_active: boolean; status: string; category_active: boolean; parent_active: boolean}>('SELECT v.stock_quantity,v.is_active,p.status,c.is_active AS category_active,coalesce(parent.is_active,true) AS parent_active FROM product_variants v JOIN products p ON p.id=v.product_id JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE v.id=$1', [i.variantId])).rows[0];
+            if (!row || !row.is_active || row.status !== 'active' || !row.category_active || !row.parent_active || row.stock_quantity < i.quantity) throw new Error('This option is unavailable.');
+        }
+        await tx.query('DELETE FROM cart_items WHERE cart_id=$1', [cart.id]);
+        for (const i of items) await tx.query('INSERT INTO cart_items(cart_id,product_variant_id,quantity) VALUES($1,$2,$3)', [cart.id, i.variantId, i.quantity]);
+        return {saved: true};
+    });
+}
+export async function collections(s: Session) {
+    if (!s.user_id) return {favorites: [] as number[], recent: [] as number[]};
+    const db = await getDb();
+    return {favorites: (await db.query<{product_id: number}>('SELECT product_id FROM favorites WHERE user_id=$1 ORDER BY created_at DESC,id LIMIT 100', [s.user_id])).rows.map(r => r.product_id), recent: (await db.query<{product_id: number}>('SELECT product_id FROM recent_product_views WHERE user_id=$1 ORDER BY last_viewed_at DESC,id LIMIT 12', [s.user_id])).rows.map(r => r.product_id)};
+}
+export async function updateCollection(s: Session, body: Record<string, unknown>) {
+    if (!s.user_id) throw new Error('Please log in.');
+    const id = Number(body.productId);
+    if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid product.');
+    const db = await getDb();
+    if (!(await db.query("SELECT p.id FROM products p JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE p.id=$1 AND p.status='active' AND c.is_active AND (c.parent_id IS NULL OR parent.is_active)", [id])).rows.length) throw new Error('Product unavailable.');
+    if (body.action === 'favorite') {
+        if (body.enabled === true) await db.query('INSERT INTO favorites(user_id,product_id) VALUES($1,$2) ON CONFLICT(user_id,product_id) DO NOTHING', [s.user_id, id]);
+        else await db.query('DELETE FROM favorites WHERE user_id=$1 AND product_id=$2', [s.user_id, id]);
+    } else if (body.action === 'recent-view') await db.query('INSERT INTO recent_product_views(user_id,product_id) VALUES($1,$2) ON CONFLICT(user_id,product_id) DO UPDATE SET last_viewed_at=now(),view_count=recent_product_views.view_count+1', [s.user_id, id]);
+    else throw new Error('Invalid collection action.');
+    return collections(s);
+}
+export async function checkout(s: Session, body: Record<string, unknown>) {
+    if (!s.user_id) throw new Error('Please log in before continuing.');
+    const items = validateBasket(body.items), key = String(body.key || '');
+    if (!/^[a-f0-9-]{36}$/.test(key)) throw new Error('Invalid checkout key.');
+    const input = body.delivery as Record<string, unknown> | undefined;
+    const delivery = {name: String(input?.name || 'Test recipient').trim(), phone: String(input?.phone || '000-0000-0000').trim(), zipcode: String(input?.zipcode || '00000').trim(), address: String(input?.address || 'Demo address (no shipping)').trim(), address2: String(input?.address2 || '').trim(), memo: String(input?.memo || '').trim()};
+    if (!delivery.name || delivery.name.length > 100 || !/^[0-9+() -]{7,30}$/.test(delivery.phone) || !/^\d{5}$/.test(delivery.zipcode) || !delivery.address || delivery.address.length > 255 || delivery.address2.length > 255 || delivery.memo.length > 255) throw new Error('Please check your delivery details.');
+    const db = await getDb();
+    return db.transaction(async tx => {
+        if (!(await tx.query('SELECT id FROM profiles WHERE id=$1 FOR UPDATE', [s.user_id])).rows.length) throw new Error('Account not found.');
+        const old = (await tx.query<{id: string; order_number: string; total_amount: string; recipient_name: string; recipient_phone: string; postal_code: string; address_line1: string; address_line2: string; shipping_message: string}>('SELECT * FROM orders WHERE user_id=$1 AND idempotency_key=$2', [s.user_id, key])).rows[0];
+        if (old) {
+            const previous = (await tx.query<{variantId: number; quantity: number}>('SELECT product_variant_id AS "variantId",quantity FROM order_items WHERE order_id=$1 ORDER BY product_variant_id', [old.id])).rows;
+            const oldDelivery = {name: old.recipient_name, phone: old.recipient_phone, zipcode: old.postal_code, address: old.address_line1, address2: old.address_line2 || '', memo: old.shipping_message || ''};
+            if (JSON.stringify(previous) !== JSON.stringify(items) || JSON.stringify(oldDelivery) !== JSON.stringify(delivery)) throw new Error('This checkout key was used for different contents.');
+            return {orderNumber: old.order_number, total: Number(old.total_amount), replayed: true};
+        }
+        let total = 0;
+        const lines = [];
+        for (const i of items) {
+            const row = (await tx.query<{id: number; sku: string; size_label: string; product_id: number; stock_quantity: number; is_active: boolean; status: string; sale_price: number; name: string; storage_path: string; category_active: boolean; parent_active: boolean}>("SELECT v.*,p.name,p.sale_price,p.status,c.is_active AS category_active,coalesce(parent.is_active,true) AS parent_active,(SELECT storage_path FROM product_images WHERE product_id=p.id ORDER BY sort_order,id LIMIT 1) AS storage_path FROM product_variants v JOIN products p ON p.id=v.product_id JOIN categories c ON c.id=p.category_id LEFT JOIN categories parent ON parent.id=c.parent_id WHERE v.id=$1 FOR UPDATE OF v", [i.variantId])).rows[0];
+            if (!row || !row.is_active || row.status !== 'active' || !row.category_active || !row.parent_active || row.stock_quantity < i.quantity) throw new Error('This item is sold out or unavailable.');
+            total += row.sale_price * i.quantity; if (!Number.isSafeInteger(total)) throw new Error('Invalid order amount.');
+            lines.push({...row, quantity: i.quantity});
+        }
+        const id = randomUUID(), orderNumber = 'TEST-' + randomUUID();
+        await tx.query("INSERT INTO orders(id,user_id,order_number,idempotency_key,status,currency,subtotal_amount,shipping_fee,total_amount,recipient_name,recipient_phone,postal_code,address_line1,address_line2,shipping_message) VALUES($1,$2,$3,$4,'submitted','KRW',$5,0,$5,$6,$7,$8,$9,$10,$11)", [id, s.user_id, orderNumber, key, total, delivery.name, delivery.phone, delivery.zipcode, delivery.address, delivery.address2, delivery.memo]);
+        for (const v of lines) await tx.query('INSERT INTO order_items(order_id,product_variant_id,product_name,option_text,sku,image_storage_path,unit_price,quantity) VALUES($1,$2,$3,$4,$5,$6,$7,$8)', [id, v.id, v.name, v.size_label, v.sku, v.storage_path, v.sale_price, v.quantity]);
+        return {orderNumber, total, replayed: false};
+    });
+}
+export async function receipt(s: Session, number: string | null) {
+    if (!s.user_id) throw new Error('Please log in.');
+    const row = (await (await getDb()).query<{order_number: string; total_amount: string; status: string; payment_status: string}>("SELECT o.*, (SELECT status FROM payments WHERE order_id=o.id ORDER BY created_at DESC LIMIT 1) AS payment_status FROM orders o WHERE o.order_number=$1 AND o.user_id=$2", [number, s.user_id])).rows[0];
+    return row ? {order_number: row.order_number, total_amount: Number(row.total_amount), status: row.status === 'cancelled' ? 'canceled' : row.payment_status === 'DONE' ? 'paid' : 'pending'} : null;
 }

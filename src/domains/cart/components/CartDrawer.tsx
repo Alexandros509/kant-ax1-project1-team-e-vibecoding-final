@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import {useShop} from '@/components/ShopRuntime';
 
 import CartItemList from '@/domains/cart/components/CartItemList';
 import {
@@ -20,6 +21,7 @@ interface CartDrawerProps {
 }
 
 export default function CartDrawer({ totalQuantity }: CartDrawerProps) {
+    const {track,raw}=useShop();
     const cartItems = useCounterStore((state) => state.cartItems);
     const { handleIncreaseQuantity, handleDecreaseQuantity, handleRemoveItem } =
         useCartActions();
@@ -29,7 +31,7 @@ export default function CartDrawer({ totalQuantity }: CartDrawerProps) {
     );
 
     return (
-        <Dialog>
+        <Dialog onOpenChange={open=>{void track(open?'cart_drawer_open':'cart_drawer_close');if(open)void track('view_cart',undefined,{value:subtotal,items:cartItems.flatMap(i=>{const p=raw.find(p=>p.variants.some(v=>v.id===i.productVariantId));return p?[{item_id:String(p.id),item_name:p.name,price:i.unitPriceAtAdded,quantity:i.quantity}]:[];})});}}>
             <DialogTrigger
                 type="button"
                 className="flex cursor-pointer items-center gap-1 sm:gap-3"
@@ -91,13 +93,13 @@ export default function CartDrawer({ totalQuantity }: CartDrawerProps) {
                     <div className="mt-5 flex flex-col gap-3">
                         <DialogClose
                             nativeButton={false}
-                            render={<Link href="/cart" />}
+                            render={<Link href="/cart" data-track-action="view_cart_link" />}
                             className="flex w-full items-center justify-center border border-gray-300 bg-gray-100 px-4 py-3 text-sm font-medium text-black hover:bg-gray-200"
                         >
                             VIEW CART
                         </DialogClose>
 
-                        <DialogClose nativeButton={false} render={<Link href="/checkout" />} className="flex w-full items-center justify-center border border-black bg-black px-4 py-3 text-sm font-medium text-white">CHECKOUT</DialogClose>
+                        <DialogClose nativeButton={false} render={<Link href="/checkout" data-track-action="checkout_open" />} className="flex w-full items-center justify-center border border-black bg-black px-4 py-3 text-sm font-medium text-white">CHECKOUT</DialogClose>
                     </div>
                 </section>
             </DialogContent>

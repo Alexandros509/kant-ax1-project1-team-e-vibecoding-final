@@ -142,10 +142,10 @@ export default function ProductDetail({ id }: ProductDetailProps) {
      */
     function handleAddToCart() {
         const variant=source?.variants.find(v=>String(v.id)===selectedSize);
-        if(!variant?.available){setMessage('Please select an available size.');return;}
+        if(!variant?.available){void track('feature_unavailable',id,{feature:'available_size_required'});setMessage('Please select an available size.');return;}
         const store=useCounterStore.getState();
         const existing=store.cartItems.find(i=>i.productVariantId===variant.id);
-        if(existing && existing.quantity>=10){setMessage('You can add up to 10 of each option.');return;}
+        if(existing && existing.quantity>=10){void track('feature_unavailable',id,{feature:'quantity_limit'});setMessage('You can add up to 10 of each option.');return;}
         store.setCartItems(items=>existing?items.map(i=>i.productVariantId===variant.id?{...i,quantity:i.quantity+1}:i):[...items,{id:variant.id,cartId:0,productVariantId:variant.id,quantity:1,unitPriceAtAdded:variant.price,productNameAtAdded:product!.name,optionTextAtAdded:`${variant.color} / ${variant.size}`,imageUrlAtAdded:source?.images[0]||null}]);
         void track('add_to_cart',id,{value:variant.price,items:[{item_id:String(id),item_name:product!.name,item_variant:`${variant.color} / ${variant.size}`,price:variant.price,quantity:1}]});
         setMessage(`Added to bag. (${variant.color} / ${variant.size})`);

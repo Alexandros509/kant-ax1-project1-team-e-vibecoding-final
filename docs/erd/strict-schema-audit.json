@@ -1,249 +1,176 @@
 {
-  "source": "https://www.erdcloud.com/d/hE52as4HR9aAepZTt",
-  "sourceSha256": "8505c4ecb3e2df235fe1ceac65f4f3575cbf4f90be9230cecb5dbd93e0099cb8",
-  "verifiedAt": "2026-10-20T10:08:27.693Z",
-  "tables": 26,
-  "columns": 159,
-  "foreignKeys": 31,
+  "source": "https://www.erdcloud.com/d/xsTNMswWjSpfBkN5L",
+  "sourceSha256": "41cae91f9d4287d25d70353c5e3f2a67fe2b1b15e6f6a0512801de8e9fc77318",
+  "verifiedAt": "2026-10-21T11:08:26.307Z",
+  "tables": 13,
+  "columns": 125,
+  "foreignKeys": 17,
   "tableColumns": {
-    "product_relations": [
-      "relation_type",
-      "source_color_id",
-      "target_color_id",
-      "sort_order"
-    ],
-    "product_images": [
+    "profiles": [
       "id",
-      "product_color_id",
-      "url",
-      "role",
-      "alt",
-      "sort_order"
-    ],
-    "orders": [
-      "id",
-      "customer_id",
-      "order_number",
-      "status",
-      "currency",
-      "total_amount",
-      "shipping_snapshot",
-      "placed_at",
-      "email",
-      "phone",
-      "subtotal_amount",
-      "discount_amount",
-      "shipping_amount",
-      "tax_amount",
-      "checkout_key"
-    ],
-    "brands": [
-      "id",
-      "code",
-      "name"
-    ],
-    "inventory_reservations": [
-      "id",
-      "order_item_id",
-      "variant_id",
-      "quantity",
-      "status",
-      "expires_at"
+      "display_name",
+      "created_at",
+      "updated_at"
     ],
     "products": [
       "id",
-      "brand_id",
-      "style_code",
+      "category_id",
       "name",
-      "description",
+      "detail",
+      "product_care",
+      "shipping",
+      "list_price",
+      "sale_price",
+      "is_new",
       "status",
-      "care",
-      "tags"
+      "sort_order",
+      "created_at",
+      "updated_at"
     ],
-    "shipments": [
+    "favorites": [
       "id",
-      "order_id",
-      "carrier",
-      "tracking_number",
-      "status",
-      "shipped_at",
-      "delivered_at"
+      "created_at",
+      "user_id",
+      "product_id"
     ],
-    "refunds": [
+    "payment_transactions": [
       "id",
       "payment_id",
-      "provider_refund_id",
-      "idempotency_key",
-      "amount",
+      "transaction_key",
+      "transaction_type",
       "status",
-      "refunded_at",
+      "amount",
+      "balance_amount",
+      "occurred_at",
+      "approval_number",
+      "cancel_reason",
+      "idempotency_key",
+      "created_at"
+    ],
+    "orders": [
+      "id",
+      "user_id",
+      "order_number",
+      "idempotency_key",
+      "status",
       "currency",
-      "reason"
+      "subtotal_amount",
+      "shipping_fee",
+      "total_amount",
+      "recipient_name",
+      "recipient_phone",
+      "postal_code",
+      "address_line1",
+      "address_line2",
+      "shipping_message",
+      "created_at",
+      "updated_at"
+    ],
+    "product_variants": [
+      "id",
+      "product_id",
+      "sku",
+      "size_label",
+      "stock_quantity",
+      "is_active",
+      "sort_order",
+      "created_at",
+      "updated_at"
+    ],
+    "carts": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at"
+    ],
+    "cart_items": [
+      "id",
+      "cart_id",
+      "product_variant_id",
+      "quantity",
+      "created_at",
+      "updated_at"
+    ],
+    "recent_product_views": [
+      "id",
+      "last_viewed_at",
+      "view_count",
+      "created_at",
+      "user_id",
+      "product_id"
+    ],
+    "product_images": [
+      "id",
+      "product_id",
+      "storage_path",
+      "original_name",
+      "mime_type",
+      "file_size",
+      "role",
+      "sort_order",
+      "alt_text",
+      "created_at",
+      "updated_at"
+    ],
+    "payments": [
+      "id",
+      "provider",
+      "environment",
+      "toss_order_id",
+      "payment_key",
+      "status",
+      "currency",
+      "total_amount",
+      "balance_amount",
+      "method",
+      "requested_at",
+      "approved_at",
+      "last_transaction_key",
+      "receipt_url",
+      "failure_code",
+      "failure_message",
+      "confirm_idempotency_key",
+      "created_at",
+      "updated_at",
+      "order_id"
     ],
     "order_items": [
       "id",
       "order_id",
-      "variant_id",
-      "product_snapshot",
+      "product_variant_id",
+      "product_name",
+      "option_text",
+      "sku",
+      "image_storage_path",
       "unit_price",
       "quantity",
-      "discount_amount"
-    ],
-    "carts": [
-      "id",
-      "customer_id",
-      "guest_token_hash",
-      "status",
-      "expires_at"
+      "line_total",
+      "created_at",
+      "updated_at"
     ],
     "categories": [
       "id",
       "parent_id",
-      "slug",
       "name",
-      "sort_order"
-    ],
-    "shipment_items": [
-      "shipment_id",
-      "order_item_id",
-      "quantity"
-    ],
-    "stores": [
-      "id",
-      "brand_id",
-      "name",
-      "address",
-      "image_url",
-      "map_url",
-      "opening_hours",
-      "is_active"
-    ],
-    "pages": [
-      "id",
-      "slug",
-      "locale",
-      "title",
-      "body",
-      "published_at"
-    ],
-    "product_variants": [
-      "id",
-      "product_color_id",
-      "sku",
-      "size",
-      "price",
-      "currency",
-      "is_active"
-    ],
-    "product_categories": [
-      "product_id",
-      "category_id"
-    ],
-    "archive_images": [
-      "id",
-      "archive_id",
-      "url",
-      "alt",
-      "sort_order"
-    ],
-    "payments": [
-      "id",
-      "order_id",
-      "provider",
-      "provider_payment_id",
-      "idempotency_key",
-      "amount",
-      "status",
-      "paid_at",
-      "currency"
-    ],
-    "customers": [
-      "id",
-      "auth_subject",
-      "email",
-      "name",
-      "phone",
-      "created_at"
-    ],
-    "collections": [
-      "id",
-      "brand_id",
-      "handle",
-      "title",
-      "season",
-      "status"
-    ],
-    "cart_items": [
-      "cart_id",
-      "variant_id",
-      "quantity"
-    ],
-    "collection_products": [
-      "collection_id",
-      "product_color_id",
-      "sort_order"
-    ],
-    "addresses": [
-      "id",
-      "customer_id",
-      "recipient",
-      "phone",
-      "postal_code",
-      "address",
-      "is_default"
-    ],
-    "archives": [
-      "id",
-      "brand_id",
-      "collection_id",
-      "slug",
-      "title",
-      "season",
-      "published_at"
-    ],
-    "inventories": [
-      "variant_id",
-      "on_hand",
-      "reserved",
+      "sort_order",
+      "is_active",
+      "created_at",
       "updated_at"
-    ],
-    "product_colors": [
-      "id",
-      "product_id",
-      "handle",
-      "color_name",
-      "color_hex",
-      "technical",
-      "size_guide",
-      "sort_order"
     ]
   },
   "rowCounts": {
-    "addresses": 0,
-    "archive_images": 0,
-    "archives": 0,
-    "brands": 1,
     "cart_items": 0,
     "carts": 0,
-    "categories": 19,
-    "collection_products": 0,
-    "collections": 0,
-    "customers": 0,
-    "inventories": 126,
-    "inventory_reservations": 0,
+    "categories": 21,
+    "favorites": 0,
     "order_items": 0,
     "orders": 0,
-    "pages": 0,
+    "payment_transactions": 0,
     "payments": 0,
-    "product_categories": 12,
-    "product_colors": 36,
-    "product_images": 108,
-    "product_relations": 0,
-    "product_variants": 126,
-    "products": 12,
-    "refunds": 0,
-    "shipment_items": 0,
-    "shipments": 0,
-    "stores": 0
+    "product_images": 1478,
+    "product_variants": 1280,
+    "products": 366,
+    "profiles": 0,
+    "recent_product_views": 0
   }
 }

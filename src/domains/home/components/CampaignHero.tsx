@@ -1,17 +1,77 @@
 'use client';
 
-import { useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore, type PointerEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useShop } from '@/components/ShopRuntime';
 import styles from './CampaignHero.module.scss';
 
+const VIDEO_SRC = '/campaign/campaign-video.mp4';
+const POSTER_SRC = '/campaign/campaign-poster.jpg';
+const LOGO_SRC = '/campaign/onepiece-logo.svg';
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+function subscribeReducedMotion(onChange: () => void) {
+    const media = window.matchMedia(REDUCED_MOTION_QUERY);
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+}
+
+function getCanPlayVideo() {
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    return !window.matchMedia(REDUCED_MOTION_QUERY).matches && !saveData;
+}
+
+function getServerCanPlayVideo() {
+    return false;
+}
+
 export function CampaignHero() {
     const { raw, track, loading, error } = useShop();
-    const jacket = raw.find(p => p.sourceUrl === '/demo/demo-01-ink');
-    const pants = raw.find(p => p.sourceUrl === '/demo/demo-09-ink');
+    const jacket = raw.find(p => p.available && p.images.some(url => url.endsWith('/outerJacketBlack.png'))) || raw.find(p => p.images.some(url => url.endsWith('/outerJacketBlack.png')));
+    const pants = raw.find(p => p.available && p.images.some(url => url.endsWith('/bottomPantsBlack.png'))) || raw.find(p => p.images.some(url => url.endsWith('/bottomPantsBlack.png')));
     const [outfitOpen, setOutfitOpen] = useState(true);
     const outfitTrigger = useRef<HTMLButtonElement>(null);
+    const [videoFailed, setVideoFailed] = useState(false);
+    const [manualPlayback, setManualPlayback] = useState(false);
+    const [playbackBlocked, setPlaybackBlocked] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const canPlayVideo = useSyncExternalStore(subscribeReducedMotion, getCanPlayVideo, getServerCanPlayVideo);
+    const showVideo = (canPlayVideo || manualPlayback) && !videoFailed;
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!showVideo || !video) return;
+        let live = true;
+        const resume = () => {
+            if (document.visibilityState === 'hidden' || !video.paused) return;
+            video.muted = true;
+            void video.play().then(() => { if (live) setPlaybackBlocked(false); })
+                .catch(() => { if (live) setPlaybackBlocked(true); });
+        };
+        video.addEventListener('canplay', resume);
+        video.addEventListener('loadeddata', resume);
+        document.addEventListener('visibilitychange', resume);
+        document.addEventListener('pointerdown', resume, { passive: true });
+        window.addEventListener('pageshow', resume);
+        resume();
+        return () => {
+            live = false;
+            video.removeEventListener('canplay', resume);
+            video.removeEventListener('loadeddata', resume);
+            document.removeEventListener('visibilitychange', resume);
+            document.removeEventListener('pointerdown', resume);
+            window.removeEventListener('pageshow', resume);
+        };
+    }, [showVideo]);
+
+    function startVideo() {
+        setManualPlayback(true);
+        setVideoFailed(false);
+        const video = videoRef.current;
+        if (video) void video.play().then(() => setPlaybackBlocked(false)).catch(() => setPlaybackBlocked(true));
+    }
+
     function openOutfit() {
         setOutfitOpen(true);
     }
@@ -31,8 +91,16 @@ export function CampaignHero() {
         <main className={styles.campaign} aria-label="ONEPIECE campaign" onPointerMove={handlePointerMove}
             onKeyDown={event => { if (event.key === 'Escape' && outfitOpen) closeOutfit(); }}>
             <div className={styles.mediaFrame}>
-                <Image className={styles.media} src="/demo/campaign.svg"
-                    alt="Original geometric illustration of a jacket and trousers" fill preload sizes="100vw" />
+                {/* Keep the existing campaign media; the mobile viewport crops around the model. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className={styles.media} src={POSTER_SRC}
+                    alt="ONEPIECE campaign model wearing a black outfit by the riverside" fetchPriority="high" />
+                {showVideo && <video ref={videoRef} preload="auto" className={styles.media}
+                    src={VIDEO_SRC} poster={POSTER_SRC} autoPlay muted loop playsInline aria-hidden="true" tabIndex={-1}
+                    onPlaying={() => setPlaybackBlocked(false)}
+                    onPause={() => { if (document.visibilityState === 'visible') setPlaybackBlocked(true); }}
+                    onError={() => setVideoFailed(true)} />}
+                {(!showVideo || playbackBlocked) && <button type="button" className={styles.playVideo} onClick={startVideo}>Play video ↗</button>}
                 <div className={styles.shade} aria-hidden="true" />
 
                 <div className={styles.mobileLook}>
@@ -55,17 +123,17 @@ export function CampaignHero() {
 
             {/* Desktop keeps its original composition and direct garment links. */}
             {jacket && <Link className={`${styles.hotspot} ${styles.jacket}`} data-track-action="open_product" data-track-item-id={jacket.id}
-                href={`/products/${jacket.id}`} aria-label="View demo Studio Jacket" onClick={() => void track('select_item', jacket.id)}>
+                href={`/products/${jacket.id}`} aria-label="View a similar ONEPIECE jacket" onClick={() => void track('select_item', jacket.id)}>
                 <span className={styles.caption}>Shop a similar jacket ↗</span>
             </Link>}
             {pants && <Link className={`${styles.hotspot} ${styles.pants}`} data-track-action="open_product" data-track-item-id={pants.id}
-                href={`/products/${pants.id}`} aria-label="View demo Wide Trousers" onClick={() => void track('select_item', pants.id)}>
+                href={`/products/${pants.id}`} aria-label="View similar ONEPIECE pants" onClick={() => void track('select_item', pants.id)}>
                 <span className={styles.caption}>Shop similar pants ↗</span>
             </Link>}
-            <span className={styles.lookNote}>FICTIONAL STORE · TEST PAYMENTS ONLY</span>
+            <span className={styles.lookNote}>SHOP THE LOOK · SIMILAR ITEMS</span>
             <section className={styles.discovery} aria-labelledby="brand-title">
-                <h1 id="brand-title">OnePiece</h1>
-                <div className={styles.sloganBox}><p className={styles.slogan}>A STUDY IN EVERYDAY FORM.</p></div>
+                <h1 id="brand-title"><Image className={styles.logo} src={LOGO_SRC} alt="OnePiece" width={1302} height={287} preload /></h1>
+                <div className={styles.sloganBox}><p className={styles.slogan}>ONEPIECE IS MASTER-PIECE.</p></div>
             </section>
             <div className={styles.crosslines} aria-hidden="true"><div className={styles.horizontal} /><div className={styles.vertical} /></div>
 

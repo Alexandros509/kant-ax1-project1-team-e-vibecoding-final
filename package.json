@@ -49,7 +49,7 @@
     "typescript": "^5"
   },
   "license": "UNLICENSED",
-  "description": "ONEPIECE team learning project: final source snapshot with synthetic catalog and local ERD database",
+  "description": "ONEPIECE UI test project with 366 local-media product cards, original AI campaign and the team ERD13 model",
   "engines": {
     "node": ">=22.0.0"
   }

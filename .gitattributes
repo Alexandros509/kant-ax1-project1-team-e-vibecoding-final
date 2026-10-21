@@ -1,0 +1,3 @@
+/public/images/products/*.png -text
+/public/campaign/*.mp4 -text
+/public/campaign/*.jpg -text

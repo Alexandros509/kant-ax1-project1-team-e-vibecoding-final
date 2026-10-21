@@ -29,7 +29,7 @@
 .playVideo{position:absolute;left:20px;top:16px;z-index:6;font-size:11px;text-decoration:underline;text-underline-offset:4px;cursor:pointer;color:white;background:#1116;padding:7px 10px}
 @media(max-width:600px){.caption{font-size:10px;padding:7px}.lookNote{top:8px;right:10px;font-size:7px}.playVideo{top:8px;left:10px;font-size:10px}}
 
-/* A nonmodal outfit sheet shares the viewport with the original campaign illustration. */
+/* A nonmodal outfit sheet shares the viewport with the existing campaign video. */
 .mediaFrame{position:absolute;inset:0;overflow:hidden}
 .mobileLook,.outfitSheet{display:none}
 

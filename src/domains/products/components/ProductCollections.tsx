@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Heart } from 'lucide-react';
-import { useShop } from '@/components/ShopRuntime';
+import { useShop, shopPost } from '@/components/ShopRuntime';
 import ProductCard from './ProductCard';
 import type { Product } from '@/domains/products/types/product.types';
 import styles from './ProductCollections.module.scss';
 
-const FAVORITES = 'demo-v1-onepiece-favorite-products';
-const RECENT = 'demo-v1-onepiece-recent-products';
+const FAVORITES = 'erd13-media-v3-onepiece-favorite-products';
+const RECENT = 'erd13-media-v3-onepiece-recent-products';
 const MAX_FAVORITES = 100;
 const MAX_RECENT = 12;
 
@@ -66,22 +66,39 @@ function ProductRow({ title, products, empty, saved, onToggle, action }: {
 }
 
 export default function ProductCollections({ currentId }: { currentId: number }) {
-    const { products } = useShop();
+    const { products, session } = useShop();
+    const registered = session?.registered === true;
     const [saved, setSaved] = useState<number[]>([]), [recent, setRecent] = useState<number[]>([]);
     const [ready, setReady] = useState(false), [storageError, setStorageError] = useState(false), [message, setMessage] = useState('');
     useEffect(() => {
         let live=true;
-        const load=async()=>{await Promise.resolve();if(!live)return;try{setSaved(readIds(FAVORITES,MAX_FAVORITES));setRecent(readIds(RECENT,MAX_RECENT));}catch{setStorageError(true);}setReady(true);};
-        try{const ids=[currentId,...readIds(RECENT,MAX_RECENT).filter(id=>id!==currentId)].slice(0,MAX_RECENT);localStorage.setItem(RECENT,JSON.stringify(ids));}catch{}
+        const load=async()=>{
+            await Promise.resolve();if(!live)return;
+            try{
+                if(registered){
+                    const result=await shopPost('recent-view',{productId:currentId});
+                    if(live){setSaved(result.favorites);setRecent(result.recent);}
+                }else{
+                    const ids=[currentId,...readIds(RECENT,MAX_RECENT).filter(id=>id!==currentId)].slice(0,MAX_RECENT);
+                    localStorage.setItem(RECENT,JSON.stringify(ids));
+                    setSaved(readIds(FAVORITES,MAX_FAVORITES));setRecent(ids);
+                }
+            }catch{if(live)setMessage('We could not load your saved items.');}
+            if(live)setReady(true);
+        };
         void load();
-        const update=()=>void load();window.addEventListener('storage',update);
+        const update=()=>{if(!registered)void load();};window.addEventListener('storage',update);
         return()=>{live=false;window.removeEventListener('storage',update);};
-    },[currentId]);
-    function toggleFavorite(id:number){
-        if(!ready)return;setMessage('');let latest=saved;try{latest=readIds(FAVORITES,MAX_FAVORITES);}catch{setStorageError(true);}
+    },[currentId,registered]);
+    async function toggleFavorite(id:number){
+        if(!ready)return;setMessage('');let latest=saved;
+        if(!registered)try{latest=readIds(FAVORITES,MAX_FAVORITES);}catch{setStorageError(true);}
         const removing=latest.includes(id);if(!removing&&latest.length>=MAX_FAVORITES){setMessage('You can save up to 100 products.');return;}
         const next=removing?latest.filter(value=>value!==id):[id,...latest];setSaved(next);
-        try{localStorage.setItem(FAVORITES,JSON.stringify(next));setMessage(removing?'Removed from your wishlist.':'Saved in this browser.');}catch{setStorageError(true);setMessage('This selection cannot be saved in this browser.');}
+        try{
+            if(registered){const result=await shopPost('favorite',{productId:id,enabled:!removing});setSaved(result.favorites);setMessage(removing?'Removed from your wishlist.':'Saved to your account.');}
+            else{localStorage.setItem(FAVORITES,JSON.stringify(next));setMessage(removing?'Removed from your wishlist.':'Saved in this browser.');}
+        }catch{setSaved(latest);setMessage('We could not save this selection. Please try again.');}
     }
     const findProducts=(ids:number[])=>ids.flatMap(id=>{const product=products.find(p=>p.id===id);return product?[product]:[];});
     const isSaved=saved.includes(currentId);

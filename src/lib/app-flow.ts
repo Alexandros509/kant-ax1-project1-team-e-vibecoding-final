@@ -32,6 +32,8 @@ export const UI_TARGETS = [
     'back',
     'outfit_open',
     'outfit_close',
+    'grid_change',
+    'view_cart_link',
     'outfit_jacket',
     'outfit_pants',
 ] as const;

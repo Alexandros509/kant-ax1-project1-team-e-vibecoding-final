@@ -10,18 +10,18 @@ Any broader reuse or redistribution must follow applicable rights and obtain aut
 GitHub’s contractual viewing/forking functions are distinct from a general software license.
 The `UNLICENSED` npm metadata prevents an accidental implied package license; it does not override dependency licenses.
 
-## Publication-created fixture and artwork
-`data/products.json`, `public/demo/**/*.svg`, `public/brand/wordmark.svg` and `src/app/icon.svg`
-were newly constructed for this snapshot using generic geometry and fictional text.
-No third-party photo, campaign frame, video, product description, brand logo, font file or raw crawl was used to create them.
-This provenance statement does not assert exclusive rights over generic shapes, fonts or names and does not grant a blanket license.
-The word ONEPIECE identifies a fictional classroom project, not a claim to an existing trademark or entertainment franchise.
+## Current catalog and project media
+The current data/products.json uses fictional names and contains no reference-brand descriptions or external product-media URLs. Its order/category/size/price/availability parameters were adapted from the local 366-card test catalog.
 
-The official Kakao Login button is a separately identified provider asset, not part of this original-artwork claim. See THIRD_PARTY_NOTICES.md and its manifest entry.
+The 59 PNGs under public/images/products are the exact files explicitly provided by the maintainer for copying, repeated product use and GitHub publication on 2026-10-21. This records the maintainer's request and file provenance; it does not independently assert the original authorship or all third-party rights of those images.
+
+The maintainer explicitly identified the main campaign video as their own AI production and requested its restoration. public/campaign contains that unchanged video, its existing poster and project wordmark. It is not described as a SAN SAN GEAR crawl. Generation-service terms and any relevant rights remain applicable; this notice does not impose a blanket license on supplied media.
+
+The older geometric product/campaign SVG replacements were removed from the current working tree. Remaining generic project artwork and the official Kakao Login button have separate entries in docs/asset-manifest.json. Kakao retains its provider-asset rights; see THIRD_PARTY_NOTICES.md.
 
 ## Excluded materials
-Reference-store product photos, campaign images/video, reference logos, collected product copy, source HTML/JSON,
-original screenshots containing those materials, AI campaign media with unverified distribution terms,
+Reference-store product photos, reference-store campaign images/video, reference logos, collected product copy, original source HTML/JSON,
+original screenshots containing those reference materials,
 real databases, user/order/payment rows, backup archives and credentials are not part of this repository.
 External image hotlinking is not used as a substitute for permission. Do not add those files or URLs in later commits.
 

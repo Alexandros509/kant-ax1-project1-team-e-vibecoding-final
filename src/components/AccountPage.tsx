@@ -38,7 +38,7 @@ export default function AccountPage({ join = false }: { join?: boolean }) {
         try {
             await shopPost('logout');
             useCounterStore.getState().setCartItems(() => []);
-            localStorage.removeItem('demo-v1-onepiece-pending-order');
+            localStorage.removeItem('erd13-media-v3-onepiece-pending-order');
             await refresh();
             router.replace('/login');
         } catch (error) {

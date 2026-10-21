@@ -56,7 +56,7 @@ export default function CartItemList({
                             {/* 최소 수량을 1개로 유지하도록, 1개일 때 감소 버튼을 비활성화한다. */}
                             <button
                                 type="button"
-                                data-track-action="cart_decrease" aria-label="Decrease quantity"
+                                data-track-action="cart_decrease" data-track-option-id={item.productVariantId} data-track-quantity={item.quantity-1} aria-label="Decrease quantity"
                                 className="min-h-10 min-w-10 rounded border px-3 py-1 disabled:opacity-40"
                                 disabled={item.quantity <= 1}
                                 onClick={() => onDecreaseQuantity(item.id)}
@@ -70,7 +70,7 @@ export default function CartItemList({
 
                             <button
                                 type="button"
-                                data-track-action="cart_increase" aria-label="Increase quantity"
+                                data-track-action="cart_increase" data-track-option-id={item.productVariantId} data-track-quantity={item.quantity+1} aria-label="Increase quantity"
                                 className="min-h-10 min-w-10 rounded border px-3 py-1"
                                 onClick={() => onIncreaseQuantity(item.id)}
                             >
@@ -79,7 +79,7 @@ export default function CartItemList({
 
                             <button
                                 type="button"
-                                data-track-action="cart_remove" aria-label={`${item.productNameAtAdded} REMOVE`}
+                                data-track-action="cart_remove" data-track-option-id={item.productVariantId} data-track-quantity={item.quantity} aria-label={`${item.productNameAtAdded} REMOVE`}
                                 className="min-h-10 min-w-10 rounded border px-3 py-1 text-sm"
                                 onClick={() => onRemoveItem(item.id)}
                             >

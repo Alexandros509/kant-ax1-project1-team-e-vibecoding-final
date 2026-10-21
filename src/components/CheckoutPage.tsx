@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { browserExecutionSurface, flowParameters } from '@/lib/app-flow';
 import { reportFlowPreview } from '@/lib/flow-preview-events';
 import { appPreviewHref } from '@/lib/checkout-context';
+import { analyticsPageLocation } from '@/lib/analytics-contract';
 import useAppFlow from '@/shared/hooks/useAppFlow';
 import { useShop, shopPost, basketPayload } from './ShopRuntime';
 import useCounterStore from '@/shared/store/useCounterStore';
@@ -91,13 +92,14 @@ export default function CheckoutPage({
                 });
                 number = result.orderNumber;
                 useCounterStore.getState().setCartItems(() => []);
-                localStorage.removeItem('demo-v1-onepiece-pending-order');
+                localStorage.removeItem('erd13-media-v3-onepiece-pending-order');
                 if (
                     session.consent &&
-                    !localStorage.getItem('demo-v1-ga-purchase-' + number)
+                    !localStorage.getItem('erd13-media-v3-ga-purchase-' + number)
                 ) {
                     window.gtag?.('event', 'purchase', {
                         transaction_id: number,
+                        page_location: analyticsPageLocation(location.origin, location.pathname),
                         value: result.total,
                         currency: 'KRW',
                         ...flowParameters(browserExecutionSurface()),
@@ -112,7 +114,7 @@ export default function CheckoutPage({
                         'purchase',
                         /^G-[A-Z0-9]+$/.test(session.gaId) && !!window.gtag,
                     );
-                    localStorage.setItem('demo-v1-ga-purchase-' + number, '1');
+                    localStorage.setItem('erd13-media-v3-ga-purchase-' + number, '1');
                 }
                 history.replaceState(
                     null,
@@ -154,7 +156,7 @@ export default function CheckoutPage({
             let pending: null | { fingerprint: string; key: string } = null;
             try {
                 pending = JSON.parse(
-                    localStorage.getItem('demo-v1-onepiece-pending-order') || 'null',
+                    localStorage.getItem('erd13-media-v3-onepiece-pending-order') || 'null',
                 );
             } catch {}
             const key =
@@ -162,7 +164,7 @@ export default function CheckoutPage({
                     ? pending.key
                     : crypto.randomUUID();
             localStorage.setItem(
-                'demo-v1-onepiece-pending-order',
+                'erd13-media-v3-onepiece-pending-order',
                 JSON.stringify({ fingerprint, key }),
             );
             await shopPost('cart', { items: basket });

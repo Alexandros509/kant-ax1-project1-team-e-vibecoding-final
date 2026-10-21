@@ -41,7 +41,7 @@ export default function ProductList({products}:{products:Product[]}){
 
  return <section aria-label="Products">
   <div id="top" className={styles.toolbar}>
-   <div className={styles.columns} role="group" aria-label="Product columns">{['3','4','6'].map(value=><button type="button" key={value} aria-label={`${value} columns`} aria-pressed={grid===value} onClick={()=>setGrid(value)}>{value}</button>)}</div>
+   <div className={styles.columns} role="group" aria-label="Product columns">{['3','4','6'].map(value=><button type="button" key={value} data-track-action="grid_change" data-track-value={value} aria-label={`${value} columns`} aria-pressed={grid===value} onClick={()=>setGrid(value)}>{value}</button>)}</div>
    <div className={styles.menus}>
     <nav ref={primary} className={`${styles.menu} ${styles.primary}`} aria-label="Product categories"><ul><li>{categoryLink(null,'ALL',!category,!category)}</li>{tops.map(c=><li key={c.id}>{categoryLink(c.id,c.name,topId===c.id,category?.id===c.id)}</li>)}</ul></nav>
     {children.length>0&&<nav ref={secondary} className={styles.menu} aria-label="Product subcategories"><ul><li>{categoryLink(topId,'ALL',category?.id===topId,category?.id===topId)}</li>{children.map(c=><li key={c.id}>{categoryLink(c.id,c.name,category?.id===c.id,category?.id===c.id)}</li>)}</ul></nav>}

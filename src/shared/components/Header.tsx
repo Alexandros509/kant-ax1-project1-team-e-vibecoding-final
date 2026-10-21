@@ -100,7 +100,7 @@ export default function Header() {
                             <div className="flex flex-col gap-3">
                                 <p className="mb-2 text-neutral-400">SHOP</p>
                                 <Link
-                                    href={catalogHref(null)}
+                                    data-track-action="select_category" href={catalogHref(null)}
                                     className="hover:underline"
                                 >
                                     ALL PRODUCTS
@@ -218,7 +218,7 @@ export default function Header() {
                     </div>
                 </nav>
 
-                <Link href="/" className="relative mx-auto block h-15 w-18 sm:w-40">
+                <Link href="/" data-track-action="nav_home" className="relative mx-auto block h-15 w-18 sm:w-40">
                     {/*
                      * 홈으로 이동하는 중앙 로고 링크를 표시함
                      * relative: fill 이미지의 위치와 크기 기준을 설정함
@@ -258,10 +258,10 @@ export default function Header() {
                     </button>
 
                     {/* JOIN 문구를 표시하며 현재 href="/login"으로 로그인 페이지에 연결됨 */}
-                    <Link href="/join">{session?.member?'MY':'JOIN'}</Link>
+                    <Link href="/join" data-track-action="nav_account">{session?.member?'MY':'JOIN'}</Link>
 
                     {/* LOGIN 문구를 표시하며 href="/login"으로 로그인 페이지에 연결됨 */}
-                    <Link href="/login">{session?.member?'ACCOUNT':'LOGIN'}</Link>
+                    <Link href="/login" data-track-action="nav_account">{session?.member?'ACCOUNT':'LOGIN'}</Link>
 
                     <CartDrawer totalQuantity={totalQuantity} />
                 </nav>
