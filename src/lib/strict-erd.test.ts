@@ -60,14 +60,20 @@ test('guest cart stays outside member tables; verified login merges once, member
 
 test('Kakao state is bound/one-time and Toss uses new payment/transaction fields with safe approval, retry and cancellation reconciliation',async()=>{
  const db=await getDb(),originalFetch=globalThis.fetch;
+ const environmentKeys=['APP_ORIGIN','KAKAO_REST_API_KEY','KAKAO_CLIENT_SECRET','TOSS_CLIENT_KEY','TOSS_SECRET_KEY'] as const;
+ const originalEnvironment=environmentKeys.map(key=>[key,process.env[key]] as const);
  try{
-  process.env.KAKAO_REST_API_KEY='unit-test';process.env.TOSS_CLIENT_KEY='test_ck_unit';process.env.TOSS_SECRET_KEY='test_sk_unit';
+  // Build-host credentials and callback settings must never control mocked provider tests.
+  process.env.APP_ORIGIN='https://onepiece.test';process.env.KAKAO_REST_API_KEY='unit-test';process.env.KAKAO_CLIENT_SECRET='unit-secret';process.env.TOSS_CLIENT_KEY='test_ck_unit';process.env.TOSS_SECRET_KEY='test_sk_unit';
+  assert.equal(providerConfig().tossConfigured,true);
   const guest=await createSession(),other=await createSession();const url=new URL(await startKakao(guest.session,'/app-preview'));let calls=0;
+  assert.equal(url.searchParams.get('redirect_uri'),'https://onepiece.test/api/auth/kakao/callback');
   globalThis.fetch=async input=>{calls++;return Response.json(String(input).includes('/token')?{access_token:'mock'}:{id:123456});};
   await assert.rejects(()=>finishKakao(other.session,url.searchParams.get('state')!,'code'));assert.equal(calls,0);
   const login=await finishKakao(guest.session,url.searchParams.get('state')!,'code'),s=login.session;assert.equal(login.returnTo,'/app-preview');assert.equal(await findSession(guest.token),null);await assert.rejects(()=>finishKakao(s,url.searchParams.get('state')!,'code'));
   const product=(await catalog()).find(p=>p.available)!,variant=product.variants.find(v=>v.available)!;
   const request={items:[{variantId:variant.id,quantity:1}],key:randomUUID()};const order=await prepareToss(s,request);assert.equal((await prepareToss(s,request)).paymentOrderId,order.paymentOrderId);
+  assert.equal(order.successUrl,'https://onepiece.test/checkout/success');assert.equal(order.failUrl,'https://onepiece.test/checkout/fail');
   const approved={status:'DONE',orderId:order.paymentOrderId,paymentKey:'p'.repeat(200),totalAmount:order.total,balanceAmount:order.total,currency:'KRW',lastTransactionKey:'approval-1',approvedAt:'2026-10-21T18:00:00+09:00',method:'카드'};
   const body={orderId:order.paymentOrderId,paymentKey:approved.paymentKey,amount:order.total};let sentKey='';calls=0;
   globalThis.fetch=async(_url,init)=>{calls++;const key=(init?.headers as Record<string,string>)['Idempotency-Key'];if(sentKey)assert.equal(key,sentKey);else sentKey=key;return calls===1?Response.json({code:'TEMPORARY_ERROR'},{status:500}):Response.json(approved);};
@@ -86,5 +92,9 @@ test('Kakao state is bound/one-time and Toss uses new payment/transaction fields
   const retryRequest={items:[{variantId:variant.id,quantity:1}],key:randomUUID()},first=await prepareToss(s,retryRequest);globalThis.fetch=async()=>Response.json({code:'FAIL'},{status:400});await assert.rejects(()=>confirmToss(s,{orderId:first.paymentOrderId,paymentKey:'aborted-key',amount:first.total}));
   globalThis.fetch=async()=>Response.json({status:'ABORTED',orderId:first.paymentOrderId,paymentKey:'aborted-key',totalAmount:first.total,currency:'KRW'});await refreshToss(s,{orderId:first.paymentOrderId});const retry=await prepareToss(s,retryRequest);assert.equal(retry.orderNumber,first.orderNumber);assert.notEqual(retry.paymentOrderId,first.paymentOrderId);
   process.env.TOSS_SECRET_KEY='live_sk_forbidden';assert.equal(providerConfig().tossConfigured,false);await assert.rejects(()=>prepareToss(s,request));
- }finally{globalThis.fetch=originalFetch;await db.close();globalThis.onepieceDb=undefined;}
+ }finally{
+  globalThis.fetch=originalFetch;
+  for(const [key,value]of originalEnvironment){if(value===undefined)delete process.env[key];else process.env[key]=value;}
+  await db.close();globalThis.onepieceDb=undefined;
+ }
 });

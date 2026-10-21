@@ -13,6 +13,13 @@ This section supersedes the earlier catalog/schema/media counts below. Earlier r
 
 - Final publication checks passed for 207 indexed files and 66 manifest-listed assets. The exact private provider-key comparison also passed without printing or copying the values. Credentials, DB files, backups and reference-store media are excluded.
 
+## Build-environment regression — 2026-10-21
+
+- The provider integration test inherited APP_ORIGIN from the build host while only substituting test API keys. A malformed inherited origin (for example an HTTPS address with a trailing slash) reproduced the reported prepareToss failure before the fix.
+- The mocked provider test now saves, sets and restores all five provider configuration variables, including a fixed HTTPS test origin and fake Kakao Client Secret. Assertions verify that both OAuth and payment callback URLs use the controlled test origin. No real provider request is made.
+- Runtime origin/key validation and the prebuild test gate remain enabled. Tests explicitly retain rejection of trailing-slash origins and values that accidentally include APP_ORIGIN= in the value field. A passing mocked test does not validate the Vercel project's actual secret values, callback registration or DB/session setup.
+- The previously failing tests passed after the fix with deliberately invalid inherited origin and provider-key values. The full 17-test suite and production build were then checked under the same inherited settings. Existing UI/media/schema behavior was not changed.
+
 ---
 
 # Publication verification — 2026-10-20

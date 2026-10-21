@@ -15,6 +15,7 @@ test('Toss setup rejects live/widget keys and invalid origins without returning 
         APP_ORIGIN: 'http://127.0.0.1:3019',
     };
     assert.equal(tossConfiguration(env).configured, true);
+    assert.equal(tossConfiguration({...env, APP_ORIGIN: 'https://onepiece.test'}).configured, true);
     for (const change of [
         { TOSS_SECRET_KEY: 'live_sk_example' },
         {
@@ -23,6 +24,8 @@ test('Toss setup rejects live/widget keys and invalid origins without returning 
         },
         { APP_ORIGIN: 'http://example.com' },
         { APP_ORIGIN: 'http://127.0.0.1:3019/' },
+        { APP_ORIGIN: 'https://onepiece.test/' },
+        { APP_ORIGIN: 'APP_ORIGIN=https://onepiece.test' },
         { TOSS_SECRET_KEY: '' },
     ])
         assert.equal(
