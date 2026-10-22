@@ -16,7 +16,7 @@ Success/failure URLs are built from APP_ORIGIN: /checkout/success and /checkout/
 
 ## Why the button is disabled
 
-The page lists unmet conditions. Sign in with Kakao, put an available size in the bag, configure valid test keys, and acknowledge the test-payment notice. The UI review mode ?preview=A/B disables payment. There is no login bypass or fake success button.
+The page lists unmet conditions. Log in with an existing OnePiece email/password account, put an available size in the bag, configure valid test keys, and acknowledge the test-payment notice. The UI review mode ?preview=A/B disables payment. There is no login bypass or fake success button.
 
 Prices are loaded from the DB and checked again on the server. The redirect callback is confirmed against the provider before success is stored. Repeated confirmations must not create a second order or charge. After changing keys, validate with one authorized test payment and verify its test status/history in the provider console; format checks and mocked unit tests do not replace that test.
 

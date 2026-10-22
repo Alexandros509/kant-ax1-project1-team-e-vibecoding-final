@@ -3,14 +3,15 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 process.env.LOCAL_DB_PATH='memory://';
 process.env.VERCEL='0'; // These tests intentionally exercise local ERD persistence.
+import {stableId} from './catalog-source';
 import {getDb} from './db';
 import {createSession,syncCart,updateCollection,catalog} from './shop-server';
-import {linkKakao} from './providers';
+import {linkVerifiedMember} from './providers';
 
 test('optional Supabase RLS SQL isolates member rows and prevents direct browser writes to payments',async()=>{
  const db=await getDb();try{
-  const one=(await linkKakao((await createSession()).session,'rls-one')).session;
-  const two=(await linkKakao((await createSession()).session,'rls-two')).session;
+  const one=(await testMember((await createSession()).session,'rls-one')).session;
+  const two=(await testMember((await createSession()).session,'rls-two')).session;
   const p=(await catalog()).find(p=>p.available)!,v=p.variants.find(v=>v.available)!;
   await syncCart(one,[{variantId:v.id,quantity:1}]);await syncCart(two,[{variantId:v.id,quantity:2}]);
   await updateCollection(one,{action:'favorite',productId:p.id,enabled:true});
@@ -31,3 +32,5 @@ test('optional Supabase RLS SQL isolates member rows and prevents direct browser
   await db.exec('RESET ROLE');
  }finally{await db.close();globalThis.onepieceDb=undefined;}
 });
+
+function testMember(s:Parameters<typeof linkVerifiedMember>[0],subject:string){return linkVerifiedMember(s,{id:stableId('verified-unit-member',subject),name:'Unit member'});}

@@ -138,8 +138,8 @@ export default function ShopRuntime({
                     const browserSaved = JSON.parse(
                         localStorage.getItem('erd13-media-v3-onepiece-original-cart') || '[]',
                     );
-                    const saved = s.registered ? (s.cart || []).map(i => ({productVariantId:i.variantId,quantity:i.quantity})) : browserSaved;
-                    if(!s.registered && Array.isArray(saved) && !previewRef.current) {
+                    const saved = s.registered && s.cartPersistence !== 'browser' ? (s.cart || []).map(i => ({productVariantId:i.variantId,quantity:i.quantity})) : browserSaved;
+                    if((!s.registered || s.cartPersistence === 'browser') && Array.isArray(saved) && !previewRef.current) {
                         void shopPost('cart',{items:saved.filter(i=>Number.isSafeInteger(i?.productVariantId)&&Number.isInteger(i?.quantity)&&i.quantity>0&&i.quantity<=10).slice(0,50).map(i=>({variantId:i.productVariantId,quantity:i.quantity}))}).catch(()=>{});
                     }
                     if (Array.isArray(saved))
@@ -407,8 +407,8 @@ export default function ShopRuntime({
             ) : session && !session.consent ? (
                 <div className="onepiece-consent-banner fixed inset-x-0 bottom-15 z-40 flex flex-wrap items-center justify-between gap-2 border-t bg-white/95 px-5 py-2 text-[10px]">
                     <span>
-                        Demo store · No real charges. With your consent, we
-                        record product views, bag activity and test orders.
+                        With your consent, we use analytics to improve your
+                        shopping experience.
                     </span>
                     <button
                         className="border border-black px-3 py-1"

@@ -22,7 +22,7 @@ export const UI_TARGETS = [
     'tab_shipping',
     'add_to_cart',
     'checkout_open',
-    'kakao_login',
+    'login_submit',
     'join_open',
     'cart_increase',
     'cart_decrease',

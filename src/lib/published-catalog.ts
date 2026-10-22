@@ -1,5 +1,5 @@
 import { catalogSource, sourceCategory, sourceOption } from './catalog-source';
-import { catalogCategoryId } from './catalog-adapter';
+import { catalogCategoryId, storefrontProductName } from './catalog-adapter';
 import type { CatalogProduct } from './shop-model';
 
 // Public, immutable release data: browsing never creates a writable DB on Vercel.
@@ -19,7 +19,7 @@ export async function publishedCatalog(): Promise<CatalogProduct[]> {
                 color: option.color, size: option.size, price, available: variant.available};
         });
         return {
-            id, name: product.title, brand: 'ONEPIECE', category,
+            id, name: storefrontProductName(product.title), brand: 'ONEPIECE', category,
             categoryId: Number(catalogCategoryId(category)),
             color: sourceOption(product, product.variants[0]).color,
             price, listPrice: price, available: variants.some(variant => variant.available),

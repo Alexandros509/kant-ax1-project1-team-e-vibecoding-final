@@ -141,28 +141,25 @@
     margin-top: 24px;
 }
 
-.kakaoButton {
+.passwordField {
     display: block;
-    width: 336px;
-    max-width: 100%;
-    min-height: 44px;
-    padding: 0;
-    margin: 18px auto;
-    border: 0;
-    background: transparent;
-    line-height: 0;
+    position: relative;
+}
+.passwordField input {
+    padding-right: 68px;
+}
+.passwordToggle {
+    position: absolute;
+    right: 14px;
+    top: 8px;
+    bottom: 0;
+    font-size: 11px;
+    color: #666;
     cursor: pointer;
+    min-width: 40px;
 }
-.kakaoButton:focus-visible {
-    outline: 2px solid #111;
-    outline-offset: 4px;
-    border-radius: 8px;
-}
-.kakaoButton:disabled {
-    cursor: not-allowed;
-}
-.kakaoArtwork {
-    display: block;
-    width: 100%;
-    height: auto;
+.passwordToggle:focus-visible,
+.form input:focus-visible {
+    outline: 2px solid #777;
+    outline-offset: 3px;
 }

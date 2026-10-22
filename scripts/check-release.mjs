@@ -1,7 +1,9 @@
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-const indexed=name=>execFileSync('git',['show',`:${name}`],{maxBuffer:16*1024*1024});
-const files=execFileSync('git',['ls-files','-z'],{encoding:'utf8'}).split('\0').filter(Boolean);
+import {readFileSync,existsSync} from 'node:fs';
+const working=process.argv.includes('--working-tree');
+const indexed=name=>working?readFileSync(name):execFileSync('git',['show',`:${name}`],{maxBuffer:16*1024*1024});
+const files=[...new Set(execFileSync('git',working?['ls-files','--cached','--others','--exclude-standard','-z']:['ls-files','-z'],{encoding:'utf8'}).split('\0').filter(name=>name&&(!working||existsSync(name))))];
 const manifest=JSON.parse(indexed('docs/asset-manifest.json').toString('utf8'));
 const assets=new Map(manifest.assets.map(a=>[a.path,a]));
 const errors=[],fail=(file,reason)=>errors.push(`${file}: ${reason}`);
@@ -63,4 +65,4 @@ if(files.includes('supabase/seed.sql')){
  if(/https?:\/\//i.test(sql))fail('supabase/seed.sql','external content URL');
 }
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
-console.log(`Publication checks passed: ${files.length} staged files, ${manifest.assets.length} manifest-listed assets, 366 cards and 59 local product images. Not a legal or exhaustive secret audit.`);
+console.log(`Publication checks passed: ${files.length} reviewed files (${working?'working tree':'index'}), ${manifest.assets.length} manifest-listed assets, 366 cards and 59 local product images. Not a legal or exhaustive secret audit.`);

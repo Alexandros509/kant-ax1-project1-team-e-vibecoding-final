@@ -55,7 +55,7 @@ export default function CheckoutPage({
             name: 'Test recipient',
             phone: '000-0000-0000',
             zipcode: '00000',
-            address: 'Demo address (no shipping)',
+            address: 'Test address (no shipping)',
             address2: '',
             memo: '',
         }),
@@ -63,7 +63,7 @@ export default function CheckoutPage({
     const paymentRequirements = !session
         ? ['Loading checkout…']
         : [
-              ...(!session.member ? ['Sign in with Kakao to continue.'] : []),
+              ...(!session.member ? ['Log in with your OnePiece account to continue.'] : []),
               ...(!session.tossConfigured
                   ? ['Test payments are currently unavailable.']
                   : []),
@@ -272,7 +272,7 @@ export default function CheckoutPage({
                     <section>
                         <h2>Delivery address</h2>
                         <p className={styles.hint}>
-                            Use demo details for this test order. No items will
+                            Use sample details for this test order. No items will
                             be shipped.
                         </p>
                         <div className={styles.row}>
@@ -287,7 +287,7 @@ export default function CheckoutPage({
                     <section>
                         <h2>Delivery method</h2>
                         <div className={styles.option}>
-                            Demo delivery <span>Free</span>
+                            Delivery <span>Free</span>
                         </div>
                     </section>
                     <section>
@@ -348,7 +348,7 @@ export default function CheckoutPage({
                             </ul>
                             {session && !session.member && (
                                 <Link href={returnHref('/login')}>
-                                    Log in with Kakao →
+                                    Log in →
                                 </Link>
                             )}
                         </div>

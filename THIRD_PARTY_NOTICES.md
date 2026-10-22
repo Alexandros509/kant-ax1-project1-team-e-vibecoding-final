@@ -22,6 +22,8 @@ This inventory reports package metadata, not a legal conclusion about every file
 
 - `@base-ui/react` 1.9.0: MIT.
 - `@electric-sql/pglite` 0.5.10: Apache-2.0.
+- `@supabase/ssr` 0.12.7: MIT.
+- `@supabase/supabase-js` 2.118.0: MIT.
 - `@tailwindcss/turbopack` 4.3.3: MIT.
 - `@types/node` 20.19.43: MIT.
 - `@types/react` 19.3.0: MIT.
@@ -46,13 +48,12 @@ This inventory reports package metadata, not a legal conclusion about every file
 - `typescript` 5.9.3: Apache-2.0.
 - `zustand` 5.0.15: MIT.
 
-Kakao and Toss Payments are optional external integrations, not code or assets relicensed by this project.
+Supabase Auth and Toss Payments are external integrations, not code or assets relicensed by this project.
 Their SDK/API terms and trademarks remain applicable.
 
-## Official Kakao Login button
+## Retired Kakao resource
 
-`public/auth/kakao/kakao_login_en_large.svg` is the unchanged official English Kakao Login button, supplied by the maintainer from the provider design resources. It is used only to identify the Kakao sign-in action, including its unavailable state.
-Kakao retains the artwork and trademark rights; it is not original ONEPIECE artwork and is not relicensed with this project. Follow the [Kakao Login design guide](https://developers.kakao.com/docs/ko/kakaologin/design-guide) for any later use, scaling or modification. Its checksum and provenance are recorded in `docs/asset-manifest.json`. This integration does not imply endorsement.
+The official Kakao button was removed from the current tree when email login replaced the provider. Historical commits retain the prior attribution and provenance record. This change does not relicense that artwork.
 
 ## Maintainer-supplied media
 

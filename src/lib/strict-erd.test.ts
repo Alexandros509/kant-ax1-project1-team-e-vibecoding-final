@@ -4,11 +4,12 @@ import {readFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
 process.env.LOCAL_DB_PATH='memory://';
 process.env.VERCEL='0'; // These tests intentionally exercise local ERD persistence.
+import {stableId} from './catalog-source';
 import {getDb,verifySchema,schemaColumns} from './db';
 import {catalogSource} from './catalog-source';
 import {publishedCatalog} from './published-catalog';
 import {catalog,createSession,findSession,syncCart,savedCart,collections,updateCollection,checkout,receipt,changeConsent,recordEvent} from './shop-server';
-import {linkKakao,startKakao,finishKakao,prepareToss,confirmToss,refreshToss,providerConfig} from './providers';
+import {linkVerifiedMember,prepareToss,confirmToss,refreshToss,providerConfig} from './providers';
 
 test('current shared ERD has 13 public tables, 125 columns and 17 relationships; catalog has 366 local-image products',async()=>{
  const db=await getDb();try{
@@ -37,11 +38,11 @@ test('guest cart stays outside member tables; verified login merges once, member
   const product=(await catalog()).find(p=>p.available)!,variant=product.variants.find(v=>v.available)!;
   const guest=await createSession();await syncCart(guest.session,[{variantId:variant.id,quantity:2}]);
   assert.equal((await db.query('SELECT * FROM carts')).rows.length,0);
-  const login=await linkKakao(guest.session,'cart-owner'),s=login.session;assert.equal(await findSession(guest.token),null);
+  const login=await testMember(guest.session,'cart-owner'),s=login.session;assert.equal(await findSession(guest.token),null);
   assert.deepEqual(await savedCart(s),[{variantId:variant.id,quantity:2}]);
-  const nextGuest=await createSession();await syncCart(nextGuest.session,[{variantId:variant.id,quantity:3}]);const second=await linkKakao(nextGuest.session,'cart-owner');
+  const nextGuest=await createSession();await syncCart(nextGuest.session,[{variantId:variant.id,quantity:3}]);const second=await testMember(nextGuest.session,'cart-owner');
   assert.equal(second.session.user_id,s.user_id);assert.deepEqual(await savedCart(second.session),[{variantId:variant.id,quantity:5}]);
-  const other=await linkKakao((await createSession()).session,'different-owner');assert.deepEqual(await savedCart(other.session),[]);
+  const other=await testMember((await createSession()).session,'different-owner');assert.deepEqual(await savedCart(other.session),[]);
   await updateCollection(s,{action:'favorite',productId:product.id,enabled:true});await updateCollection(s,{action:'favorite',productId:product.id,enabled:true});
   await updateCollection(s,{action:'recent-view',productId:product.id});await updateCollection(s,{action:'recent-view',productId:product.id});
   assert.deepEqual(await collections(s),{favorites:[product.id],recent:[product.id]});assert.deepEqual(await collections(other.session),{favorites:[],recent:[]});
@@ -61,19 +62,17 @@ test('guest cart stays outside member tables; verified login merges once, member
  }finally{await db.close();globalThis.onepieceDb=undefined;}
 });
 
-test('Kakao state is bound/one-time and Toss uses new payment/transaction fields with safe approval, retry and cancellation reconciliation',async()=>{
+test('Verified members and Toss use new payment/transaction fields with safe approval, retry and cancellation reconciliation',async()=>{
  const db=await getDb(),originalFetch=globalThis.fetch;
- const environmentKeys=['APP_ORIGIN','KAKAO_REST_API_KEY','KAKAO_CLIENT_SECRET','TOSS_CLIENT_KEY','TOSS_SECRET_KEY'] as const;
+ const environmentKeys=['APP_ORIGIN','TOSS_CLIENT_KEY','TOSS_SECRET_KEY'] as const;
  const originalEnvironment=environmentKeys.map(key=>[key,process.env[key]] as const);
  try{
   // Build-host credentials and callback settings must never control mocked provider tests.
-  process.env.APP_ORIGIN='https://onepiece.test';process.env.KAKAO_REST_API_KEY='unit-test';process.env.KAKAO_CLIENT_SECRET='unit-secret';process.env.TOSS_CLIENT_KEY='test_ck_unit';process.env.TOSS_SECRET_KEY='test_sk_unit';
+  process.env.APP_ORIGIN='https://onepiece.test';process.env.TOSS_CLIENT_KEY='test_ck_unit';process.env.TOSS_SECRET_KEY='test_sk_unit';
   assert.equal(providerConfig().tossConfigured,true);
-  const guest=await createSession(),other=await createSession();const url=new URL(await startKakao(guest.session,'/app-preview'));let calls=0;
-  assert.equal(url.searchParams.get('redirect_uri'),'https://onepiece.test/api/auth/kakao/callback');
-  globalThis.fetch=async input=>{calls++;return Response.json(String(input).includes('/token')?{access_token:'mock'}:{id:123456});};
-  await assert.rejects(()=>finishKakao(other.session,url.searchParams.get('state')!,'code'));assert.equal(calls,0);
-  const login=await finishKakao(guest.session,url.searchParams.get('state')!,'code'),s=login.session;assert.equal(login.returnTo,'/app-preview');assert.equal(await findSession(guest.token),null);await assert.rejects(()=>finishKakao(s,url.searchParams.get('state')!,'code'));
+  const guest=await createSession(),other=await createSession();let calls=0;
+  const login=await testMember(guest.session,'payment-customer'),s=login.session;
+  assert.equal(await findSession(guest.token),null);
   const product=(await catalog()).find(p=>p.available)!,variant=product.variants.find(v=>v.available)!;
   const request={items:[{variantId:variant.id,quantity:1}],key:randomUUID()};const order=await prepareToss(s,request);assert.equal((await prepareToss(s,request)).paymentOrderId,order.paymentOrderId);
   assert.equal(order.successUrl,'https://onepiece.test/checkout/success');assert.equal(order.failUrl,'https://onepiece.test/checkout/fail');
@@ -81,7 +80,7 @@ test('Kakao state is bound/one-time and Toss uses new payment/transaction fields
   const body={orderId:order.paymentOrderId,paymentKey:approved.paymentKey,amount:order.total};let sentKey='';calls=0;
   globalThis.fetch=async(_url,init)=>{calls++;const key=(init?.headers as Record<string,string>)['Idempotency-Key'];if(sentKey)assert.equal(key,sentKey);else sentKey=key;return calls===1?Response.json({code:'TEMPORARY_ERROR'},{status:500}):Response.json(approved);};
   await assert.rejects(()=>confirmToss(s,{...body,amount:1}));assert.equal(calls,0);
-  const outsider=await linkKakao(other.session,'other-customer');await assert.rejects(()=>confirmToss(outsider.session,body));assert.equal(calls,0);
+  const outsider=await testMember(other.session,'other-customer');await assert.rejects(()=>confirmToss(outsider.session,body));assert.equal(calls,0);
   await assert.rejects(()=>confirmToss(s,body));await Promise.all([confirmToss(s,body),confirmToss(s,body)]);await confirmToss(s,body);assert.equal(calls,2);assert.match(sentKey,/^[a-f0-9-]{36}$/);
   assert.equal((await db.query<{payment_key:string}>('SELECT payment_key FROM payments')).rows[0].payment_key.length,200);
   assert.equal((await db.query('SELECT * FROM payment_transactions')).rows.length,1);assert.equal((await receipt(s,order.orderNumber))?.status,'paid');
@@ -101,3 +100,5 @@ test('Kakao state is bound/one-time and Toss uses new payment/transaction fields
   await db.close();globalThis.onepieceDb=undefined;
  }
 });
+
+function testMember(s:Parameters<typeof linkVerifiedMember>[0],subject:string){return linkVerifiedMember(s,{id:stableId('verified-unit-member',subject),name:'Unit member'});}

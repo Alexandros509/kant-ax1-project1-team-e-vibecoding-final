@@ -4,9 +4,10 @@ import { publishedCatalog } from './published-catalog';
 import {isReportEvent} from './analytics-contract';
 import { catalogSource, sourceCategory, sourceOption } from './catalog-source';
 import { imagePublicUrl } from './catalog-media';
+import { storefrontProductName } from './catalog-adapter';
 import { validateBasket, type BasketItem, type CatalogProduct } from './shop-model';
 
-export type Session = {token_hash: string; anonymous_id: string; session_id: string; assignment_id: string; user_id: string | null; consent: boolean; variant: 'A' | 'B'; snapshot_id: string};
+export type Session = {token_hash: string; anonymous_id: string; session_id: string; assignment_id: string; user_id: string | null; user_name?:string; consent: boolean; variant: 'A' | 'B'; snapshot_id: string};
 type RuntimeSession = {session: Session; expires: number; events: Set<string>; guestCart: BasketItem[]};
 declare global { var onepieceSessions: Map<string, RuntimeSession> | undefined; }
 const sessions = () => globalThis.onepieceSessions ??= new Map<string, RuntimeSession>();
@@ -29,14 +30,14 @@ export function changeConsent(s: Session, consent: boolean) {
     row.session.consent = consent; return {saved: true};
 }
 export function removeSession(s: Session) { sessions().delete(s.token_hash); }
-export function rotateSession(s: Session, userId: string) {
+export function rotateSession(s: Session, userId: string, name?:string, preserveCart=false) {
     const row = sessions().get(s.token_hash); if (!row) throw new Error('Session expired.');
-    removeSession(s); const token = randomBytes(32).toString('hex'), session = {...s, token_hash: tokenHash(token), user_id: userId};
-    sessions().set(session.token_hash, {...row, session, guestCart: []}); return {token, session};
+    removeSession(s); const token = randomBytes(32).toString('hex'), session = {...s, token_hash: tokenHash(token), user_id: userId,user_name:name};
+    sessions().set(session.token_hash, {...row, session, guestCart: preserveCart?row.guestCart:[]}); return {token, session};
 }
 export function guestCart(s: Session) { return sessions().get(s.token_hash)?.guestCart || []; }
 export async function savedCart(s: Session): Promise<BasketItem[]> {
-    if (!s.user_id) return guestCart(s);
+    if (!s.user_id || process.env.VERCEL==='1') return guestCart(s);
     return (await (await getDb()).query<{variantId: number; quantity: number}>('SELECT i.product_variant_id AS "variantId",i.quantity FROM cart_items i JOIN carts c ON c.id=i.cart_id WHERE c.user_id=$1 ORDER BY i.id', [s.user_id])).rows;
 }
 export async function catalog(): Promise<CatalogProduct[]> {
@@ -48,7 +49,7 @@ export async function catalog(): Promise<CatalogProduct[]> {
     return Promise.all(products.map(async p => {
         const raw = source.products[p.id - 1], color = raw ? sourceOption(raw, raw.variants[0]).color : '';
         const options = variants.filter(v => v.product_id === p.id).map(v => ({id: v.id, productId: p.id, sku: v.sku, color, size: v.size_label, price: p.sale_price, available: v.is_active && v.stock_quantity > 0}));
-        return {id: p.id, name: p.name, brand: 'ONEPIECE', category: raw ? sourceCategory(raw) : 'etc', categoryId: Number(p.category_id), color, price: p.sale_price, listPrice: p.list_price, available: options.some(v => v.available), images: await Promise.all(images.filter(i => i.product_id === p.id).map(i => imagePublicUrl(i.storage_path))), description: p.detail, careInfo: p.product_care, shippingInfo: p.shipping, isNew: p.is_new, sizeGuide: raw?.size_guide || {columns: [], rows: []}, variants: options, sourceUrl: raw?.source_url || ''};
+        return {id: p.id, name: storefrontProductName(p.name), brand: 'ONEPIECE', category: raw ? sourceCategory(raw) : 'etc', categoryId: Number(p.category_id), color, price: p.sale_price, listPrice: p.list_price, available: options.some(v => v.available), images: await Promise.all(images.filter(i => i.product_id === p.id).map(i => imagePublicUrl(i.storage_path))), description: p.detail, careInfo: p.product_care, shippingInfo: p.shipping, isNew: p.is_new, sizeGuide: raw?.size_guide || {columns: [], rows: []}, variants: options, sourceUrl: raw?.source_url || ''};
     }));
 }
 export async function recordEvent(s: Session, body: Record<string, unknown>) {
@@ -61,7 +62,7 @@ export async function recordEvent(s: Session, body: Record<string, unknown>) {
 }
 export async function syncCart(s: Session, value: unknown) {
     const items = Array.isArray(value) && value.length === 0 ? [] : validateBasket(value);
-    if (!s.user_id) {
+    if (!s.user_id || process.env.VERCEL==='1') {
         const row = sessions().get(s.token_hash); if (!row) throw new Error('Session expired.');
         row.guestCart = items; return {saved: true, localOnly: true};
     }
@@ -79,11 +80,12 @@ export async function syncCart(s: Session, value: unknown) {
     });
 }
 export async function collections(s: Session) {
-    if (!s.user_id) return {favorites: [] as number[], recent: [] as number[]};
+    if (!s.user_id || process.env.VERCEL==='1') return {favorites: [] as number[], recent: [] as number[]};
     const db = await getDb();
     return {favorites: (await db.query<{product_id: number}>('SELECT product_id FROM favorites WHERE user_id=$1 ORDER BY created_at DESC,id LIMIT 100', [s.user_id])).rows.map(r => r.product_id), recent: (await db.query<{product_id: number}>('SELECT product_id FROM recent_product_views WHERE user_id=$1 ORDER BY last_viewed_at DESC,id LIMIT 12', [s.user_id])).rows.map(r => r.product_id)};
 }
 export async function updateCollection(s: Session, body: Record<string, unknown>) {
+    if(process.env.VERCEL==='1')throw new Error('Saved lists require the member database connection.');
     if (!s.user_id) throw new Error('Please log in.');
     const id = Number(body.productId);
     if (!Number.isSafeInteger(id) || id < 1) throw new Error('Invalid product.');
@@ -101,7 +103,7 @@ export async function checkout(s: Session, body: Record<string, unknown>) {
     const items = validateBasket(body.items), key = String(body.key || '');
     if (!/^[a-f0-9-]{36}$/.test(key)) throw new Error('Invalid checkout key.');
     const input = body.delivery as Record<string, unknown> | undefined;
-    const delivery = {name: String(input?.name || 'Test recipient').trim(), phone: String(input?.phone || '000-0000-0000').trim(), zipcode: String(input?.zipcode || '00000').trim(), address: String(input?.address || 'Demo address (no shipping)').trim(), address2: String(input?.address2 || '').trim(), memo: String(input?.memo || '').trim()};
+    const delivery = {name: String(input?.name || 'Test recipient').trim(), phone: String(input?.phone || '000-0000-0000').trim(), zipcode: String(input?.zipcode || '00000').trim(), address: String(input?.address || 'Test address (no shipping)').trim(), address2: String(input?.address2 || '').trim(), memo: String(input?.memo || '').trim()};
     if (!delivery.name || delivery.name.length > 100 || !/^[0-9+() -]{7,30}$/.test(delivery.phone) || !/^\d{5}$/.test(delivery.zipcode) || !delivery.address || delivery.address.length > 255 || delivery.address2.length > 255 || delivery.memo.length > 255) throw new Error('Please check your delivery details.');
     const db = await getDb();
     return db.transaction(async tx => {

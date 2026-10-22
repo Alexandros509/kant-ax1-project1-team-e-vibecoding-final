@@ -17,7 +17,7 @@ The 59 PNGs under public/images/products are the exact files explicitly provided
 
 The maintainer explicitly identified the main campaign video as their own AI production and requested its restoration. public/campaign contains that unchanged video, its existing poster and project wordmark. It is not described as a SAN SAN GEAR crawl. Generation-service terms and any relevant rights remain applicable; this notice does not impose a blanket license on supplied media.
 
-The older geometric product/campaign SVG replacements were removed from the current working tree. Remaining generic project artwork and the official Kakao Login button have separate entries in docs/asset-manifest.json. Kakao retains its provider-asset rights; see THIRD_PARTY_NOTICES.md.
+The older geometric product/campaign SVG replacements were removed from the current working tree. Remaining generic project artwork is recorded in docs/asset-manifest.json. The retired Kakao button is absent from the current tree; its historical attribution remains in THIRD_PARTY_NOTICES.md.
 
 ## Excluded materials
 Reference-store product photos, reference-store campaign images/video, reference logos, collected product copy, original source HTML/JSON,
@@ -29,7 +29,7 @@ External image hotlinking is not used as a substitute for permission. Do not add
 The project is intended for educational, non-commercial UI/UX and A/B-testing practice. It has no sales, advertising,
 donations, actual fulfillment or production payment mode. This statement describes project intent; it is not an
 OSI-approved license, a non-commercial amendment to MIT, a fair-use determination, or permission to use third-party works.
-It is not affiliated with, sponsored by or endorsed by SAN SAN GEAR, Kakao, Toss Payments, or any similarly named franchise.
+It is not affiliated with, sponsored by or endorsed by SAN SAN GEAR, Supabase, Toss Payments, or any similarly named franchise.
 Provider names identify optional API integrations; their trademarks remain with their owners.
 No ownership of a reference store’s design, trade dress, media or marks is asserted. No legal-risk-free guarantee is made.
 

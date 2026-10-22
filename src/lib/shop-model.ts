@@ -1,7 +1,7 @@
 export type Variant = {id:number; productId:number; sku:string; color:string; size:string; price:number; available:boolean};
 export type CatalogProduct = {id:number; name:string; brand:string; category:string; categoryId:number; color:string; price:number; listPrice:number; available:boolean; images:string[]; description:string; careInfo?:string; shippingInfo?:string; isNew?:boolean; sizeGuide:{columns:string[]; rows:string[][]}; variants:Variant[]; sourceUrl:string};
 export type BasketItem = {variantId:number; quantity:number};
-export type ExperimentSession = {variant:'A'|'B'; experimentId:string; consent:boolean; registered:boolean; snapshotId:string; gaId:string; experimentEnabled:boolean; kakaoConfigured:boolean; tossConfigured:boolean; cart?:BasketItem[]; member:{name:string;provider:string}|null};
+export type ExperimentSession = {variant:'A'|'B'; experimentId:string; consent:boolean; registered:boolean; snapshotId:string; gaId:string; experimentEnabled:boolean; emailLoginConfigured:boolean; profileEditable:boolean; cartPersistence:'browser'|'database'; tossConfigured:boolean; cart?:BasketItem[]; member:{name:string;provider:string}|null};
 export const EXPERIMENT_ID='card-information-v1';
 export const MAX_QUANTITY=10;
 export function validateBasket(value:unknown): BasketItem[] {

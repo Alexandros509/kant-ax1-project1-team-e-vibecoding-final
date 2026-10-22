@@ -155,6 +155,13 @@
   },
   {
     "package": "@emnapi/runtime",
+    "version": "1.10.0",
+    "license": "MIT",
+    "repository": "",
+    "development": true
+  },
+  {
+    "package": "@emnapi/runtime",
     "version": "1.11.3",
     "license": "MIT",
     "repository": "",
@@ -357,10 +364,10 @@
     "development": true
   },
   {
-    "package": "eslint-visitor-keys",
-    "version": "3.4.3",
-    "license": "Apache-2.0",
-    "repository": "eslint/eslint-visitor-keys",
+    "package": "@eslint-community/eslint-utils",
+    "version": "4.9.1",
+    "license": "MIT",
+    "repository": "https://github.com/eslint-community/eslint-utils",
     "development": true
   },
   {
@@ -728,20 +735,6 @@
     "development": true
   },
   {
-    "package": "@eslint-community/eslint-utils",
-    "version": "4.9.1",
-    "license": "MIT",
-    "repository": "https://github.com/eslint-community/eslint-utils",
-    "development": true
-  },
-  {
-    "package": "eslint-visitor-keys",
-    "version": "3.4.3",
-    "license": "Apache-2.0",
-    "repository": "eslint/eslint-visitor-keys",
-    "development": true
-  },
-  {
     "package": "@next/swc-darwin-arm64",
     "version": "16.4.0",
     "license": "MIT",
@@ -917,18 +910,67 @@
     "development": false
   },
   {
-    "package": "picomatch",
-    "version": "4.0.7",
-    "license": "MIT",
-    "repository": "micromatch/picomatch",
-    "development": false
-  },
-  {
     "package": "@rtsao/scc",
     "version": "1.1.0",
     "license": "MIT",
     "repository": "rtsao/scc",
     "development": true
+  },
+  {
+    "package": "@supabase/auth-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/functions-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/phoenix",
+    "version": "0.4.5",
+    "license": "MIT",
+    "repository": "git://github.com/supabase/phoenix.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/ssr",
+    "version": "0.12.7",
+    "license": "MIT",
+    "repository": "git+https://github.com/supabase/ssr.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/storage-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
+  },
+  {
+    "package": "@supabase/supabase-js",
+    "version": "2.118.0",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/supabase-js.git",
+    "development": false
   },
   {
     "package": "@swc/helpers",
@@ -1099,13 +1141,6 @@
     "development": true
   },
   {
-    "package": "ignore",
-    "version": "7.0.12",
-    "license": "MIT",
-    "repository": "https://github.com/kaelzhang/node-ignore.git",
-    "development": true
-  },
-  {
     "package": "@typescript-eslint/parser",
     "version": "8.71.2",
     "license": "MIT",
@@ -1155,34 +1190,6 @@
     "development": true
   },
   {
-    "package": "balanced-match",
-    "version": "4.0.4",
-    "license": "MIT",
-    "repository": "git://github.com/juliangruber/balanced-match.git",
-    "development": true
-  },
-  {
-    "package": "brace-expansion",
-    "version": "5.0.12",
-    "license": "MIT",
-    "repository": "git+https://github.com/juliangruber/brace-expansion.git",
-    "development": true
-  },
-  {
-    "package": "minimatch",
-    "version": "10.2.6",
-    "license": "BlueOak-1.0.0",
-    "repository": "git@github.com:isaacs/minimatch",
-    "development": true
-  },
-  {
-    "package": "semver",
-    "version": "7.8.5",
-    "license": "ISC",
-    "repository": "git+https://github.com/npm/node-semver.git",
-    "development": true
-  },
-  {
     "package": "@typescript-eslint/utils",
     "version": "8.71.2",
     "license": "MIT",
@@ -1194,13 +1201,6 @@
     "version": "8.71.2",
     "license": "MIT",
     "repository": "https://github.com/typescript-eslint/typescript-eslint.git",
-    "development": true
-  },
-  {
-    "package": "eslint-visitor-keys",
-    "version": "5.0.1",
-    "license": "Apache-2.0",
-    "repository": "https://github.com/eslint/js.git",
     "development": true
   },
   {
@@ -1332,13 +1332,6 @@
   {
     "package": "@unrs/resolver-binding-wasm32-wasi",
     "version": "1.12.2",
-    "license": "MIT",
-    "repository": "",
-    "development": true
-  },
-  {
-    "package": "@emnapi/runtime",
-    "version": "1.10.0",
     "license": "MIT",
     "repository": "",
     "development": true
@@ -1505,6 +1498,13 @@
     "development": true
   },
   {
+    "package": "balanced-match",
+    "version": "4.0.4",
+    "license": "MIT",
+    "repository": "git://github.com/juliangruber/balanced-match.git",
+    "development": true
+  },
+  {
     "package": "baseline-browser-mapping",
     "version": "2.11.28",
     "license": "Apache-2.0",
@@ -1516,6 +1516,13 @@
     "version": "1.1.21",
     "license": "MIT",
     "repository": "git://github.com/juliangruber/brace-expansion.git",
+    "development": true
+  },
+  {
+    "package": "brace-expansion",
+    "version": "5.0.12",
+    "license": "MIT",
+    "repository": "git+https://github.com/juliangruber/brace-expansion.git",
     "development": true
   },
   {
@@ -1638,6 +1645,13 @@
     "development": true
   },
   {
+    "package": "cookie",
+    "version": "1.1.1",
+    "license": "MIT",
+    "repository": "jshttp/cookie",
+    "development": false
+  },
+  {
     "package": "cross-spawn",
     "version": "7.0.6",
     "license": "MIT",
@@ -1677,6 +1691,27 @@
     "version": "1.0.1",
     "license": "MIT",
     "repository": "git+https://github.com/inspect-js/data-view-byte-offset.git",
+    "development": true
+  },
+  {
+    "package": "debug",
+    "version": "3.2.7",
+    "license": "MIT",
+    "repository": "git://github.com/visionmedia/debug.git",
+    "development": true
+  },
+  {
+    "package": "debug",
+    "version": "3.2.7",
+    "license": "MIT",
+    "repository": "git://github.com/visionmedia/debug.git",
+    "development": true
+  },
+  {
+    "package": "debug",
+    "version": "3.2.7",
+    "license": "MIT",
+    "repository": "git://github.com/visionmedia/debug.git",
     "development": true
   },
   {
@@ -1848,24 +1883,10 @@
     "development": true
   },
   {
-    "package": "globals",
-    "version": "16.4.0",
-    "license": "MIT",
-    "repository": "sindresorhus/globals",
-    "development": true
-  },
-  {
     "package": "eslint-import-resolver-node",
     "version": "0.3.10",
     "license": "MIT",
     "repository": "https://github.com/import-js/eslint-plugin-import",
-    "development": true
-  },
-  {
-    "package": "debug",
-    "version": "3.2.7",
-    "license": "MIT",
-    "repository": "git://github.com/visionmedia/debug.git",
     "development": true
   },
   {
@@ -1883,24 +1904,10 @@
     "development": true
   },
   {
-    "package": "debug",
-    "version": "3.2.7",
-    "license": "MIT",
-    "repository": "git://github.com/visionmedia/debug.git",
-    "development": true
-  },
-  {
     "package": "eslint-plugin-import",
     "version": "2.32.0",
     "license": "MIT",
     "repository": "https://github.com/import-js/eslint-plugin-import",
-    "development": true
-  },
-  {
-    "package": "debug",
-    "version": "3.2.7",
-    "license": "MIT",
-    "repository": "git://github.com/visionmedia/debug.git",
     "development": true
   },
   {
@@ -1933,7 +1940,28 @@
   },
   {
     "package": "eslint-visitor-keys",
+    "version": "3.4.3",
+    "license": "Apache-2.0",
+    "repository": "eslint/eslint-visitor-keys",
+    "development": true
+  },
+  {
+    "package": "eslint-visitor-keys",
+    "version": "3.4.3",
+    "license": "Apache-2.0",
+    "repository": "eslint/eslint-visitor-keys",
+    "development": true
+  },
+  {
+    "package": "eslint-visitor-keys",
     "version": "4.2.1",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/eslint/js.git",
+    "development": true
+  },
+  {
+    "package": "eslint-visitor-keys",
+    "version": "5.0.1",
     "license": "Apache-2.0",
     "repository": "https://github.com/eslint/js.git",
     "development": true
@@ -1988,13 +2016,6 @@
     "development": true
   },
   {
-    "package": "glob-parent",
-    "version": "5.1.2",
-    "license": "ISC",
-    "repository": "gulpjs/glob-parent",
-    "development": true
-  },
-  {
     "package": "fast-json-stable-stringify",
     "version": "2.1.0",
     "license": "MIT",
@@ -2013,6 +2034,13 @@
     "version": "1.20.3",
     "license": "ISC",
     "repository": "git+https://github.com/mcollina/fastq.git",
+    "development": true
+  },
+  {
+    "package": "fdir",
+    "version": "6.5.0",
+    "license": "MIT",
+    "repository": "git+https://github.com/thecodrr/fdir.git",
     "development": true
   },
   {
@@ -2129,6 +2157,13 @@
   },
   {
     "package": "glob-parent",
+    "version": "5.1.2",
+    "license": "ISC",
+    "repository": "gulpjs/glob-parent",
+    "development": true
+  },
+  {
+    "package": "glob-parent",
     "version": "6.0.2",
     "license": "ISC",
     "repository": "gulpjs/glob-parent",
@@ -2137,6 +2172,13 @@
   {
     "package": "globals",
     "version": "14.0.0",
+    "license": "MIT",
+    "repository": "sindresorhus/globals",
+    "development": true
+  },
+  {
+    "package": "globals",
+    "version": "16.4.0",
     "license": "MIT",
     "repository": "sindresorhus/globals",
     "development": true
@@ -2226,10 +2268,24 @@
     "development": true
   },
   {
+    "package": "iceberg-js",
+    "version": "0.8.1",
+    "license": "MIT",
+    "repository": "https://github.com/supabase/iceberg-js",
+    "development": false
+  },
+  {
     "package": "ignore",
     "version": "5.3.2",
     "license": "MIT",
     "repository": "git@github.com:kaelzhang/node-ignore.git",
+    "development": true
+  },
+  {
+    "package": "ignore",
+    "version": "7.0.12",
+    "license": "MIT",
+    "repository": "https://github.com/kaelzhang/node-ignore.git",
     "development": true
   },
   {
@@ -2293,13 +2349,6 @@
     "version": "2.0.0",
     "license": "MIT",
     "repository": "git+https://github.com/SunsetTechuila/is-bun-module.git",
-    "development": true
-  },
-  {
-    "package": "semver",
-    "version": "7.8.5",
-    "license": "ISC",
-    "repository": "git+https://github.com/npm/node-semver.git",
     "development": true
   },
   {
@@ -2528,6 +2577,13 @@
   },
   {
     "package": "json5",
+    "version": "1.0.2",
+    "license": "MIT",
+    "repository": "git+https://github.com/json5/json5.git",
+    "development": true
+  },
+  {
+    "package": "json5",
     "version": "2.2.3",
     "license": "MIT",
     "repository": "git+https://github.com/json5/json5.git",
@@ -2713,6 +2769,13 @@
     "version": "4.0.8",
     "license": "MIT",
     "repository": "micromatch/micromatch",
+    "development": true
+  },
+  {
+    "package": "minimatch",
+    "version": "10.2.6",
+    "license": "BlueOak-1.0.0",
+    "repository": "git@github.com:isaacs/minimatch",
     "development": true
   },
   {
@@ -2912,6 +2975,20 @@
     "development": true
   },
   {
+    "package": "picomatch",
+    "version": "4.0.7",
+    "license": "MIT",
+    "repository": "micromatch/picomatch",
+    "development": false
+  },
+  {
+    "package": "picomatch",
+    "version": "4.0.7",
+    "license": "MIT",
+    "repository": "micromatch/picomatch",
+    "development": true
+  },
+  {
     "package": "possible-typed-array-names",
     "version": "1.1.0",
     "license": "MIT",
@@ -3101,6 +3178,27 @@
     "development": true
   },
   {
+    "package": "semver",
+    "version": "7.8.5",
+    "license": "ISC",
+    "repository": "git+https://github.com/npm/node-semver.git",
+    "development": true
+  },
+  {
+    "package": "semver",
+    "version": "7.8.5",
+    "license": "ISC",
+    "repository": "git+https://github.com/npm/node-semver.git",
+    "development": true
+  },
+  {
+    "package": "semver",
+    "version": "7.8.5",
+    "license": "ISC",
+    "repository": "git+https://github.com/npm/node-semver.git",
+    "development": false
+  },
+  {
     "package": "set-function-length",
     "version": "1.2.2",
     "license": "MIT",
@@ -3126,13 +3224,6 @@
     "version": "0.35.5",
     "license": "Apache-2.0",
     "repository": "git+https://github.com/lovell/sharp.git",
-    "development": false
-  },
-  {
-    "package": "semver",
-    "version": "7.8.5",
-    "license": "ISC",
-    "repository": "git+https://github.com/npm/node-semver.git",
     "development": false
   },
   {
@@ -3304,20 +3395,6 @@
     "development": true
   },
   {
-    "package": "fdir",
-    "version": "6.5.0",
-    "license": "MIT",
-    "repository": "git+https://github.com/thecodrr/fdir.git",
-    "development": true
-  },
-  {
-    "package": "picomatch",
-    "version": "4.0.7",
-    "license": "MIT",
-    "repository": "micromatch/picomatch",
-    "development": true
-  },
-  {
     "package": "to-regex-range",
     "version": "5.0.1",
     "license": "MIT",
@@ -3336,13 +3413,6 @@
     "version": "3.15.0",
     "license": "MIT",
     "repository": "https://github.com/dividab/tsconfig-paths",
-    "development": true
-  },
-  {
-    "package": "json5",
-    "version": "1.0.2",
-    "license": "MIT",
-    "repository": "git+https://github.com/json5/json5.git",
     "development": true
   },
   {
