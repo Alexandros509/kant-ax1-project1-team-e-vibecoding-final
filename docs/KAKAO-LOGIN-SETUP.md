@@ -24,6 +24,12 @@ For localhost:3000, set APP_ORIGIN=http://localhost:3000, run npm run dev -- --h
 
 Run npm run kakao:check to inspect presence/format without displaying keys or sending an authentication request. It does not prove that the remote console is correctly configured. An explicitly Secret-disabled legacy app may need manual review of the check's missing-Secret result.
 
+## Deployment callback check — 2026-10-22
+
+The deployed authorization redirect was inspected without following it or printing the REST key/state. Its redirect_uri contained //api/auth/kakao/callback because APP_ORIGIN ended in a slash. In Vercel Settings → Environment Variables, edit APP_ORIGIN (Config, Production) so its Value is exactly https://kant-ax1-project1-team-e-vibecoding.vercel.app . Do not put APP_ORIGIN= in the Value field and do not add a trailing slash. Save and use a new deployment.
+
+In the Kakao app that issued the same REST key: App → Platform keys → REST API key → Kakao Login Redirect URI. Register https://kant-ax1-project1-team-e-vibecoding.vercel.app/api/auth/kakao/callback exactly, with one slash before api. Preserve local callback entries. The console-only URI change does not itself update Vercel environment values. Completing this setup does not supply external DB/shared OAuth-state persistence.
+
 ## 3. Error diagnosis
 
 - KOE004: confirm Kakao Login is ON for the app belonging to the REST key actually loaded by this server.

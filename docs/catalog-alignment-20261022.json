@@ -1,0 +1,112 @@
+{
+  "verifiedDate": "2026-10-22",
+  "source": "https://github.com/tuski0/sansan_clone_site/blob/5fb0017ec32edbd2b6df4b7acbc149ebe88ee25b/data/reference.json",
+  "sourceRevision": "5fb0017ec32edbd2b6df4b7acbc149ebe88ee25b",
+  "sourceSha256": "ca3cdcc567fdef013fc6ce2144690f2168ceb60d7fa10e675b7de2612bc2a95d",
+  "snapshotId": "onepiece-erd13-local-media-20261022-v4",
+  "products": 366,
+  "variants": 1280,
+  "verifiedFields": [
+    "price",
+    "color",
+    "size",
+    "available"
+  ],
+  "remainingDifferences": {
+    "price": 0,
+    "color": 0,
+    "size": 0,
+    "available": 0
+  },
+  "changes": [
+    {
+      "productId": 24,
+      "variantId": 83,
+      "sku": "DEMO-024-1",
+      "size": "2",
+      "before": true,
+      "after": false
+    },
+    {
+      "productId": 100,
+      "variantId": 325,
+      "sku": "DEMO-100-0",
+      "size": "1",
+      "before": false,
+      "after": true
+    },
+    {
+      "productId": 148,
+      "variantId": 477,
+      "sku": "DEMO-148-0",
+      "size": "1",
+      "before": false,
+      "after": true
+    },
+    {
+      "productId": 229,
+      "variantId": 803,
+      "sku": "DEMO-229-2",
+      "size": "3",
+      "before": true,
+      "after": false
+    },
+    {
+      "productId": 232,
+      "variantId": 816,
+      "sku": "DEMO-232-3",
+      "size": "4",
+      "before": false,
+      "after": true
+    },
+    {
+      "productId": 233,
+      "variantId": 820,
+      "sku": "DEMO-233-3",
+      "size": "4",
+      "before": true,
+      "after": false
+    },
+    {
+      "productId": 308,
+      "variantId": 1065,
+      "sku": "DEMO-308-0",
+      "size": "1",
+      "before": false,
+      "after": true
+    },
+    {
+      "productId": 312,
+      "variantId": 1083,
+      "sku": "DEMO-312-2",
+      "size": "3",
+      "before": true,
+      "after": false
+    },
+    {
+      "productId": 344,
+      "variantId": 1210,
+      "sku": "DEMO-344-2",
+      "size": "3",
+      "before": true,
+      "after": false
+    },
+    {
+      "productId": 352,
+      "variantId": 1239,
+      "sku": "DEMO-352-2",
+      "size": "3",
+      "before": false,
+      "after": true
+    }
+  ],
+  "preserved": [
+    "fictional product names",
+    "59 project PNGs and gallery mappings",
+    "product/option IDs",
+    "product order",
+    "login-first web entry",
+    "ERD13 schema"
+  ],
+  "stockQuantityNote": "The clone exposes availability booleans, not real stock counts. Local ERD test stock uses 0 for unavailable and 100000 for available; this is not the source merchant inventory."
+}

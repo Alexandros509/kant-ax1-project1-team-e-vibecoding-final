@@ -1,5 +1,5 @@
 {
-  "snapshot_id": "onepiece-erd13-local-media-20261021-v3",
+  "snapshot_id": "onepiece-erd13-local-media-20261022-v4",
   "products": [
     {
       "id": "demo-local-color-001",
@@ -2615,7 +2615,7 @@
           "option3": null,
           "title": "BLACK / 2",
           "price": "249000",
-          "available": true
+          "available": false
         },
         {
           "id": "demo-local-option-024-2",
@@ -10724,7 +10724,7 @@
           "option3": null,
           "title": "CHARCOAL / 1",
           "price": "175000",
-          "available": false
+          "available": true
         },
         {
           "id": "demo-local-option-100-1",
@@ -15885,7 +15885,7 @@
           "option3": null,
           "title": "BLACK / 1",
           "price": "125000",
-          "available": false
+          "available": true
         },
         {
           "id": "demo-local-option-148-1",
@@ -25596,7 +25596,7 @@
           "option3": null,
           "title": "black / 3",
           "price": "219000",
-          "available": true
+          "available": false
         },
         {
           "id": "demo-local-option-229-3",
@@ -26000,7 +26000,7 @@
           "option3": null,
           "title": "charcoal / 4",
           "price": "169000",
-          "available": false
+          "available": true
         }
       ]
     },
@@ -26110,7 +26110,7 @@
           "option3": null,
           "title": "sky blue / 4",
           "price": "169000",
-          "available": true
+          "available": false
         }
       ]
     },
@@ -34536,7 +34536,7 @@
           "option3": null,
           "title": "CHARCOAL / 1",
           "price": "159000",
-          "available": false
+          "available": true
         },
         {
           "id": "demo-local-option-308-1",
@@ -34996,7 +34996,7 @@
           "option3": null,
           "title": "BLACK / 3",
           "price": "169000",
-          "available": true
+          "available": false
         },
         {
           "id": "demo-local-option-312-3",
@@ -38662,7 +38662,7 @@
           "option3": null,
           "title": "BLACK / 3",
           "price": "209000",
-          "available": true
+          "available": false
         },
         {
           "id": "demo-local-option-344-3",
@@ -39597,7 +39597,7 @@
           "option3": null,
           "title": "DARK GREY / 3",
           "price": "198000",
-          "available": false
+          "available": true
         },
         {
           "id": "demo-local-option-352-3",

@@ -1,4 +1,10 @@
-# Current verification — 2026-10-21 (ERD13 and local media)
+# Current verification — 2026-10-22 (clone conditions)
+
+- Compared the pinned clone reference at 5fb0017 against all 366 mapped cards and 1,280 options. Price, color and size already matched; ten availability flags were corrected (five available and five unavailable). The release fixture, catalog seed, snapshot metadata and asset checksum were updated. Reference product names, photos and descriptions were not copied.
+- Existing fictional names, local PNG/video bytes, logical IDs, list order and login-first web entry were preserved. The ERD13 structure and real DB files were not modified. The optional targeted SQL patch touches only the ten reviewed DEMO inventory rows and uses 0/100000 as test markers, not merchant inventory quantities.
+- The catalog seed was executed in a fresh memory DB and checked against all 1,280 fixture options. The targeted patch was applied twice to a simulated prior state; mock member/cart rows were preserved. The existing 18-test suite and production build were checked after this data change.
+
+# Earlier verification — 2026-10-21 (ERD13 and local media)
 
 This section supersedes the earlier catalog/schema/media counts below. Earlier records are retained as history.
 

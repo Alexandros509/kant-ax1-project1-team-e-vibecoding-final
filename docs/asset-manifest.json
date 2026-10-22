@@ -1,10 +1,11 @@
 {
-  "fixture": "onepiece-erd13-local-media-20261021-v3",
+  "fixture": "onepiece-erd13-local-media-20261022-v4",
   "assets": [
     {
       "path": "data/products.json",
-      "sha256": "6312cf7a32543fef094a6de2041a078ccf1466261886d682daf990b0b851580d",
-      "provenance": "366-card fictional-named test catalog. Existing local item order, category, size, price and availability parameters retained; reference brand names, SKU identifiers, descriptions and external media/source URLs removed. All galleries use the maintainer-provided local PNG set repeatedly by category."
+      "sha256": "08e19db9e4f4c8ebb0b5a22092151cda8a80a70b56f116c74e6fca5ee251968f",
+      "provenance": "366 fictional-named cards retain project names, local PNG mappings and stable option IDs. Prices, size/color options and availability were matched to the pinned clone reference JSON on 2026-10-22; ten availability flags were corrected. Reference descriptions, names, SKU identifiers and external media/source URLs remain excluded.",
+      "source": "https://github.com/tuski0/sansan_clone_site/blob/5fb0017ec32edbd2b6df4b7acbc149ebe88ee25b/data/reference.json"
     },
     {
       "path": "public/brand/wordmark.svg",
